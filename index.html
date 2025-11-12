@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jain Dharma - Path of Righteousness</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-om"></i>
+                <span>Jain Dharma</span>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="bhajans.html" class="nav-link">Bhajans</a>
+                </li>
+                <li class="nav-item">
+                    <a href="tirth-sthal.html" class="nav-link">Tirth Sthal</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="gallery.html" class="nav-link">Gallery</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-background">
+            <div class="mandala-pattern"></div>
+            <div class="geometric-patterns">
+                <div class="pattern-circle pattern-1"></div>
+                <div class="pattern-circle pattern-2"></div>
+                <div class="pattern-circle pattern-3"></div>
+            </div>
+            <div class="floating-elements">
+                <div class="floating-icon icon-1">🕉️</div>
+                <div class="floating-icon icon-2">☸️</div>
+                <div class="floating-icon icon-3">🕉️</div>
+                <div class="floating-icon icon-4">☸️</div>
+                <div class="floating-icon icon-5">🕉️</div>
+                <div class="floating-icon icon-6">☸️</div>
+            </div>
+            <div class="hero-particles">
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+            </div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge fade-in" style="animation-delay: 0.1s;">
+                <i class="fas fa-om"></i>
+                <span>Ancient Wisdom</span>
+            </div>
+            <h1 class="hero-title fade-in" style="animation-delay: 0.2s;">
+                <span class="title-line-1">Jain</span>
+                <span class="title-line-2">Dharma</span>
+            </h1>
+            <p class="hero-subtitle fade-in" style="animation-delay: 0.4s;">The Path of Righteousness and Non-Violence</p>
+            <p class="hero-description fade-in" style="animation-delay: 0.6s;">
+                Discover the ancient wisdom of Jainism, embracing the principles of 
+                <span class="highlight-text">Ahimsa</span>, 
+                <span class="highlight-text">Anekantavada</span>, and 
+                <span class="highlight-text">Aparigraha</span> for a life of peace and spiritual growth.
+            </p>
+            <div class="hero-stats fade-in" style="animation-delay: 0.7s;">
+                <div class="stat-item">
+                    <div class="stat-number">24</div>
+                    <div class="stat-label">Tirthankaras</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">5</div>
+                    <div class="stat-label">Great Vows</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Jewels</div>
+                </div>
+            </div>
+            <div class="hero-buttons fade-in" style="animation-delay: 0.8s;">
+                <a href="bhajans.html" class="btn btn-primary">
+                    <i class="fas fa-music"></i>
+                    <span>Explore Bhajans</span>
+                </a>
+                <a href="about.html" class="btn btn-secondary">
+                    <i class="fas fa-book-open"></i>
+                    <span>Learn More</span>
+                </a>
+                <a href="tirth-sthal.html" class="btn btn-outline">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Sacred Places</span>
+                </a>
+            </div>
+        </div>
+      
+    </section>
+
+    <!-- Bhajans Section -->
+    <section id="bhajans" class="bhajans-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Sacred Bhajans</h2>
+                <p class="section-subtitle">Divine melodies that inspire and uplift the soul</p>
+            </div>
+            
+            <div class="search-container">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="bhajan-search" placeholder="Search bhajans...">
+                </div>
+            </div>
+
+            <div class="bhajans-grid" id="bhajans-grid">
+                <!-- Bhajan cards will be dynamically generated -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Tirth Sthal Section -->
+    <!-- <section id="tirth-sthal" class="tirth-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Sacred Tirth Sthals</h2>
+                <p class="section-subtitle">Pilgrimage sites of great spiritual significance</p>
+            </div>
+            
+            <div class="tirth-grid" id="tirth-grid">
+                // Tirth Sthal cards will be dynamically generated
+            </div>
+    </section> -->
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">About Jain Dharma</h2>
+                <p class="section-subtitle">Understanding the core principles and philosophy</p>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <div class="principle-card">
+                        <div class="principle-icon">🕉️</div>
+                        <h3>Ahimsa (Non-Violence)</h3>
+                        <p>The fundamental principle of non-violence towards all living beings, promoting compassion and respect for life in all its forms.</p>
+                    </div>
+                    <div class="principle-card">
+                        <div class="principle-icon">☸️</div>
+                        <h3>Anekantavada (Non-Absolutism)</h3>
+                        <p>The doctrine of multiple viewpoints, recognizing that truth is multifaceted and can be understood from different perspectives.</p>
+                    </div>
+                    <div class="principle-card">
+                        <div class="principle-icon">🕉️</div>
+                        <h3>Aparigraha (Non-Possessiveness)</h3>
+                        <p>The principle of non-attachment and non-possessiveness, encouraging detachment from material possessions and desires.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Sacred Gallery</h2>
+                <p class="section-subtitle">Visual journey through Jain temples and sacred spaces</p>
+            </div>
+            
+            <div class="gallery-grid" id="gallery-grid">
+                <!-- Gallery images will be dynamically generated -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Contact Us</h2>
+                <p class="section-subtitle">Get in touch with our community</p>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Address</h4>
+                            <p>123 Dharma Path<br>Spiritual City, SC 12345</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>+1 (555) 123-4567</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>info@jaindharma.org</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <form class="contact-form">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Jain Dharma</h3>
+                    <p>Embracing the path of righteousness, non-violence, and spiritual growth.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="bhajans.html">Bhajans</a></li>
+                        <li><a href="tirth-sthal.html">Tirth Sthal</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Jain Dharma. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox for Gallery -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <span class="lightbox-close">&times;</span>
+            <img id="lightbox-image" src="" alt="">
+            <div class="lightbox-caption"></div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
