@@ -15,7 +15,7 @@
         <div class="nav-container">
             <div class="nav-logo">
                 <i class="fas fa-om"></i>
-                <span>Saacho Dharm</span>
+               <span>Saacho Dharm</span>
             </div>
             <ul class="nav-menu" id="nav-menu">
                 <li class="nav-item">
@@ -52,53 +52,25 @@
             <!-- Video Section -->
             <div class="video-section fade-in">
                 <div class="video-container">
-                    <iframe id="youtube-player" width="100%" height="400" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe width="100%" height="400" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
 
             <!-- Bhajan Title and Meta -->
             <div class="bhajan-header fade-in">
                 <div class="header-top">
-                    <h1 id="bhajan-title" class="bhajan-main-title">Namokar Mantra</h1>
+                    <h1 class="bhajan-main-title">Namokar Mantra</h1>
                     <div class="language-switcher">
                         <button class="lang-btn lang-btn-active" data-lang="hindi">हिंदी</button>
                         <button class="lang-btn" data-lang="english">English</button>
                     </div>
                 </div>
-                <p id="bhajan-description" class="bhajan-description">
+                <p class="bhajan-description">
                     The most sacred mantra in Jainism, paying homage to the five supreme beings.
                 </p>
             </div>
 
-            <!-- Audio Player Section -->
-            <div class="audio-player-section fade-in">
-                <div class="audio-player">
-                    <div class="player-header">
-                        <h3><i class="fas fa-music"></i> Audio Player</h3>
-                    </div>
-                    <div class="player-controls">
-                        <button id="play-btn" class="control-btn" title="Play">
-                            <i class="fas fa-play"></i>
-                        </button>
-                        <button id="pause-btn" class="control-btn" title="Pause">
-                            <i class="fas fa-pause"></i>
-                        </button>
-                        <div class="progress-container">
-                            <div id="progress-bar" class="progress-bar">
-                                <div class="progress-fill"></div>
-                            </div>
-                            <span id="time-display" class="time-display">0:00 / 0:00</span>
-                        </div>
-                        <div class="volume-control">
-                            <i class="fas fa-volume-up"></i>
-                            <input type="range" id="volume-slider" min="0" max="100" value="100">
-                        </div>
-                    </div>
-                    <audio id="audio-player">
-                        <!-- Audio source will be set dynamically -->
-                    </audio>
-                </div>
-            </div>
+           
 
             <!-- Lyrics Section -->
             <div class="lyrics-section fade-in">
@@ -117,9 +89,27 @@
                     </div>
                 </div>
 
-                <div id="lyrics-content" class="lyrics-content">
-                    <!-- Lyrics will be inserted here -->
-                </div>
+                <div class="lyrics-content hindi">नमो अरिहंताणं
+नमो सिद्धाणं
+नमो आयरियाणं
+नमो उवज्झायाणं
+नमो लोए सव्व साहूणं
+
+एसो पंच नमोक्कारो
+सव्व पावप्पणासनो
+मंगलाणं च सव्वेसिं
+पढमं हवई मंगलं</div>
+
+                <div class="lyrics-content english" style="display:none;">Homage to the Arihants
+Homage to the Siddhas
+Homage to the Acharyas
+Homage to the Upadhyayas
+Homage to the Ascetics of the World
+
+This five-fold salutation
+Destroys all sin
+And of all auspicious things
+Is the foremost auspiciousness</div>
             </div>
 
             <!-- Share Modal -->
@@ -151,12 +141,59 @@
 
         <!-- Right Sidebar - Suggested Bhajans -->
         <aside class="lyrics-sidebar">
+            <!-- Audio Player Section -->
+            <div class="audio-player-section fade-in">
+                <div class="audio-player">
+                    <div class="player-header">
+                        <h3><i class="fas fa-music"></i> Audio Player</h3>
+                    </div>
+                    <div class="player-controls">
+                        <button id="play-btn" class="control-btn" title="Play">
+                            <i class="fas fa-play"></i>
+                        </button>
+                        <button id="pause-btn" class="control-btn" title="Pause">
+                            <i class="fas fa-pause"></i>
+                        </button>
+                        <div class="progress-container">
+                            <div id="progress-bar" class="progress-bar">
+                                <div class="progress-fill"></div>
+                            </div>
+                            <span id="time-display" class="time-display">0:00 / 0:00</span>
+                        </div>
+                        <div class="volume-control">
+                            <i class="fas fa-volume-up"></i>
+                            <input type="range" id="volume-slider" min="0" max="100" value="100">
+                        </div>
+                    </div>
+                    <audio id="audio-player" src="audio/namokar-mantra.mp3"></audio>
+                </div>
+            </div>
+
             <div class="suggested-section fade-in">
                 <h3 class="suggested-title">
                     <i class="fas fa-star"></i> Suggested Bhajans
                 </h3>
-                <div id="suggested-bhajans" class="suggested-list">
-                    <!-- Suggested bhajans will be populated here -->
+                <div class="suggested-list">
+                    <div class="suggested-item active">
+                        <div class="suggested-item-title">Namokar Mantra</div>
+                        <div class="suggested-item-meta">2:30 • Easy</div>
+                    </div>
+                    <div class="suggested-item">
+                        <div class="suggested-item-title">Bhaktāmara Stotra</div>
+                        <div class="suggested-item-meta">5:45 • Medium</div>
+                    </div>
+                    <div class="suggested-item">
+                        <div class="suggested-item-title">Uvasaggaharam Stotra</div>
+                        <div class="suggested-item-meta">4:20 • Easy</div>
+                    </div>
+                    <div class="suggested-item">
+                        <div class="suggested-item-title">Santikaram Stotra</div>
+                        <div class="suggested-item-meta">3:15 • Medium</div>
+                    </div>
+                    <div class="suggested-item">
+                        <div class="suggested-item-title">Kalyāṇamandira Stotra</div>
+                        <div class="suggested-item-meta">6:10 • Medium</div>
+                    </div>
                 </div>
             </div>
 
