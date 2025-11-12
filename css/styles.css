@@ -706,7 +706,8 @@ section {
 
 /* About Section */
 .about-section {
-    background: var(--primary-white);
+    /* background: var(--primary-white); */
+     background: var(--light-beige);
     position: relative;
     z-index: 10;
 }
