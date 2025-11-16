@@ -6,7 +6,7 @@ let currentCategory = null;
 // Fetch all data from JSON
 async function loadLyricsData() {
     try {
-        const response = await fetch('../data/jainsaar_full_data.json');
+        const response = await fetch('data/jainsaar_full_data.json');
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
         allData = await response.json();
         console.log('✓ Data loaded:', allData.length, 'categories');
