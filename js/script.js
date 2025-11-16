@@ -3,15 +3,154 @@ const navbar = document.getElementById('navbar');
 const navMenu = document.getElementById('nav-menu');
 const hamburger = document.getElementById('hamburger');
 const bhajansGrid = document.getElementById('bhajans-grid');
-const tirthGrid = document.getElementById('tirth-grid');
-const galleryGrid = document.getElementById('gallery-grid');
 const bhajanSearch = document.getElementById('bhajan-search');
 const lightbox = document.getElementById('lightbox');
 const lightboxImage = document.getElementById('lightbox-image');
 const lightboxCaption = document.querySelector('.lightbox-caption');
 const lightboxClose = document.querySelector('.lightbox-close');
 
-// (Bhajans and Tirth data moved into static HTML in their respective pages.)
+// Global data storage
+let allData = [];
+let selectedCategory = null;
+
+// Fetch JSON data from the server
+async function fetchJainData() {
+    try {
+        const response = await fetch('data/jainsaar_full_data.json');
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        allData = await response.json();
+        console.log('✓ Data loaded successfully:', allData.length, 'categories');
+        
+        // If on index page, load categories
+        const pathname = window.location.pathname;
+        const isIndexPage = pathname.includes('index.html') || pathname === '/' || pathname.endsWith('/');
+        if (bhajansGrid && isIndexPage) {
+            loadCategories();
+        }
+        
+        // If on bhajans page, check for category parameter
+        if (window.location.pathname.includes('bhajans.html')) {
+            const params = new URLSearchParams(window.location.search);
+            selectedCategory = params.get('category');
+            if (selectedCategory) {
+                loadBhajansByCategory(decodeURIComponent(selectedCategory));
+            } else {
+                loadAllBhajans();
+            }
+        }
+    } catch (error) {
+        console.error('✗ Error loading data:', error);
+        if (bhajansGrid) {
+            bhajansGrid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: #e74c3c;">Error loading content. Please refresh the page.</p>';
+        }
+    }
+}
+
+// Load categories on index page - displayed as clickable cards
+function loadCategories() {
+    if (!bhajansGrid) return;
+    
+    bhajansGrid.innerHTML = '';
+    
+    allData.forEach((categoryData, index) => {
+        const card = document.createElement('div');
+        card.className = 'bhajan-card fade-in';
+        card.style.animationDelay = `${index * 0.1}s`;
+        
+        // Create category card with details
+        card.innerHTML = `
+            <h3>${categoryData.category}</h3>
+           
+            <div class="bhajan-meta">
+                <span class="bhajan-duration">${categoryData.items.length} items</span>
+                <a href="bhajans.html?category=${encodeURIComponent(categoryData.category)}" class="btn btn-primary">
+                    <span>Explore</span>
+                </a>
+            </div>
+        `;
+        
+        bhajansGrid.appendChild(card);
+    });
+}
+
+// Load bhajans filtered by selected category
+function loadBhajansByCategory(categoryName) {
+    if (!bhajansGrid) return;
+    
+    const categoryData = allData.find(cat => cat.category === categoryName);
+    if (!categoryData) {
+        bhajansGrid.innerHTML = '<p style="grid-column: 1/-1; text-align: center;">Category not found</p>';
+        return;
+    }
+    
+    // Update page title to show category name
+    const pageTitle = document.querySelector('.page-hero h1');
+    if (pageTitle) {
+        pageTitle.textContent = categoryName;
+    }
+    
+    bhajansGrid.innerHTML = '';
+    
+    // Create a card for each bhajan in the category
+    categoryData.items.forEach((item, index) => {
+        const card = document.createElement('div');
+        card.className = 'bhajan-card fade-in';
+        card.style.animationDelay = `${index * 0.1}s`;
+        
+        // Truncate lyrics preview
+        const preview = item.lyrics.substring(0, 150).replace(/\n/g, ' ') + '...';
+        const titleDisplay = item.title.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+        
+        card.innerHTML = `
+            <h3>${titleDisplay}</h3>
+            <p>${preview}</p>
+            <div class="bhajan-meta">
+                <span class="bhajan-duration">View</span>
+                <a href="bhajan-lyrics.html?category=${encodeURIComponent(categoryName)}&bhajan=${encodeURIComponent(item.title)}" 
+                   class="btn btn-primary" target="_blank">
+                    <span>View Lyrics</span>
+                </a>
+            </div>
+        `;
+        
+        bhajansGrid.appendChild(card);
+    });
+}
+
+// Load all bhajans from all categories
+function loadAllBhajans() {
+    if (!bhajansGrid) return;
+    
+    bhajansGrid.innerHTML = '';
+    
+    let itemIndex = 0;
+    allData.forEach(categoryData => {
+        categoryData.items.forEach((item) => {
+            const card = document.createElement('div');
+            card.className = 'bhajan-card fade-in';
+            card.style.animationDelay = `${(itemIndex % 12) * 0.05}s`;
+            
+            const preview = item.lyrics.substring(0, 120).replace(/\n/g, ' ') + '...';
+            const titleDisplay = item.title.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+            
+            card.innerHTML = `
+                <h3>${titleDisplay}</h3>
+                <p><strong>Category:</strong> ${categoryData.category}</p>
+                <p>${preview}</p>
+                <div class="bhajan-meta">
+                    <span class="bhajan-duration">View</span>
+                    <a href="bhajan-lyrics.html?category=${encodeURIComponent(categoryData.category)}&bhajan=${encodeURIComponent(item.title)}" 
+                       class="btn btn-primary" target="_blank">
+                        <span>View Lyrics</span>
+                    </a>
+                </div>
+            `;
+            
+            bhajansGrid.appendChild(card);
+            itemIndex++;
+        });
+    });
+}
 
 // Sample data for gallery
 const galleryData = [
@@ -28,6 +167,7 @@ const galleryData = [
 
 // Initialize the website
 document.addEventListener('DOMContentLoaded', function() {
+    fetchJainData(); // Load JSON data first
     initializeNavigation();
     initializeScrollEffects();
     initializeGallery();
