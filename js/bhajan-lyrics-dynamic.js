@@ -67,11 +67,19 @@ function displayBhajanLyrics(categoryName, bhajanTitle) {
     const englishLyrics = document.querySelector('.lyrics-content.english');
     
     if (hindiLyrics) {
-        hindiLyrics.innerHTML = currentBhajan.lyrics.replace(/\n/g, '<br>');
+        // Normalize newlines and convert to paragraph blocks.
+        // - Normalize CRLF to LF
+        // - Split paragraphs on two-or-more consecutive newlines
+        // - Within a paragraph, preserve single newlines as <br>
+        const raw = (currentBhajan.lyrics || '').replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+        const paras = raw.split(/\n{2,}/).map(p => p.trim()).filter(p => p.length > 0);
+        const html = paras.map(p => `<p>${p.replace(/\n/g, '<br>')}</p>`).join('');
+        hindiLyrics.innerHTML = `<div class="formatted-lyrics">${html}</div>`;
     }
-    
+
     if (englishLyrics) {
-        englishLyrics.innerHTML = 'Lyrics for ' + currentBhajan.title + ' - Original content in Devanagari script';
+        const formattedEnglish = 'Lyrics for ' + currentBhajan.title + ' - Original content in Devanagari script';
+        englishLyrics.innerHTML = `<div class="formatted-lyrics">${formattedEnglish}</div>`;
     }
     
     // Update suggested bhajans list
@@ -168,6 +176,62 @@ function initializeLyricsPageEvents() {
             }
         });
     }
+
+    // Font size controls
+    const increaseBtn = document.getElementById('increase-font');
+    const decreaseBtn = document.getElementById('decrease-font');
+    const resetBtn = document.getElementById('reset-font');
+
+    // default and limits (px)
+    const FONT_KEY = 'lyricsFontSizePx';
+    const DEFAULT_SIZE = 20; // px
+    const MIN_SIZE = 14;
+    const MAX_SIZE = 32;
+
+    function applyFontSize(px) {
+        const elems = document.querySelectorAll('.formatted-lyrics');
+        elems.forEach(el => {
+            el.style.fontSize = px + 'px';
+        });
+    }
+
+    function getStoredSize() {
+        const v = localStorage.getItem(FONT_KEY);
+        return v ? parseInt(v, 10) : DEFAULT_SIZE;
+    }
+
+    function setStoredSize(px) {
+        localStorage.setItem(FONT_KEY, px);
+        applyFontSize(px);
+    }
+
+    // initialize existing formatted lyrics size
+    setTimeout(() => {
+        const initial = getStoredSize();
+        applyFontSize(initial);
+    }, 50);
+
+    if (increaseBtn) {
+        increaseBtn.addEventListener('click', () => {
+            let cur = getStoredSize();
+            cur = Math.min(MAX_SIZE, cur + 2);
+            setStoredSize(cur);
+        });
+    }
+
+    if (decreaseBtn) {
+        decreaseBtn.addEventListener('click', () => {
+            let cur = getStoredSize();
+            cur = Math.max(MIN_SIZE, cur - 2);
+            setStoredSize(cur);
+        });
+    }
+
+    if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+            setStoredSize(DEFAULT_SIZE);
+        });
+    }
     
     // Print button
     const printBtn = document.getElementById('print-btn');
@@ -217,15 +281,19 @@ function initializeLyricsPageEvents() {
 const style = document.createElement('style');
 style.textContent = `
     .formatted-lyrics {
-        line-height: 2;
-        font-size: 1.1rem;
-        color: #2c3e50;
-        white-space: pre-wrap;
-        word-wrap: break-word;
-        padding: 20px;
+        max-width: 900px;
+        margin: 20px auto;
+        padding: 24px 30px;
         background: #faf8f5;
-        border-radius: 10px;
-        border-left: 4px solid #ff6b35;
+        border-radius: 12px;
+        /* Accent border moved to parent .lyrics-content to avoid double-lines */
+        line-height: 1.9;
+        font-size: 1.18rem;
+        color: #2c3e50;
+        white-space: normal;
+        word-wrap: break-word;
+        text-align: center;
+        box-shadow: 0 8px 30px rgba(44, 62, 80, 0.06);
     }
 
     /* Beautiful English Request Modal */
