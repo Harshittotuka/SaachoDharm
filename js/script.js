@@ -26,6 +26,8 @@ async function fetchJainData() {
         const isIndexPage = pathname.includes('index.html') || pathname === '/' || pathname.endsWith('/');
         if (bhajansGrid && isIndexPage) {
             loadCategories();
+            // initialize search on index after categories are loaded
+            initSearch();
         }
         
         // If on bhajans page, check for category parameter
@@ -33,10 +35,13 @@ async function fetchJainData() {
             const params = new URLSearchParams(window.location.search);
             selectedCategory = params.get('category');
             if (selectedCategory) {
-                loadBhajansByCategory(decodeURIComponent(selectedCategory));
+                selectedCategory = decodeURIComponent(selectedCategory);
+                loadBhajansByCategory(selectedCategory);
             } else {
                 loadAllBhajans();
             }
+            // initialize search on bhajans page as well
+            initSearch();
         }
     } catch (error) {
         console.error('✗ Error loading data:', error);
@@ -44,6 +49,119 @@ async function fetchJainData() {
             bhajansGrid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: #e74c3c;">Error loading content. Please refresh the page.</p>';
         }
     }
+}
+
+// Debounce helper
+function debounce(fn, wait) {
+    let t;
+    return function(...args) {
+        clearTimeout(t);
+        t = setTimeout(() => fn.apply(this, args), wait);
+    };
+}
+
+// Search across all categories and bhajans (title + lyrics)
+function searchAllBhajans(query) {
+    if (!query || !allData || allData.length === 0) return [];
+    const q = query.trim().toLowerCase();
+    if (!q) return [];
+
+    const results = [];
+    allData.forEach(category => {
+        category.items.forEach(item => {
+            const title = (item.title || '').replace(/-/g, ' ').toLowerCase();
+            const lyrics = (item.lyrics || '').toLowerCase();
+            const eng = (item.english || item.en || item.en_lyrics || '').toLowerCase();
+
+            if (title.includes(q) || lyrics.includes(q) || eng.includes(q)) {
+                results.push({ category: category.category, item });
+            }
+        });
+    });
+
+    return results;
+}
+
+// Render search results into #bhajans-grid
+function renderSearchResults(query, results) {
+    if (!bhajansGrid) return;
+    bhajansGrid.innerHTML = '';
+
+    const header = document.createElement('div');
+    header.style.gridColumn = '1/-1';
+    header.style.marginBottom = '10px';
+    header.innerHTML = `<h3 style="margin:0 0 8px 0;">Search results for "${escapeHtml(query)}" (${results.length})</h3>`;
+    bhajansGrid.appendChild(header);
+
+    if (results.length === 0) {
+        const msg = document.createElement('p');
+        msg.style.gridColumn = '1/-1';
+        msg.style.textAlign = 'center';
+        msg.textContent = 'No results found. Try a different keyword.';
+        bhajansGrid.appendChild(msg);
+        return;
+    }
+
+    results.forEach((res, index) => {
+        const item = res.item;
+        const titleDisplay = (item.title || '').replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+        const preview = (item.lyrics || '').substring(0, 160).replace(/\n/g, ' ') + '...';
+
+        const card = document.createElement('div');
+        card.className = 'bhajan-card fade-in';
+        card.style.animationDelay = `${index * 0.03}s`;
+        card.innerHTML = `
+            <h3>${escapeHtml(titleDisplay)}</h3>
+            <p><strong>Category:</strong> ${escapeHtml(res.category)}</p>
+            <p>${escapeHtml(preview)}</p>
+            <div class="bhajan-meta">
+                <a href="bhajan-lyrics.html?category=${encodeURIComponent(res.category)}&bhajan=${encodeURIComponent(item.title)}" class="btn btn-primary">
+                    <span>View Lyrics</span>
+                </a>
+            </div>
+        `;
+        bhajansGrid.appendChild(card);
+    });
+}
+
+function escapeHtml(str) {
+    return (str || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+// Initialize search input behavior on index page
+function initSearch() {
+    const searchInput = document.getElementById('bhajan-search');
+    if (!searchInput) return;
+
+    const doSearch = debounce(function(e) {
+        const q = searchInput.value || '';
+        const pathname = window.location.pathname;
+        const isIndexPage = pathname.includes('index.html') || pathname === '/' || pathname.endsWith('/');
+        const isBhajansPage = pathname.includes('bhajans.html');
+
+        if (!q) {
+            // no query -> restore default view depending on page
+            if (isIndexPage) {
+                loadCategories();
+            } else if (isBhajansPage) {
+                if (selectedCategory) loadBhajansByCategory(selectedCategory);
+                else loadAllBhajans();
+            }
+            return;
+        }
+
+        // GLOBAL SEARCH: always search across all categories (even on bhajans page)
+        const results = searchAllBhajans(q);
+        renderSearchResults(q, results);
+    }, 300);
+
+    searchInput.addEventListener('input', doSearch);
+    searchInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            doSearch();
+        }
+    });
 }
 
 // Load categories on index page - displayed as clickable cards
