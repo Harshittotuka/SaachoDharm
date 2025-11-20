@@ -1475,3 +1475,89 @@ section {
         padding: 30px 15px;
     }
 }
+
+/* Theme Switcher Panel */
+.theme-toggle {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: var(--btn-primary-bg);
+    color: var(--btn-primary-text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3000;
+    box-shadow: 0 8px 24px var(--shadow-saffron-light);
+    cursor: pointer;
+    transition: transform 0.15s ease;
+}
+.theme-toggle:hover { transform: scale(1.04); }
+
+.theme-panel {
+    position: fixed;
+    right: 18px;
+    bottom: 86px;
+    width: 320px;
+    max-width: calc(100% - 40px);
+    background: var(--bg-white);
+    color: var(--text-dark);
+    border-radius: 12px;
+    box-shadow: 0 20px 50px var(--shadow-hover);
+    padding: 14px;
+    z-index: 3000;
+    transform-origin: bottom right;
+}
+.theme-panel h4 {
+    margin: 0 0 8px 0;
+    font-size: 1rem;
+}
+.theme-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(72px, 1fr));
+    gap: 8px;
+}
+.theme-swatch {
+    height: 56px;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    cursor: pointer;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.theme-swatch:focus,
+.theme-swatch:hover {
+    outline: none;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+}
+.theme-swatch .label {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.95);
+    text-shadow: 0 1px 2px rgba(0,0,0,0.25);
+    pointer-events: none;
+}
+.theme-actions {
+    display:flex;
+    gap:8px;
+    margin-top:10px;
+}
+.theme-actions button{
+    flex:1;
+    padding:8px 10px;
+    border-radius:8px;
+    border: none;
+    cursor: pointer;
+    font-weight:600;
+}
+.theme-actions .reset-btn{ background: var(--btn-secondary-bg); color: var(--btn-secondary-text); border:1px solid var(--btn-secondary-border); }
+.theme-actions .random-btn{ background: var(--btn-primary-bg); color: var(--btn-primary-text); }
+
+/* small screen panel position tweak */
+@media (max-width: 520px){
+    .theme-panel { right: 12px; left: 12px; bottom: 78px; }
+}
