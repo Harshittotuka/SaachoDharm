@@ -1,21 +1,50 @@
 User-agent: *
 Allow: /
+Allow: /data/jainsaar_full_data.json
+Allow: /js/
+Allow: /css/
+Allow: /images/
 Disallow: /admin/
 Disallow: /private/
-Disallow: /*.json
+Disallow: /temp/
+Disallow: /*?sort=
+Disallow: /*?page=
+Disallow: /*.json$
 
-# Specific rules for search engines
+# Specific rules for Googlebot
 User-agent: Googlebot
 Allow: /
+Crawl-delay: 0.5
 
+# Specific rules for Bingbot
 User-agent: Bingbot
 Allow: /
-
-# Crawl delay
 Crawl-delay: 1
 
-# Sitemap
-Sitemap: https://yourdomain.com/sitemap.xml
+# Other search engines
+User-agent: Slurp
+Allow: /
+Crawl-delay: 1
 
-# Cache control
-Cache-control: max-age=86400
+User-agent: DuckDuckBot
+Allow: /
+Crawl-delay: 1
+
+# Block bad bots
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+# Sitemap location
+Sitemap: https://saachodharm.com/sitemap.xml
+Sitemap: https://saachodharm.com/sitemap-dynamic.xml
+
+# Request rate
+Request-rate: 1/1s
+
+# Crawl delay (in seconds)
+Crawl-delay: 1
+User-agent: *
+Visit-time: 0600-0900
