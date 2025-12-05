@@ -9,9 +9,7 @@ class SitemapGenerator {
     this.staticPages = [
       { url: '/', priority: '1.0', changefreq: 'weekly' },
       { url: '/bhajans.html', priority: '0.9', changefreq: 'weekly' },
-      { url: '/tirth-sthal.html', priority: '0.8', changefreq: 'monthly' },
       { url: '/about.html', priority: '0.7', changefreq: 'monthly' },
-      { url: '/gallery.html', priority: '0.7', changefreq: 'weekly' },
       { url: '/contact.html', priority: '0.6', changefreq: 'monthly' },
       { url: '/bhajan-lyrics.html', priority: '0.7', changefreq: 'weekly' }
     ];

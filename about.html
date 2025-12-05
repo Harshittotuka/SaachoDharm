@@ -2,39 +2,68 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Learn about Jain Dharma principles including Ahimsa (non-violence), Anekantavada (non-absolutism), and the path to spiritual liberation through the Three Jewels.">
-    <meta name="keywords" content="Jain philosophy, Ahimsa, Anekantavada, Aparigraha, Three Jewels, Jain principles, spirituality">
-    <meta name="author" content="SaachoDharm">
-    <meta name="canonical" content="https://yourdomain.com/about.html">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">   
     
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Saacho Dharm — an introduction to Jain Dharma: its core principles, the Five Vows, the Three Jewels, and the 24 Tirthankaras.">
+    <meta name="keywords" content="Jain Dharma, Ahimsa, Satya, Aparigraha, Five Vows, Tirthankars, Ratnatraya, Jainism">
+    <meta name="author" content="SaachoDharm">
+    <link rel="canonical" href="https://www.saachodharm.com/about.html">
+
     <!-- Open Graph -->
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://yourdomain.com/about.html">
-    <meta property="og:title" content="About Jain Dharma - Philosophy & Principles">
-    <meta property="og:description" content="Understand the core principles of Jainism: non-violence, truth, and spiritual enlightenment.">
-    <meta property="og:image" content="https://yourdomain.com/images/about-og.jpg">
-    
+    <meta property="og:url" content="https://www.saachodharm.com/about.html">
+    <meta property="og:title" content="About Saacho Dharm — Jain Dharma & Principles">
+    <meta property="og:description" content="An approachable guide to Jain Dharma: the Five Vows, the Three Jewels (Ratnatraya) and the 24 Tirthankaras.">
+    <meta property="og:image" content="/images/about-og.jpg">
+
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="About Jain Dharma - Philosophy & Principles">
-    <meta name="twitter:description" content="Learn about the principles of Jainism and the path to spiritual growth.">
-    
-    <title>About Jain Dharma - Philosophy & Spiritual Principles</title>
+    <meta name="twitter:title" content="About Saacho Dharm — Jain Dharma & Principles">
+    <meta name="twitter:description" content="Learn about Jain Dharma, its vows, jewels and Tirthankaras.">
+
+    <title>About Saacho Dharm — Jain Dharma & Principles</title>
     <link rel="stylesheet" href="css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
+
+    <!-- Page-specific small styles using site variables -->
+    <style>
+    .about-hero { padding: 120px 0 60px; text-align: center; background: var(--bg-gradient-hero); }
+    .about-hero h1 { color: var(--text-dark); font-size: 2.6rem; margin-bottom: 8px; }
+    .about-hero p { color: var(--text-light); margin-bottom: 0; }
+
+    .vows-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-top: 24px; }
+    .vow-card { background: var(--bg-white); border: 1px solid var(--border-light); padding: 20px; border-radius: 12px; box-shadow: 0 6px 20px var(--shadow-light); }
+    .vow-icon { font-size: 1.6rem; color: var(--accent-saffron); margin-bottom: 10px; }
+    .vow-card h3 { color: var(--text-dark); margin-bottom: 8px; }
+    .vow-card p { color: var(--text-light); font-size: 0.98rem; }
+
+    .section { padding: 60px 0; }
+    .section-title { font-size: 1.8rem; color: var(--text-dark); margin-bottom: 12px; }
+    .muted { color: var(--text-light); }
+
+    .tirth-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; margin-top: 18px; }
+    .tirth-item { background: linear-gradient(180deg, rgba(255,255,255,0.9), var(--bg-white)); border-radius: 8px; padding: 10px 12px; border: 1px solid var(--border-light); text-align: center; box-shadow: 0 4px 12px var(--shadow-saffron-light); }
+    .tirth-item strong { color: var(--accent-saffron); display:block; margin-bottom:6px; }
+
+    .note { background: var(--bg-light-beige); border-left: 4px solid var(--accent-saffron); padding: 12px 16px; border-radius: 6px; color: var(--text-dark); }
+
+    @media (max-width: 700px) { .about-hero h1 { font-size: 2rem; } }
+    </style>
+
     <!-- Schema Markup -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Article",
-      "headline": "About Jain Dharma - Philosophy & Principles",
-      "description": "Learn about the core principles of Jainism including Ahimsa, Anekantavada, and the Three Jewels",
-      "url": "https://yourdomain.com/about.html",
+      "headline": "About Saacho Dharm — Jain Dharma & Principles",
+      "description": "An approachable guide to Jain Dharma: the Five Vows, the Three Jewels and the 24 Tirthankaras.",
+      "url": "https://www.saachodharm.com/about.html",
       "datePublished": "2025-01-01",
-      "dateModified": "2025-11-20",
+      "dateModified": "2025-12-05",
       "author": {
         "@type": "Organization",
         "name": "SaachoDharm"
@@ -46,29 +75,17 @@
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <div class="nav-logo">
+            <a href="index.html" class="nav-logo">
                 <i class="fas fa-om"></i>
                <span>Saacho Dharm</span>
-            </div>
+            </a>
             <ul class="nav-menu" id="nav-menu">
-                <li class="nav-item">
-                    <a href="index.html" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a href="bhajans.html" class="nav-link">Bhajans</a>
-                </li>
-                <li class="nav-item">
-                    <a href="tirth-sthal.html" class="nav-link">Tirth Sthal</a>
-                </li>
-                <li class="nav-item">
-                    <a href="about.html" class="nav-link active">About</a>
-                </li>
-                <li class="nav-item">
-                    <a href="gallery.html" class="nav-link">Gallery</a>
-                </li>
-                <li class="nav-item">
-                    <a href="contact.html" class="nav-link">Contact</a>
-                </li>
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="bhajans.html" class="nav-link">Bhajans</a></li>
+                <!-- Tirth Sthal removed -->
+                <li class="nav-item"><a href="about.html" class="nav-link active">About</a></li>
+                <!-- Gallery removed -->
+                <!-- Contact page removed from navigation -->
             </ul>
             <div class="hamburger" id="hamburger">
                 <span class="bar"></span>
@@ -78,97 +95,181 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="page-hero">
-        <div class="hero-background">
-            <div class="mandala-pattern"></div>
-        </div>
-        <div class="hero-content">
-            <h1 class="hero-title fade-in">About Jain Dharma</h1>
-            <p class="hero-subtitle fade-in">Understanding the core principles and philosophy</p>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="about-section">
+    <!-- Hero -->
+    <header class="about-hero">
         <div class="container">
-            <div class="about-content">
-                <div class="about-text">
-                    <div class="principle-card">
-                        <div class="principle-icon">🕉️</div>
-                        <h3>Ahimsa (Non-Violence)</h3>
-                        <p>The fundamental principle of non-violence towards all living beings, promoting compassion and respect for life in all its forms. This principle extends beyond physical violence to include mental and emotional harm.</p>
+            <div class="mandala-pattern" aria-hidden="true"></div>
+            <h1 class="fade-in-up">About Saacho Dharm</h1>
+            <p class="muted fade-in-up stagger-1">A carefully curated, local collection of Jain bhajans, teachings and reference material — preserved here for learning, practice and sharing.</p>
+        </div>
+    </header>
+
+    <main>
+        <section class="section container">
+            <h2 class="section-title fade-in-up">What is Jain Dharma?</h2>
+            <p class="muted fade-in-up stagger-1">Jain Dharma (commonly called Jainism) is an ancient Indian teaching that guides individuals toward spiritual liberation (moksha) through ethical living, disciplined practice and deep self-awareness. It places the soul's purity and freedom above worldly attachments and prescribes a practical path to reduce harm caused by actions, thoughts and speech.</p>
+
+            <p class="muted fade-in-up stagger-2 mt-16">While historically very old, Jain teachings remain practical today. At the core are three interlinked goals:</p>
+            <ul class="muted fade-in-up stagger-3" style="margin-top:10px; color:var(--text-light);">
+                <li><strong>Minimize Harm:</strong> Reduce suffering for all living beings through compassionate choices.</li>
+                <li><strong>Know the Self:</strong> Understand the nature of the soul and how karmic particles bind it.</li>
+                <li><strong>Act Responsibly:</strong> Adopt habits and conduct that free the soul from attachment and karmic accumulation.</li>
+            </ul>
+
+            <p class="muted fade-in-up stagger-4 mt-16">Everyday practices for lay followers include careful speech, simple living, conscious diet choices (often vegetarian), periodic fasting, temple devotion, study of teachings and supporting non-violent ways of life. For renunciates, these disciplines become stricter, culminating in vows that remove attachment and promote complete non-violence.</p>
+
+            
+        </section>
+
+        <section class="section" style="background: transparent;">
+            <div class="container">
+                <h2 class="section-title fade-in-up">The Five Vows</h2>
+                <p class="muted fade-in-up stagger-1">Five guiding vows shape ethical life in Jainism. Below is a friendly description to help remember them.</p>
+
+                <div class="vows-grid mt-16">
+                    <div class="vow-card fade-in-up stagger-1" tabindex="0">
+                        <div class="vow-icon">🕊️</div>
+                        <h3>Ahimsa</h3>
+                        <p>Non-violence in thought, word and deed — practice kindness and avoid harm to all living beings.</p>
                     </div>
-                    <div class="principle-card">
-                        <div class="principle-icon">☸️</div>
-                        <h3>Anekantavada (Non-Absolutism)</h3>
-                        <p>The doctrine of multiple viewpoints, recognizing that truth is multifaceted and can be understood from different perspectives. This principle promotes tolerance and understanding of diverse viewpoints.</p>
+
+                    <div class="vow-card fade-in-up stagger-2" tabindex="0">
+                        <div class="vow-icon">🔆</div>
+                        <h3>Satya</h3>
+                        <p>Truthfulness in every situation — speak honestly, with compassion and clarity.</p>
                     </div>
-                    <div class="principle-card">
-                        <div class="principle-icon">🕉️</div>
-                        <h3>Aparigraha (Non-Possessiveness)</h3>
-                        <p>The principle of non-attachment and non-possessiveness, encouraging detachment from material possessions and desires. This leads to inner peace and spiritual freedom.</p>
+
+                    <div class="vow-card fade-in-up stagger-3" tabindex="0">
+                        <div class="vow-icon">🤝</div>
+                        <h3>Asteya</h3>
+                        <p>Non-stealing — respect others' belongings and accept only what is freely given.</p>
                     </div>
-                </div>
-                
-                <div class="philosophy-section">
-                    <h2 class="section-title">Core Philosophy</h2>
-                    <div class="philosophy-content">
-                        <div class="philosophy-text">
-                            <h3>The Three Jewels (Ratnatraya)</h3>
-                            <p>Jainism is built upon three fundamental principles known as the Three Jewels:</p>
-                            <ul>
-                                <li><strong>Right Faith (Samyak Darshan):</strong> Belief in the true nature of reality and the path to liberation.</li>
-                                <li><strong>Right Knowledge (Samyak Gyan):</strong> Understanding the true nature of the soul and the universe.</li>
-                                <li><strong>Right Conduct (Samyak Charitra):</strong> Living a life of moral and ethical behavior.</li>
-                            </ul>
-                        </div>
-                        <div class="philosophy-text">
-                            <h3>The Five Great Vows (Mahavratas)</h3>
-                            <p>Monks and nuns follow five great vows for spiritual purification:</p>
-                            <ul>
-                                <li><strong>Ahimsa:</strong> Non-violence in thought, word, and deed</li>
-                                <li><strong>Satya:</strong> Truthfulness in all circumstances</li>
-                                <li><strong>Asteya:</strong> Non-stealing and not taking what is not given</li>
-                                <li><strong>Brahmacharya:</strong> Celibacy and control over sensual desires</li>
-                                <li><strong>Aparigraha:</strong> Non-possessiveness and detachment from material things</li>
-                            </ul>
-                        </div>
+
+                    <div class="vow-card fade-in-up stagger-4" tabindex="0">
+                        <div class="vow-icon">✳️</div>
+                        <h3>Brahmacharya</h3>
+                        <p>Self-restraint of sensual desires — for renunciates this is celibacy; for laypeople it means moderation.</p>
+                    </div>
+
+                    <div class="vow-card fade-in-up stagger-5" tabindex="0">
+                        <div class="vow-icon">🌿</div>
+                        <h3>Aparigraha</h3>
+                        <p>Non-possessiveness — simplicity and detachment reduce suffering and free the mind.</p>
                     </div>
                 </div>
             </div>
+        </section>
+
+        <section class="section" >
+    <div class="container">
+        <h2 class="section-title">The 24 Tirthankaras</h2>
+        <p class="muted">Tirthankaras are enlightened teachers who show the path to liberation. Below are the 24
+            Tirthankaras revered in Jain tradition.</p>
+
+        <div class="tirth-grid mt-16">
+            <div class="tirth-item fade-in-up stagger-1" tabindex="0"><strong>1</strong> Rishabhanatha (Adinatha)</div>
+            <div class="tirth-item fade-in-up stagger-1" tabindex="0"><strong>2</strong> Ajitanatha</div>
+            <div class="tirth-item fade-in-up stagger-1" tabindex="0"><strong>3</strong> Sambhavanatha</div>
+            <div class="tirth-item fade-in-up stagger-2" tabindex="0"><strong>4</strong> Abhinandananatha</div>
+            <div class="tirth-item fade-in-up stagger-2" tabindex="0"><strong>5</strong> Sumatinatha</div>
+            <div class="tirth-item fade-in-up stagger-2" tabindex="0"><strong>6</strong> Padmaprabha</div>
+            <div class="tirth-item fade-in-up stagger-3" tabindex="0"><strong>7</strong> Suparshvanatha</div>
+            <div class="tirth-item fade-in-up stagger-3" tabindex="0"><strong>8</strong> Chandraprabha</div>
+            <div class="tirth-item fade-in-up stagger-3" tabindex="0"><strong>9</strong> Suvidhinatha (Pushpadanta)
+            </div>
+            <div class="tirth-item fade-in-up stagger-4" tabindex="0"><strong>10</strong> Shitalanatha</div>
+            <div class="tirth-item fade-in-up stagger-4" tabindex="0"><strong>11</strong> Shreyansanatha</div>
+            <div class="tirth-item fade-in-up stagger-4" tabindex="0"><strong>12</strong> Vasupujya</div>
+            <div class="tirth-item fade-in-up stagger-5" tabindex="0"><strong>13</strong> Vimalanatha</div>
+            <div class="tirth-item fade-in-up stagger-5" tabindex="0"><strong>14</strong> Anantanatha</div>
+            <div class="tirth-item fade-in-up stagger-5" tabindex="0"><strong>15</strong> Dharmanatha</div>
+            <div class="tirth-item fade-in-up stagger-1" tabindex="0"><strong>16</strong> Shantinatha</div>
+            <div class="tirth-item fade-in-up stagger-2" tabindex="0"><strong>17</strong> Kunthunatha</div>
+            <div class="tirth-item fade-in-up stagger-3" tabindex="0"><strong>18</strong> Aranatha</div>
+            <div class="tirth-item fade-in-up stagger-4" tabindex="0"><strong>19</strong> Mallinatha</div>
+            <div class="tirth-item fade-in-up stagger-5" tabindex="0"><strong>20</strong> Munisuvrata</div>
+            <div class="tirth-item fade-in-up stagger-1" tabindex="0"><strong>21</strong> Naminatha</div>
+            <div class="tirth-item fade-in-up stagger-2" tabindex="0"><strong>22</strong> Neminatha</div>
+            <div class="tirth-item fade-in-up stagger-3" tabindex="0"><strong>23</strong> Parshvanatha</div>
+            <div class="tirth-item fade-in-up stagger-4" tabindex="0"><strong>24</strong> Mahavira</div>
         </div>
-    </section>
+    </div>
+        </section>
+
+        <section class="section" style="background:var(--bg-white);">
+            <div class="container">
+                <h2 class="section-title">The Three Jewels (All Jewles)</h2>
+                <p class="muted">The <strong>Ratnatraya</strong> — Right Faith, Right Knowledge and Right Conduct — form a clear, practical roadmap: believe, learn, and live. Below are easy-to-understand cards with short examples you can apply.</p>
+
+                <div class="vows-grid mt-16">
+                    <article class="vow-card fade-in-up stagger-1" tabindex="0" aria-labelledby="jewel1">
+                        <div class="vow-icon">🙏</div>
+                        <h3 id="jewel1">Right Faith (Samyak Darshan)</h3>
+                        <p class="muted">A stable, non-deluded trust in the reality of the soul and the teachings that free it.</p>
+                        <p class="muted mt-8"><strong>Practice:</strong> Begin with humility — observe rather than assume. Read a short teaching daily and reflect on its meaning.</p>
+                        <p class="muted mt-8"><strong>Benefit:</strong> Reduces confusion and opens the heart to change.</p>
+                    </article>
+
+                    <article class="vow-card fade-in-up stagger-2" tabindex="0" aria-labelledby="jewel2">
+                        <div class="vow-icon">📚</div>
+                        <h3 id="jewel2">Right Knowledge (Samyak Jnana)</h3>
+                        <p class="muted">Accurate understanding — seeing things as they are, without bias or distortion.</p>
+                        <p class="muted mt-8"><strong>Practice:</strong> Learn basic teachings: how karma binds the soul, why non-violence matters, and simple meditation techniques.</p>
+                        <p class="muted mt-8"><strong>Benefit:</strong> Clears false beliefs and supports wise decisions.</p>
+                    </article>
+
+                    <article class="vow-card fade-in-up stagger-3" tabindex="0" aria-labelledby="jewel3">
+                        <div class="vow-icon">👣</div>
+                        <h3 id="jewel3">Right Conduct (Samyak Charitra)</h3>
+                        <p class="muted">Practical ethical behavior that reflects faith and knowledge — how we act in daily life.</p>
+                        <p class="muted mt-8"><strong>Practice:</strong> Small, steady habits: gentle speech, honest work, mindful eating and simple generosity.</p>
+                        <p class="muted mt-8"><strong>Benefit:</strong> Reduces new karmic entanglement and deepens inner peace.</p>
+                    </article>
+                </div>
+
+                <div class="mt-16 muted">Together, these three form a balanced path: cultivate faith, strengthen knowledge, and practice good conduct. Each jewel supports the others — faith without understanding is weak, knowledge without action is incomplete, action without right intention misses the goal.</div>
+            </div>
+        </section>
+
+       
+
+    </main>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer footer-new">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Jain Dharma</h3>
-                    <p>Embracing the path of righteousness, non-violence, and spiritual growth.</p>
+            <div class="footer-card">
+                <div class="footer-left">
+                    <a class="nav-logo" href="index.html"><i class="fas fa-om"></i><span>Saacho Dharm</span></a>
+                    <p>Preserving Jain bhajans, teachings and references for spiritual learning.</p>
+                    <div class="social-links">
+                        <a href="https://wa.me/919829027413" aria-label="WhatsApp" title="+91 98290 27413"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.instagram.com/saacho_dharm/" target="_blank" rel="noopener" aria-label="Instagram" title="@saacho_dharm"><i class="fab fa-instagram"></i></a>
+                    </div>
                 </div>
-                <div class="footer-section">
+
+                <div class="footer-middle">
                     <h4>Quick Links</h4>
                     <ul>
                         <li><a href="index.html">Home</a></li>
                         <li><a href="bhajans.html">Bhajans</a></li>
-                        <li><a href="tirth-sthal.html">Tirth Sthal</a></li>
                         <li><a href="about.html">About</a></li>
                     </ul>
                 </div>
-                <div class="footer-section">
-                    <h4>Follow Us</h4>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                    </div>
+
+                <div class="footer-right">
+                    <h4>Contact</h4>
+                    <form class="footer-contact-form" action="#" onsubmit="event.preventDefault(); alert('Thank you — message sent (demo)'); this.reset();">
+                        <input type="text" name="name" placeholder="Your name" required>
+                        <input type="email" name="email" placeholder="Your email" required>
+                        <textarea name="message" placeholder="Your message" rows="3" required></textarea>
+                        <button type="submit">Send</button>
+                    </form>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Jain Dharma. All rights reserved.</p>
+                <p>&copy; 2025 Saacho Dharm. All rights reserved.</p>
+                <p>Made with care · <a href="https://www.saachodharm.com" target="_blank">saachodharm.com</a></p>
             </div>
         </div>
     </footer>

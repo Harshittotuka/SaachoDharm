@@ -1167,6 +1167,99 @@ section {
         transform: translate3d(-50%, -4px, 0);
     }
 }
+/* Page-specific animations and improved card styles used by About page */
+.fade-in-up { 
+    opacity: 0;
+    transform: translateY(12px);
+    animation: fadeInUp 700ms ease forwards;
+}
+.stagger-1 { animation-delay: 120ms; }
+.stagger-2 { animation-delay: 240ms; }
+.stagger-3 { animation-delay: 360ms; }
+.stagger-4 { animation-delay: 480ms; }
+.stagger-5 { animation-delay: 600ms; }
+
+@keyframes fadeInUp {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.vow-card { transition: transform 320ms cubic-bezier(.2,.9,.2,1), box-shadow 320ms; }
+.vow-card:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 14px 40px var(--shadow-saffron-medium); }
+
+.about-hero { position: relative; overflow: hidden; }
+.about-hero .mandala-pattern { width: 380px; height: 380px; opacity: 0.08; }
+
+.tirth-item { transition: transform 260ms ease, box-shadow 260ms ease; }
+.tirth-item:hover { transform: translateY(-6px); box-shadow: 0 10px 30px var(--shadow-saffron-light); }
+
+.section-title { display:flex; align-items:center; gap:12px; }
+.section-title::before { content:''; width:42px; height:4px; background:var(--accent-saffron); border-radius:2px; display:inline-block; }
+
+.note { transition: background 240ms ease, transform 240ms ease; }
+.note:hover { transform: translateY(-4px); background: linear-gradient(90deg, rgba(255,235,215,0.3), var(--bg-light-beige)); }
+
+/* Utility spacing */
+.mt-8 { margin-top: 8px; }
+.mt-16 { margin-top: 16px; }
+.mb-8 { margin-bottom: 8px; }
+.text-center { text-align: center; }
+
+/* Accessibility focus styles */
+.vow-card:focus, .tirth-item:focus { outline: 3px solid rgba(255,107,53,0.18); outline-offset: 3px; }
+
+/* New footer design (rounded card, three columns, form) */
+.footer-new { padding: 72px 0 32px; background: linear-gradient(180deg, #07121a 0%, #04101a 100%); color: #e6eef7; }
+.footer-card { background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border-radius: 14px; padding: 34px; box-shadow: 0 18px 50px rgba(2,6,12,0.6); display: grid; grid-template-columns: 1fr 1fr 360px; gap: 28px; align-items: start; border: 1px solid rgba(255,255,255,0.03); }
+.footer-left { display:flex; flex-direction:column; gap:10px; }
+.footer-left .nav-logo { font-size:1.15rem; color:var(--accent-golden); display:flex; gap:10px; align-items:center; text-decoration:none; }
+.footer-left p { color: rgba(230,238,247,0.82); max-width:380px; line-height:1.5; }
+.footer-middle h4, .footer-right h4 { margin-bottom:10px; color: #e9f4ff; }
+.footer-middle ul { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:8px; }
+.footer-middle a { color: rgba(230,238,247,0.9); text-decoration:none; }
+.footer-middle a:hover { color: var(--accent-saffron); }
+.social-links a { margin-right:12px; color:var(--accent-golden); font-size:1.28rem; background: rgba(255,255,255,0.03); padding:8px; border-radius:8px; display:inline-flex; align-items:center; justify-content:center; }
+.social-links a:hover { transform:translateY(-3px); color:var(--accent-saffron); background: rgba(255,255,255,0.04); }
+
+.footer-contact-form { display:flex; flex-direction:column; gap:10px; }
+.footer-contact-form input, .footer-contact-form textarea { border:1px solid rgba(255,255,255,0.06); padding:10px 12px; border-radius:8px; background: rgba(255,255,255,0.02); color: #e6eef7; }
+.footer-contact-form input::placeholder, .footer-contact-form textarea::placeholder { color: rgba(230,238,247,0.55); }
+.footer-contact-form button { align-self:flex-start; padding: 10px 18px; border-radius:8px; border:none; background:var(--accent-saffron); color:var(--text-white); cursor:pointer; box-shadow:0 10px 28px rgba(255,107,53,0.12); }
+.footer-contact-form button:hover { transform: translateY(-2px); }
+
+.footer-bottom { margin-top:18px; padding-top:18px; border-top:1px solid rgba(255,255,255,0.03); color: rgba(230,238,247,0.65); font-size:0.95rem; display:flex; justify-content:space-between; align-items:center; }
+
+@media (max-width: 980px) {
+    .footer-card { grid-template-columns: 1fr; }
+    .footer-right { order:3; }
+}
+
+
+/* Layout and typography refinements for About page */
+.about-hero { padding-bottom: 80px; }
+.about-hero .container { max-width: 1000px; }
+.section .container { max-width: 1000px; margin: 0 auto; }
+
+/* Heading styles */
+h1, .about-hero h1 { font-family: 'Merriweather', serif; letter-spacing: -0.5px; }
+.section-title { font-size: 1.9rem; letter-spacing: -0.2px; }
+
+/* Improve card contrast and subtle saffron shadow */
+.vow-card { background: var(--bg-white); border: 1px solid rgba(245,241,235,0.9); box-shadow: 0 10px 30px rgba(255,107,53,0.06); }
+.tirth-item { box-shadow: 0 8px 18px rgba(255,107,53,0.04); }
+
+/* Grid alignment tweaks */
+.vows-grid { align-items: start; }
+.tirth-grid { align-items: stretch; }
+
+/* Subtle small note style (less intrusive) */
+.small-note { background: transparent; border-left: none; padding: 6px 0; font-size: 0.95rem; color: var(--text-light); opacity: 0.9; text-align: center; margin-top: 14px; }
+
+/* Improve spacing on mobile */
+@media (max-width: 700px) {
+    .section { padding: 36px 0; }
+    .vow-card { padding: 16px; }
+    .tirth-item { padding: 10px; }
+}
 
 .fade-in {
     animation: fadeIn 0.8s ease-out;

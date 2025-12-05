@@ -8,56 +8,103 @@
 
   <!-- Home Page -->
   <url>
-    <loc>https://yoursite.com/index.html</loc>
-    <lastmod>2025-11-20</lastmod>
+    <loc>https://www.saachodharm.com/index.html</loc>
+    <lastmod>2025-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <!-- Main Pages -->
   <url>
-    <loc>https://yoursite.com/bhajans.html</loc>
-    <lastmod>2025-11-20</lastmod>
+    <loc>https://www.saachodharm.com/bhajans.html</loc>
+    <lastmod>2025-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
-  <url>
-    <loc>https://yoursite.com/tirth-sthal.html</loc>
-    <lastmod>2025-11-20</lastmod>
+<url>
+    <loc>https://www.saachodharm.com/about.html</loc>
+    <lastmod>2025-11-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://yoursite.com/gallery.html</loc>
-    <lastmod>2025-11-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://yoursite.com/about.html</loc>
-    <lastmod>2025-11-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://yoursite.com/contact.html</loc>
-    <lastmod>2025-11-20</lastmod>
+    <loc>https://www.saachodharm.com/contact.html</loc>
+    <lastmod>2025-11-24</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
 
-  <!-- Bhajan Pages (Add dynamically from your JSON data) -->
-  <!-- Example:
   <url>
-    <loc>https://yoursite.com/bhajan-lyrics.html?id=namokar-mantra</loc>
-    <lastmod>2025-11-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://www.saachodharm.com/bhajan-lyrics.html</loc>
+    <lastmod>2025-11-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
-  -->
+
+  <!-- Bhajan Pages - Add all your bhajans below -->
+  <url>
+    <loc>https://www.saachodharm.com/bhajan/bhaktamar-stotra</loc>
+    <lastmod>2025-11-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.saachodharm.com/bhajan/namokar-mantra</loc>
+    <lastmod>2025-11-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.saachodharm.com/bhajan/vardhman-stotra</loc>
+    <lastmod>2025-11-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.saachodharm.com/bhajan/saraswati-stotra</loc>
+    <lastmod>2025-11-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.saachodharm.com/bhajan/gomteshwar-stotra</loc>
+    <lastmod>2025-11-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.saachodharm.com/bhajan/aadiveer-shankar-stotra</loc>
+    <lastmod>2025-11-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.saachodharm.com/bhajan/munisuvrat-stotra</loc>
+    <lastmod>2025-11-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.saachodharm.com/bhajan/suprabhat-stotra</loc>
+    <lastmod>2025-11-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.saachodharm.com/bhajan/vishaphar-stotra</loc>
+    <lastmod>2025-11-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 
 </urlset>

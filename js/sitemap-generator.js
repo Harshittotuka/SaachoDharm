@@ -8,16 +8,14 @@ const fs = require('fs');
 const path = require('path');
 
 // Configuration
-const DOMAIN = 'https://yourdomain.com'; // Change to your domain
+const DOMAIN = 'https://www.saachodharm.com'; // ✅ Already set
 const OUTPUT_PATH = path.join(__dirname, '../sitemap.xml');
-const DATA_PATH = path.join(__dirname, '../data/jainsaar_full_data.json');
+const DATA_PATH = path.join(__dirname, '../data/jainsaar_full_data.json'); // Path to your data
 
 // Base URLs with priority and change frequency
 const staticPages = [
   { url: '/index.html', priority: 1.0, changefreq: 'weekly', lastmod: new Date().toISOString().split('T')[0] },
   { url: '/bhajans.html', priority: 0.9, changefreq: 'weekly', lastmod: new Date().toISOString().split('T')[0] },
-  { url: '/tirth-sthal.html', priority: 0.8, changefreq: 'monthly', lastmod: new Date().toISOString().split('T')[0] },
-  { url: '/gallery.html', priority: 0.7, changefreq: 'monthly', lastmod: new Date().toISOString().split('T')[0] },
   { url: '/about.html', priority: 0.8, changefreq: 'monthly', lastmod: new Date().toISOString().split('T')[0] },
   { url: '/contact.html', priority: 0.5, changefreq: 'yearly', lastmod: new Date().toISOString().split('T')[0] },
 ];
