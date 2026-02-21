@@ -2193,3 +2193,588 @@ h1, .about-hero h1 { font-family: 'Merriweather', serif; letter-spacing: -0.5px;
 @media (max-width: 520px){
     .theme-panel { right: 12px; left: 12px; bottom: 78px; }
 }
+
+/* =========================================
+   CONTACT PAGE — Redesigned with animated links
+   ========================================= */
+
+/* Hero badge */
+.cp-hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,107,53,0.09);
+    color: var(--accent-saffron);
+    padding: 7px 20px;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 14px;
+    border: 1px solid rgba(255,107,53,0.14);
+    letter-spacing: 0.02em;
+}
+
+/* Section titles */
+.cp-section-title {
+    font-family: 'Merriweather', serif;
+    font-size: 2rem;
+    color: var(--text-dark);
+    text-align: center;
+    margin-bottom: 6px;
+}
+.cp-section-sub {
+    text-align: center;
+    color: var(--text-light);
+    font-size: 1rem;
+    margin-bottom: 36px;
+}
+
+/* ---- Animated Contact Link Cards ---- */
+.cp-links-section {
+    padding: 60px 0 50px;
+    background: var(--bg-light-beige);
+}
+
+.cp-links-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.cp-link-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    background: var(--bg-white);
+    border: 1px solid var(--border-light);
+    border-radius: 16px;
+    padding: 32px 20px 28px;
+    overflow: hidden;
+    transition: transform 0.35s cubic-bezier(.2,.9,.3,1), box-shadow 0.35s ease, border-color 0.35s ease;
+    cursor: pointer;
+}
+
+.cp-link-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 16px 48px rgba(0,0,0,0.10);
+}
+
+/* Ripple bg effect on hover */
+.cp-link-ripple {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: width 0.5s ease, height 0.5s ease, opacity 0.5s ease;
+    pointer-events: none;
+    z-index: 0;
+}
+.cp-link-card:hover .cp-link-ripple {
+    width: 400px;
+    height: 400px;
+    opacity: 1;
+}
+
+/* Icon circle */
+.cp-link-icon {
+    position: relative;
+    z-index: 1;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.7rem;
+    margin-bottom: 16px;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+.cp-link-card:hover .cp-link-icon {
+    transform: scale(1.12) rotate(-5deg);
+}
+
+.cp-link-card h3 {
+    position: relative;
+    z-index: 1;
+    font-family: 'Merriweather', serif;
+    font-size: 1.05rem;
+    color: var(--text-dark);
+    margin-bottom: 4px;
+    transition: color 0.3s ease;
+}
+.cp-link-card p {
+    position: relative;
+    z-index: 1;
+    font-size: 0.88rem;
+    color: var(--text-light);
+    margin: 0;
+    transition: color 0.3s ease;
+}
+
+/* Arrow icon */
+.cp-link-arrow {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--bg-light-beige);
+    color: var(--text-light);
+    margin-top: 14px;
+    font-size: 0.8rem;
+    transition: all 0.35s ease;
+}
+.cp-link-card:hover .cp-link-arrow {
+    transform: translateX(4px);
+}
+
+/* ---- Per-card brand colors ---- */
+/* WhatsApp */
+.cp-card-whatsapp .cp-link-icon { background: rgba(37,211,102,0.10); color: #25d366; }
+.cp-card-whatsapp .cp-link-ripple { background: rgba(37,211,102,0.06); }
+.cp-card-whatsapp:hover { border-color: rgba(37,211,102,0.25); }
+.cp-card-whatsapp:hover .cp-link-arrow { background: rgba(37,211,102,0.12); color: #25d366; }
+.cp-card-whatsapp:hover .cp-link-icon { box-shadow: 0 6px 20px rgba(37,211,102,0.18); }
+
+/* Instagram */
+.cp-card-instagram .cp-link-icon { background: rgba(225,48,108,0.10); color: #e1306c; }
+.cp-card-instagram .cp-link-ripple { background: rgba(225,48,108,0.05); }
+.cp-card-instagram:hover { border-color: rgba(225,48,108,0.25); }
+.cp-card-instagram:hover .cp-link-arrow { background: rgba(225,48,108,0.10); color: #e1306c; }
+.cp-card-instagram:hover .cp-link-icon { box-shadow: 0 6px 20px rgba(225,48,108,0.18); }
+
+/* Email */
+.cp-card-email .cp-link-icon { background: rgba(255,107,53,0.10); color: var(--accent-saffron); }
+.cp-card-email .cp-link-ripple { background: rgba(255,107,53,0.05); }
+.cp-card-email:hover { border-color: rgba(255,107,53,0.25); }
+.cp-card-email:hover .cp-link-arrow { background: rgba(255,107,53,0.10); color: var(--accent-saffron); }
+.cp-card-email:hover .cp-link-icon { box-shadow: 0 6px 20px rgba(255,107,53,0.18); }
+
+/* YouTube */
+.cp-card-youtube .cp-link-icon { background: rgba(255,0,0,0.08); color: #ff0000; }
+.cp-card-youtube .cp-link-ripple { background: rgba(255,0,0,0.04); }
+.cp-card-youtube:hover { border-color: rgba(255,0,0,0.20); }
+.cp-card-youtube:hover .cp-link-arrow { background: rgba(255,0,0,0.08); color: #ff0000; }
+.cp-card-youtube:hover .cp-link-icon { box-shadow: 0 6px 20px rgba(255,0,0,0.15); }
+
+/* ---- Contact Form Section ---- */
+.cp-form-section {
+    padding: 60px 0 70px;
+    background: var(--bg-white);
+}
+
+.cp-form-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 56px;
+    max-width: 960px;
+    margin: 0 auto;
+    align-items: start;
+}
+
+.cp-form-info h2 {
+    font-family: 'Merriweather', serif;
+    font-size: 1.8rem;
+    color: var(--text-dark);
+    margin-bottom: 12px;
+}
+.cp-form-info > p {
+    color: var(--text-light);
+    line-height: 1.7;
+    margin-bottom: 32px;
+    font-size: 0.98rem;
+}
+
+.cp-info-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+.cp-info-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 16px 18px;
+    background: var(--bg-light-beige);
+    border-radius: 12px;
+    border: 1px solid var(--border-light);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.cp-info-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(255,107,53,0.08);
+}
+.cp-info-item i {
+    font-size: 1.3rem;
+    color: var(--accent-saffron);
+    margin-top: 2px;
+    flex-shrink: 0;
+}
+.cp-info-item h4 {
+    font-family: 'Merriweather', serif;
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    margin-bottom: 3px;
+}
+.cp-info-item p {
+    font-size: 0.88rem;
+    color: var(--text-light);
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* ---- Form ---- */
+.cp-form {
+    background: var(--bg-light-beige);
+    border: 1px solid var(--border-light);
+    border-radius: 16px;
+    padding: 36px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.cp-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.cp-form-group label {
+    font-weight: 600;
+    font-size: 0.88rem;
+    color: var(--text-dark);
+}
+.cp-form-group input,
+.cp-form-group textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid var(--border-light);
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    background: var(--bg-white);
+    color: var(--text-dark);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.cp-form-group input:focus,
+.cp-form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent-saffron);
+    box-shadow: 0 0 0 3px rgba(255,107,53,0.08);
+}
+.cp-form-group input::placeholder,
+.cp-form-group textarea::placeholder {
+    color: var(--text-placeholder);
+}
+.cp-form-group textarea {
+    resize: vertical;
+    min-height: 110px;
+}
+
+.cp-submit-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    align-self: flex-start;
+    padding: 12px 28px;
+    border: none;
+    border-radius: 10px;
+    background: var(--accent-saffron);
+    color: #fff;
+    font-family: 'Merriweather', serif;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(255,107,53,0.18);
+}
+.cp-submit-btn i {
+    transition: transform 0.3s ease;
+}
+.cp-submit-btn:hover {
+    background: #e55a2b;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(255,107,53,0.25);
+}
+.cp-submit-btn:hover i {
+    transform: translateX(4px) translateY(-2px);
+}
+
+/* Success toast */
+.cp-form-success {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    background: rgba(37,211,102,0.08);
+    border: 1px solid rgba(37,211,102,0.18);
+    border-radius: 10px;
+    color: #1a8c42;
+    font-weight: 600;
+    font-size: 0.9rem;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    pointer-events: none;
+}
+.cp-form-success.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ---- Form Carousel ---- */
+.cp-carousel {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.cp-carousel-tabs {
+    display: flex;
+    gap: 0;
+    border-radius: 12px 12px 0 0;
+    overflow: hidden;
+    border: 1px solid var(--border-light);
+    border-bottom: none;
+    background: var(--bg-light-beige);
+}
+.cp-tab {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 20px;
+    border: none;
+    background: transparent;
+    font-family: 'Merriweather', serif;
+    font-size: 0.9rem;
+    color: var(--text-light);
+    cursor: pointer;
+    position: relative;
+    transition: color 0.3s ease, background 0.3s ease;
+}
+.cp-tab::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 20%;
+    right: 20%;
+    height: 3px;
+    border-radius: 3px 3px 0 0;
+    background: transparent;
+    transition: background 0.3s ease, left 0.3s ease, right 0.3s ease;
+}
+.cp-tab.active {
+    color: var(--accent-saffron);
+    background: var(--bg-white);
+}
+.cp-tab.active::after {
+    background: var(--accent-saffron);
+    left: 10%;
+    right: 10%;
+}
+.cp-tab:not(.active):hover {
+    color: var(--text-dark);
+    background: rgba(255,107,53,0.03);
+}
+
+.cp-carousel-track-wrapper {
+    overflow: hidden;
+    border: 1px solid var(--border-light);
+    border-top: none;
+    border-radius: 0 0 16px 16px;
+    background: var(--bg-light-beige);
+}
+.cp-carousel-track {
+    display: flex;
+    transition: transform 0.45s cubic-bezier(.4,.0,.2,1);
+    will-change: transform;
+    user-select: none;
+}
+.cp-carousel-slide {
+    min-width: 100%;
+    flex-shrink: 0;
+}
+
+/* Dots */
+.cp-carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 14px;
+}
+.cp-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--border-light);
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+.cp-dot.active {
+    background: var(--accent-saffron);
+    transform: scale(1.25);
+}
+
+/* ---- WhatsApp Community Slide ---- */
+.cp-wa-community {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 40px 32px 36px;
+}
+.cp-wa-icon-wrap {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #25d366, #128c7e);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: #fff;
+    margin-bottom: 18px;
+    box-shadow: 0 8px 28px rgba(37,211,102,0.20);
+    animation: cpWaPulse 2.5s ease-in-out infinite;
+}
+@keyframes cpWaPulse {
+    0%, 100% { box-shadow: 0 8px 28px rgba(37,211,102,0.20); transform: scale(1); }
+    50% { box-shadow: 0 10px 36px rgba(37,211,102,0.30); transform: scale(1.05); }
+}
+
+.cp-wa-community h3 {
+    font-family: 'Merriweather', serif;
+    font-size: 1.3rem;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+}
+.cp-wa-community > p {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    max-width: 380px;
+    line-height: 1.6;
+    margin-bottom: 22px;
+}
+
+.cp-wa-perks {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: left;
+}
+.cp-wa-perks li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.92rem;
+    color: var(--text-dark);
+}
+.cp-wa-perks li i {
+    color: #25d366;
+    font-size: 0.8rem;
+    flex-shrink: 0;
+}
+
+.cp-wa-join-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 32px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #25d366, #128c7e);
+    color: #fff;
+    font-family: 'Merriweather', serif;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: all 0.35s ease;
+    box-shadow: 0 6px 22px rgba(37,211,102,0.18);
+}
+.cp-wa-join-btn i {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+.cp-wa-join-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 32px rgba(37,211,102,0.28);
+    background: linear-gradient(135deg, #2be071, #159c6a);
+}
+.cp-wa-join-btn:hover i {
+    transform: scale(1.15);
+}
+
+.cp-wa-note {
+    margin-top: 12px;
+    font-size: 0.78rem;
+    color: var(--text-light);
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 800px) {
+    .cp-links-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+    .cp-form-layout {
+        grid-template-columns: 1fr;
+        gap: 36px;
+    }
+    .cp-link-card {
+        padding: 24px 16px 22px;
+    }
+}
+@media (max-width: 500px) {
+    .cp-links-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+    .cp-link-card {
+        flex-direction: row;
+        text-align: left;
+        gap: 16px;
+        padding: 20px;
+    }
+    .cp-link-icon {
+        margin-bottom: 0;
+        width: 50px;
+        height: 50px;
+        font-size: 1.4rem;
+        flex-shrink: 0;
+    }
+    .cp-link-arrow {
+        margin-top: 0;
+        margin-left: auto;
+    }
+    .cp-form {
+        padding: 24px 20px;
+    }
+    .cp-section-title {
+        font-size: 1.5rem;
+    }
+    .cp-tab {
+        font-size: 0.82rem;
+        padding: 12px 10px;
+        gap: 5px;
+    }
+    .cp-wa-community {
+        padding: 28px 20px;
+    }
+    .cp-wa-join-btn {
+        padding: 12px 24px;
+    }
+}
