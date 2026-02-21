@@ -61,11 +61,8 @@ In `contact.html`, the current contact details are placeholder data (123 Dharma 
 - Your real location/city (or remove address if you prefer)
 - Your real social media links
 
-### 7. Set Up Google Analytics
-1. Go to [Google Analytics](https://analytics.google.com/)
-2. Create a property for `www.saachodharm.com`
-3. Copy the tracking code (GA4 tag)
-4. Add it to the `<head>` of every HTML page (just before `</head>`)
+### 7. ~~Set Up Google Analytics~~ ✅ DONE
+GA4 tag `G-JZ4D7HKKBX` added to all 6 HTML pages.
 
 ### 8. Register on Google Business Profile (Optional)
 If SaachoDharm has a physical location or is a recognized organization:
