@@ -1,858 +1,633 @@
-/* Bhajan Lyrics Page Styles */
+/* ===================================================
+   Bhajan Lyrics Page — Redesigned for readability
+   =================================================== */
 
-/* Main Container Layout */
-.lyrics-container {
-    display: grid;
-    grid-template-columns: 1fr 350px;
-    gap: 30px;
-    max-width: 1400px;
-    margin: 80px auto 0;
-    padding: 40px 20px;
-    min-height: calc(100vh - 200px);
+/* Breadcrumb */
+.bl-breadcrumb {
+    padding: 90px 0 0;
+    background: var(--bg-light-beige);
+}
+.bl-breadcrumb .container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 0 14px;
+    font-size: 0.88rem;
+}
+.bl-breadcrumb a {
+    color: var(--text-light);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.bl-breadcrumb a:hover { color: var(--accent-saffron); }
+.bl-bc-sep { color: var(--border-light); font-size: 0.6rem; }
+.bl-bc-current {
+    color: var(--accent-saffron);
+    font-weight: 600;
+    max-width: 260px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-/* Main Content Area */
-.lyrics-main {
+/* Page Wrapper */
+.bl-page {
+    background: var(--bg-light-beige);
+    padding: 24px 0 60px;
+    min-height: 80vh;
+}
+
+/* Two-Column Layout */
+.bl-layout {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 32px;
+    align-items: start;
+}
+
+/* ---- Main Article ---- */
+.bl-main {
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 0;
 }
 
-/* Video Section */
+/* Video */
 .video-section {
-    background: var(--bg-white);
-    border-radius: 15px;
+    border-radius: 16px 16px 0 0;
     overflow: hidden;
-    box-shadow: 0 5px 20px var(--shadow-light);
-    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px var(--shadow-light);
 }
-
-.video-section:hover {
-    box-shadow: 0 10px 30px var(--shadow-hover);
-    transform: translateY(-2px);
-}
-
 .video-container {
     position: relative;
     width: 100%;
-    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    padding-bottom: 56.25%;
     height: 0;
     overflow: hidden;
     background: #000;
 }
-
 .video-container iframe {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 0; left: 0;
     width: 100% !important;
     height: 100% !important;
 }
 
-/* Bhajan Header */
-.bhajan-header {
-    background: var(--bg-light-beige);
-    padding: 30px;
-    border-radius: 15px;
-    border: 1px solid var(--border-light);
-    color: var(--text-dark);
+/* Title Card */
+.bl-title-card {
+    background: linear-gradient(180deg, #ffffff 0%, #fffcf6 100%);
+    padding: 28px 32px 24px;
+    border: 1px solid #ece4d4;
+    border-bottom: none;
+    border-radius: 16px 16px 0 0;
 }
-
-.header-top {
+.video-section[style*="block"] + .bl-title-card,
+.video-section:not([style*="none"]) + .bl-title-card {
+    border-radius: 0;
+}
+.bl-title-top {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     gap: 20px;
-    margin-bottom: 20px;
     flex-wrap: wrap;
 }
-
 .bhajan-main-title {
-    font-size: 2rem;
-    color: var(--text-dark);
     font-family: 'Merriweather', serif;
+    font-size: 1.8rem;
+    color: var(--text-dark);
+    line-height: 1.35;
+    margin: 0 0 6px;
+}
+.bhajan-description {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    line-height: 1.5;
     margin: 0;
-    flex: 1;
 }
 
 /* Language Switcher */
 .language-switcher {
     display: flex;
-    gap: 10px;
-    background: var(--bg-white);
-    padding: 8px;
-    border-radius: 50px;
-    box-shadow: 0 2px 10px var(--shadow-light);
+    background: var(--bg-light-beige);
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--border-light);
+    flex-shrink: 0;
 }
-
 .lang-btn {
-    padding: 8px 20px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
     border: none;
     background: transparent;
-    color: var(--text-dark);
+    color: var(--text-light);
+    font-size: 0.85rem;
     font-weight: 600;
-    border-radius: 50px;
     cursor: pointer;
     transition: all 0.3s ease;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    white-space: nowrap;
 }
-
-.lang-btn:hover {
-    background: var(--bg-light-beige);
-    color: var(--accent-saffron);
-}
-
+.lang-btn:hover { color: var(--accent-saffron); }
 .lang-btn-active {
     background: var(--accent-saffron);
-    color: var(--text-white);
+    color: #fff;
 }
+.lang-btn-active:hover { color: #fff; }
 
-.lang-btn-active:hover {
-    background: var(--accent-saffron);
-}
-
-.bhajan-description {
-    color: var(--text-light);
-    font-size: 1.1rem;
-    line-height: 1.6;
-    margin: 0;
-}
-
-/* Audio Player Section */
-.audio-player-section {
-    background: linear-gradient(135deg, var(--accent-saffron) 0%, var(--accent-golden) 100%);
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 5px 20px var(--shadow-saffron-light);
-}
-
-.audio-player {
-    padding: 25px;
-    color: var(--text-white);
-}
-
-.player-header {
-    margin-bottom: 20px;
-}
-
-.player-header h3 {
-    margin: 0;
-    font-size: 1.2rem;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.player-controls {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-/* Control Buttons */
-.control-btn {
-    background: rgba(255, 255, 255, 0.2);
-    border: none;
-    color: var(--text-white);
-    padding: 12px 20px;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-    width: 100%;
-    text-align: left;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-weight: 600;
-}
-
-.control-btn:hover {
-    background: rgba(255, 255, 255, 0.3);
-    transform: translateY(-2px);
-}
-
-.control-btn i {
-    font-size: 1.2rem;
-}
-
-/* Progress Container */
-.progress-container {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.progress-bar {
-    width: 100%;
-    height: 6px;
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 10px;
-    overflow: hidden;
-    cursor: pointer;
-    position: relative;
-}
-
-.progress-fill {
-    height: 100%;
-    background: var(--text-white);
-    width: 0%;
-    transition: width 0.1s linear;
-    border-radius: 10px;
-}
-
-.time-display {
-    font-size: 0.85rem;
-    opacity: 0.9;
-}
-
-/* Volume Control */
-.volume-control {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.volume-control i {
-    font-size: 1.1rem;
-}
-
-#volume-slider {
-    flex: 1;
-    height: 4px;
-    border-radius: 10px;
-    background: rgba(255, 255, 255, 0.3);
-    outline: none;
-    cursor: pointer;
-    -webkit-appearance: none;
-}
-
-#volume-slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    background: var(--text-white);
-    cursor: pointer;
-}
-
-#volume-slider::-moz-range-thumb {
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    background: var(--text-white);
-    cursor: pointer;
-    border: none;
-}
-
-/* Lyrics Section */
-.lyrics-section {
-    background: var(--bg-white);
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 5px 20px var(--shadow-light);
-}
-
-.lyrics-header {
+/* Toolbar */
+.bl-toolbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 20px;
-    margin-bottom: 30px;
-    flex-wrap: wrap;
-    border-bottom: 2px solid var(--border-light);
-    padding-bottom: 20px;
-}
-
-.lyrics-header h2 {
-    margin: 0;
-    color: var(--text-dark);
-    font-size: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.lyrics-actions {
-    display: flex;
-    gap: 10px;
+    background: linear-gradient(180deg, #fffcf6 0%, #fffaf0 100%);
+    padding: 10px 32px;
+    border-left: 1px solid #ece4d4;
+    border-right: 1px solid #ece4d4;
+    gap: 12px;
     flex-wrap: wrap;
 }
-
-.lyrics-btn {
-    background: var(--bg-light-beige);
-    border: 1px solid var(--border-light);
-    padding: 10px 16px;
-    border-radius: 8px;
-    color: var(--text-dark);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-weight: 600;
-    font-size: 0.9rem;
+.bl-toolbar-group {
     display: flex;
     align-items: center;
     gap: 6px;
 }
-
-.lyrics-btn:hover {
+.bl-tool-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    width: auto;
+    min-width: 36px;
+    height: 36px;
+    padding: 0 10px;
+    border-radius: 8px;
+    border: 1px solid var(--border-light);
+    background: var(--bg-light-beige);
+    color: var(--text-dark);
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+.bl-tool-btn:hover {
     background: var(--accent-saffron);
-    color: var(--text-white);
+    color: #fff;
     border-color: var(--accent-saffron);
-    transform: translateY(-2px);
+    transform: translateY(-1px);
+}
+.bl-tool-label {
+    font-family: 'Merriweather', serif;
+    font-size: 0.9rem;
+    color: var(--text-light);
+    padding: 0 4px;
+    user-select: none;
+}
+.bl-tool-text {
+    font-size: 0.82rem;
+    font-weight: 500;
 }
 
-/* Lyrics Content */
+/* Lyrics Body */
+.bl-lyrics-body {
+    background: linear-gradient(180deg, #fffaf0 0%, #fef7e8 30%, #fdf3e0 100%);
+    padding: 40px 36px;
+    border: 1px solid #ece4d4;
+    border-top: none;
+    border-radius: 0 0 16px 16px;
+    min-height: 300px;
+    box-shadow: inset 0 4px 16px rgba(210, 185, 140, 0.06);
+    position: relative;
+}
+.bl-lyrics-body::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 24px; right: 24px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(210, 185, 140, 0.3), transparent);
+}
+
 .lyrics-content {
-    background: var(--bg-light-beige);
-    padding: 30px;
-    border-radius: 10px;
-    line-height: 1.8;
+    line-height: 2;
     font-family: 'Merriweather', serif;
     font-size: 1.1rem;
     color: var(--text-dark);
     white-space: pre-wrap;
     word-wrap: break-word;
-    border-left: 5px solid var(--accent-saffron);
 }
-
 .lyrics-content.hindi {
     font-size: 1.2rem;
-    line-height: 2;
+    line-height: 2.1;
 }
+
+/* Formatted lyrics (injected by JS) */
+.formatted-lyrics {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 8px 0;
+    background: transparent;
+    text-align: center;
+    line-height: inherit;
+    font-size: inherit;
+    color: inherit;
+}
+.formatted-lyrics p {
+    margin-bottom: 2em;
+    padding-bottom: 1.8em;
+    border-bottom: 1px dashed rgba(180, 155, 110, 0.25);
+    position: relative;
+}
+.formatted-lyrics p:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+/* ---- Sidebar ---- */
+.bl-sidebar {
+    position: sticky;
+    top: 96px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-height: calc(100vh - 110px);
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-light) transparent;
+}
+.bl-sidebar::-webkit-scrollbar { width: 4px; }
+.bl-sidebar::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 4px; }
+
+.bl-sidebar-title {
+    font-family: 'Merriweather', serif;
+    font-size: 1.05rem;
+    color: var(--text-dark);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 0 16px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--border-light);
+}
+.bl-sidebar-title i {
+    color: var(--accent-saffron);
+}
+
+/* Audio Player */
+.audio-player-section {
+    background: linear-gradient(135deg, var(--accent-saffron) 0%, #e85d26 100%);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 4px 18px var(--shadow-saffron-light);
+}
+.audio-player {
+    padding: 22px;
+    color: #fff;
+}
+.player-header { margin-bottom: 16px; }
+.player-header h3 {
+    margin: 0;
+    font-size: 1.05rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.player-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.bl-player-btns {
+    display: flex;
+    gap: 8px;
+}
+.control-btn {
+    background: rgba(255,255,255,0.18);
+    border: none;
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.25s ease;
+    flex: 1;
+    text-align: center;
+    font-weight: 600;
+}
+.control-btn:hover {
+    background: rgba(255,255,255,0.3);
+    transform: translateY(-1px);
+}
+.progress-container {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.progress-bar {
+    width: 100%;
+    height: 5px;
+    background: rgba(255,255,255,0.25);
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+}
+.progress-fill {
+    height: 100%;
+    background: #fff;
+    width: 0%;
+    transition: width 0.1s linear;
+    border-radius: 10px;
+}
+.time-display {
+    font-size: 0.8rem;
+    opacity: 0.85;
+}
+.volume-control {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+#volume-slider {
+    flex: 1;
+    height: 4px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.25);
+    outline: none;
+    cursor: pointer;
+    -webkit-appearance: none;
+}
+#volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 13px; height: 13px;
+    border-radius: 50%;
+    background: #fff;
+    cursor: pointer;
+}
+
+/* Suggested Bhajans */
+.bl-suggested {
+    background: var(--bg-white);
+    padding: 20px;
+    border-radius: 14px;
+    border: 1px solid var(--border-light);
+    box-shadow: 0 3px 14px var(--shadow-light);
+}
+.suggested-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 400px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+}
+.suggested-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 12px 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    background: var(--bg-light-beige);
+    border: 1px solid transparent;
+}
+.suggested-item:hover {
+    background: var(--bg-white);
+    border-color: var(--accent-saffron);
+    transform: translateX(4px);
+}
+.suggested-item.active {
+    background: linear-gradient(135deg, var(--accent-saffron), #e85d26);
+    color: #fff;
+    border-color: transparent;
+}
+.suggested-item-title {
+    font-weight: 600;
+    font-size: 0.88rem;
+    line-height: 1.3;
+}
+.suggested-item-meta {
+    font-size: 0.75rem;
+    opacity: 0.65;
+    color: var(--text-light);
+}
+.suggested-item.active .suggested-item-meta {
+    opacity: 0.9;
+    color: rgba(255,255,255,0.85);
+}
+
+/* Quick Links */
+.bl-quick-links {
+    background: var(--bg-white);
+    padding: 20px;
+    border-radius: 14px;
+    border: 1px solid var(--border-light);
+    box-shadow: 0 3px 14px var(--shadow-light);
+}
+.bl-qlink-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.bl-qlink {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 14px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    background: var(--bg-light-beige);
+    transition: all 0.25s ease;
+}
+.bl-qlink i {
+    color: var(--accent-saffron);
+    width: 18px;
+    text-align: center;
+    font-size: 0.9rem;
+}
+.bl-qlink:hover {
+    background: var(--accent-saffron);
+    color: #fff;
+    transform: translateX(4px);
+}
+.bl-qlink:hover i { color: #fff; }
 
 /* Share Modal */
 .share-modal {
     display: none;
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(3px);
     z-index: 2000;
     justify-content: center;
     align-items: center;
     padding: 20px;
 }
-
-.share-modal.active {
-    display: flex;
-}
-
+.share-modal.active { display: flex; }
 .share-modal-content {
     background: var(--bg-white);
-    border-radius: 15px;
-    padding: 30px;
+    border-radius: 18px;
+    padding: 28px 30px;
     max-width: 400px;
     width: 100%;
     position: relative;
-    animation: slideUp 0.3s ease;
-    color: var(--text-dark);
+    animation: blSlideUp 0.3s ease;
+    box-shadow: 0 16px 48px rgba(0,0,0,0.2);
 }
-
 .share-close {
     position: absolute;
-    top: 15px;
-    right: 15px;
-    font-size: 1.8rem;
+    top: 14px; right: 16px;
+    font-size: 1.6rem;
     cursor: pointer;
     color: var(--text-light);
-    transition: color 0.3s ease;
+    transition: color 0.2s;
 }
-
-.share-close:hover {
-    color: var(--accent-saffron);
-}
-
+.share-close:hover { color: var(--accent-saffron); }
 .share-modal-content h3 {
-    margin-top: 0;
-    margin-bottom: 20px;
+    margin: 0 0 18px;
     color: var(--text-dark);
     text-align: center;
+    font-family: 'Merriweather', serif;
 }
-
 .share-buttons {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 15px;
-    margin-bottom: 20px;
+    gap: 12px;
+    margin-bottom: 18px;
 }
-
 .share-link {
     background: var(--bg-light-beige);
-    padding: 15px;
-    border-radius: 10px;
+    padding: 14px;
+    border-radius: 12px;
     text-decoration: none;
     color: var(--text-dark);
     font-weight: 600;
+    font-size: 0.88rem;
     text-align: center;
-    transition: all 0.3s ease;
+    transition: all 0.25s ease;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
 }
-
-.share-link:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px var(--shadow-light);
-}
-
-.share-link.facebook:hover {
-    background: #3b5998;
-    color: var(--text-white);
-}
-
-.share-link.twitter:hover {
-    background: #1DA1F2;
-    color: var(--text-white);
-}
-
-.share-link.whatsapp:hover {
-    background: #25D366;
-    color: var(--text-white);
-}
-
-.share-link.email:hover {
-    background: var(--accent-saffron);
-    color: var(--text-white);
-}
-
-.share-link i {
-    font-size: 1.3rem;
-}
-
+.share-link:hover { transform: translateY(-2px); box-shadow: 0 4px 14px var(--shadow-light); }
+.share-link.whatsapp:hover { background: #25D366; color: #fff; }
+.share-link.facebook:hover { background: #3b5998; color: #fff; }
+.share-link.twitter:hover { background: #1DA1F2; color: #fff; }
+.share-link.email:hover { background: var(--accent-saffron); color: #fff; }
+.share-link i { font-size: 1.2rem; }
 .share-link-input {
     display: flex;
-    gap: 10px;
-    margin-top: 20px;
-    border-top: 1px solid var(--dark-beige);
-    padding-top: 20px;
+    gap: 8px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border-light);
 }
-
 #share-link {
     flex: 1;
     padding: 10px;
     border: 1px solid var(--border-light);
     border-radius: 8px;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: var(--text-light);
-    background: var(--bg-white);
+    background: var(--bg-light-beige);
 }
-
 #copy-link-btn {
-    padding: 10px 20px;
+    padding: 10px 18px;
     flex-shrink: 0;
 }
 
-/* Sidebar */
-.lyrics-sidebar {
-    position: sticky;
-    top: 100px;
-    height: fit-content;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    color: var(--text-dark);
+@keyframes blSlideUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-/* Suggested Bhajans */
-.suggested-section,
-.quick-nav {
-    background: var(--bg-white);
-    padding: 25px;
-    border-radius: 15px;
-    box-shadow: 0 5px 20px var(--shadow-light);
-    color: var(--text-dark);
-}
+/* ============ RESPONSIVE ============ */
 
-.suggested-title,
-.quick-nav-title {
-    margin: 0 0 20px 0;
-    color: var(--text-dark);
-    font-size: 1.2rem;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding-bottom: 15px;
-    border-bottom: 2px solid var(--border-light);
-}
-
-.suggested-list {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.suggested-item {
-    background: var(--bg-light-beige);
-    padding: 15px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border-left: 4px solid transparent;
-    color: var(--text-dark);
-}
-
-.suggested-item:hover {
-    background: var(--border-light);
-    border-left-color: var(--accent-saffron);
-    transform: translateX(5px);
-}
-
-.suggested-item.active {
-    background: linear-gradient(135deg, var(--accent-saffron) 0%, var(--accent-golden) 100%);
-    color: var(--text-white);
-    border-left-color: var(--text-white);
-}
-
-.suggested-item-title {
-    font-weight: 600;
-    font-size: 0.95rem;
-    margin-bottom: 4px;
-}
-
-.suggested-item-meta {
-    font-size: 0.8rem;
-    opacity: 0.7;
-    color: var(--text-light);
-}
-
-.suggested-item.active .suggested-item-meta {
-    opacity: 0.95;
-    color: rgba(255, 255, 255, 0.9);
-}
-
-/* Quick Navigation */
-.nav-links {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.nav-link-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 12px;
-    background: var(--bg-light-beige);
-    border-radius: 8px;
-    text-decoration: none;
-    color: var(--text-dark);
-    transition: all 0.3s ease;
-    font-weight: 500;
-}
-
-.nav-link-item:hover {
-    background: var(--accent-saffron);
-    color: var(--text-white);
-    transform: translateX(5px);
-}
-
-/* Animations */
-@keyframes slideUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.fade-in {
-    animation: fadeIn 0.6s ease-out;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .lyrics-container {
+/* Tablet */
+@media (max-width: 960px) {
+    .bl-layout {
         grid-template-columns: 1fr;
-        gap: 20px;
-        margin-top: 70px;
-        padding: 30px 20px;
+        gap: 24px;
     }
-
-    .lyrics-sidebar {
+    .bl-sidebar {
+        position: static;
+        max-height: none;
+        overflow: visible;
         display: grid;
         grid-template-columns: 1fr 1fr;
-        top: auto;
-        gap: 20px;
+        gap: 16px;
     }
+    .bl-suggested { grid-column: 1 / -1; }
 }
 
-@media (max-width: 480px) {
-    .lyrics-container {
-        padding: 15px 10px;
-        margin-top: 60px;
-        gap: 15px;
-    }
+/* Mobile */
+@media (max-width: 640px) {
+    .bl-breadcrumb { padding-top: 70px; }
+    .bl-breadcrumb .container { font-size: 0.82rem; padding: 10px 0; }
+    .bl-page { padding: 16px 0 40px; }
 
-    .bhajan-main-title {
-        font-size: 1.3rem;
-        line-height: 1.3;
-    }
+    .bl-title-card { padding: 20px 18px 18px; border-radius: 14px 14px 0 0; }
+    .bl-title-top { flex-direction: column; gap: 14px; }
+    .bhajan-main-title { font-size: 1.35rem; }
+    .language-switcher { width: 100%; }
+    .lang-btn { flex: 1; justify-content: center; padding: 10px 12px; }
 
-    .language-switcher {
-        width: 100%;
-        gap: 8px;
-        flex-wrap: wrap;
-    }
-
-    .lang-btn {
-        flex: 1;
-        padding: 8px 12px;
-        font-size: 0.75rem;
-        min-height: 44px;
-    }
-
-    .bhajan-description {
-        font-size: 0.9rem;
-        margin-bottom: 15px;
-    }
-
-    .audio-player-section {
-        border-radius: 12px;
-        overflow: hidden;
-    }
-
-    .audio-player {
-        padding: 16px;
-    }
-
-    .player-header {
-        margin-bottom: 12px;
-    }
-
-    .player-header h3 {
-        font-size: 1rem;
+    .bl-toolbar {
+        padding: 8px 18px;
         gap: 8px;
     }
-
-    .player-controls {
-        gap: 12px;
-    }
-
-    .control-btn {
-        padding: 10px 12px;
-        font-size: 0.9rem;
-        min-height: 40px;
-        border-radius: 8px;
-    }
-
-    .progress-container {
-        gap: 6px;
-    }
-
-    .progress-bar {
-        height: 4px;
-    }
-
-    .time-display {
+    .bl-tool-btn {
+        min-width: 32px;
+        height: 32px;
+        padding: 0 8px;
         font-size: 0.8rem;
     }
+    .bl-tool-text { display: none; }
 
-    .volume-control {
-        gap: 8px;
-        font-size: 0.9rem;
-    }
+    .bl-lyrics-body { padding: 24px 18px; border-radius: 0 0 14px 14px; }
+    .lyrics-content { font-size: 1rem; line-height: 1.9; }
+    .lyrics-content.hindi { font-size: 1.05rem; line-height: 2; }
 
-    #volume-slider {
-        height: 3px;
-    }
-
-    .lyrics-section {
-        padding: 16px;
-        border-radius: 12px;
-    }
-
-    .lyrics-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
-        border-bottom: 1px solid var(--border-light);
-        padding-bottom: 12px;
-        margin-bottom: 16px;
-    }
-
-    .lyrics-header h2 {
-        font-size: 1.2rem;
-        width: 100%;
-    }
-
-    .lyrics-actions {
-        width: 100%;
-        gap: 6px;
-        flex-wrap: wrap;
-    }
-
-    .lyrics-btn {
-        flex: 1;
-        padding: 8px 10px;
-        font-size: 0.75rem;
-        min-height: 40px;
-        border-radius: 6px;
-    }
-
-    .lyrics-btn i {
-        display: none;
-    }
-
-    .lyrics-content {
-        font-size: 0.95rem;
-        padding: 12px;
-        border-left: 3px solid var(--accent-saffron);
-        line-height: 1.7;
-    }
-
-    .lyrics-content.hindi {
-        font-size: 1rem;
-        line-height: 1.8;
-    }
-
-    .suggested-section,
-    .quick-nav {
-        padding: 16px;
-        border-radius: 12px;
-        box-shadow: 0 2px 8px var(--shadow-light);
-    }
-
-    .suggested-title,
-    .quick-nav-title {
-        font-size: 1rem;
-        margin-bottom: 12px;
-        padding-bottom: 10px;
-    }
-
-    .suggested-item,
-    .nav-link-item {
-        padding: 12px;
-        font-size: 0.9rem;
-        border-radius: 8px;
-        min-height: 44px;
-    }
-
-    .suggested-item-title {
-        font-size: 0.9rem;
-        margin-bottom: 4px;
-    }
-
-    .suggested-item-meta {
-        font-size: 0.75rem;
-    }
-
-    .nav-link-item {
-        gap: 10px;
-    }
-
-    .nav-link-item i {
-        font-size: 1.1rem;
-    }
-
-    .share-modal {
-        padding: 12px;
-    }
-
-    .share-modal-content {
-        padding: 18px;
-        border-radius: 12px;
-        max-width: 100%;
-    }
-
-    .share-close {
-        top: 10px;
-        right: 10px;
-        font-size: 1.5rem;
-    }
-
-    .share-modal-content h3 {
-        font-size: 1.1rem;
-        margin-bottom: 12px;
-    }
-
-    .share-buttons {
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
-        margin-bottom: 12px;
-    }
-
-    .share-link {
-        padding: 12px;
-        gap: 6px;
-        font-size: 0.8rem;
-        border-radius: 8px;
-    }
-
-    .share-link i {
-        font-size: 1rem;
-    }
-
-    .share-link-input {
-        flex-direction: column;
-        gap: 8px;
-        border-top: 1px solid var(--border-light);
-        padding-top: 12px;
-    }
-
-    #share-link {
-        padding: 10px;
-        font-size: 0.85rem;
-    }
-
-    #copy-link-btn {
-        padding: 10px 16px;
-        font-size: 0.9rem;
-    }
-
-    .lyrics-sidebar {
+    .bl-sidebar {
         grid-template-columns: 1fr;
-        position: relative;
-        top: auto;
-        gap: 15px;
+        gap: 14px;
     }
+    .bl-suggested, .bl-quick-links { padding: 16px; }
+    .bl-sidebar-title { font-size: 0.95rem; }
 
-    .video-section {
-        border-radius: 12px;
-        overflow: hidden;
-    }
-
-    .bhajan-header {
-        padding: 16px;
-        border-radius: 12px;
-        margin-bottom: 12px;
-    }
-
-    .header-top {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 12px;
-        margin-bottom: 12px;
-    }
+    .share-modal-content { padding: 20px; border-radius: 14px; }
+    .share-buttons { gap: 8px; }
+    .share-link { padding: 12px; font-size: 0.82rem; }
+    .share-link-input { flex-direction: column; }
 }
 
-/* Print Styles */
+@media (max-width: 380px) {
+    .bl-title-card { padding: 16px 14px; }
+    .bhajan-main-title { font-size: 1.2rem; }
+    .bl-toolbar { padding: 6px 14px; }
+    .bl-lyrics-body { padding: 18px 14px; }
+    .formatted-lyrics p { margin-bottom: 1.6em; padding-bottom: 1.4em; }
+    .lyrics-content { font-size: 0.95rem; }
+    .lyrics-content.hindi { font-size: 1rem; }
+}
+
+/* Print */
 @media print {
-    .audio-player-section,
-    .lyrics-sidebar,
-    .footer,
-    .navbar,
-    .lyrics-actions {
-        display: none !important;
-    }
-
-    .lyrics-section {
+    .bl-breadcrumb, .bl-toolbar, .bl-sidebar,
+    .audio-player-section, .video-section,
+    .footer-antique, .navbar, .share-modal { display: none !important; }
+    .bl-layout { grid-template-columns: 1fr; }
+    .bl-title-card, .bl-lyrics-body {
+        border: none;
         box-shadow: none;
-        border: 1px solid #ccc;
-        page-break-after: avoid;
-    }
-
-    .lyrics-content {
-        border-left: none;
         padding: 0;
         background: transparent;
     }
+    .lyrics-content { border: none; padding: 0; background: transparent; }
 }

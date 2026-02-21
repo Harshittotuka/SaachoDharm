@@ -12,7 +12,7 @@ class SitemapGenerator {
       { url: '/about.html', priority: '0.7', changefreq: 'monthly' },
       { url: '/calendar.html', priority: '0.8', changefreq: 'monthly' },
       { url: '/contact.html', priority: '0.6', changefreq: 'monthly' },
-      { url: '/bhajan-lyrics.html', priority: '0.7', changefreq: 'weekly' }
+      { url: '/jain-bhajan-lyrics.html', priority: '0.7', changefreq: 'weekly' }
     ];
     this.initSitemapGenerator();
   }

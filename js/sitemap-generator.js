@@ -19,7 +19,7 @@ const staticPages = [
   { url: '/about.html', priority: 0.8, changefreq: 'monthly', lastmod: new Date().toISOString().split('T')[0] },
   { url: '/calendar.html', priority: 0.8, changefreq: 'monthly', lastmod: new Date().toISOString().split('T')[0] },
   { url: '/contact.html', priority: 0.5, changefreq: 'yearly', lastmod: new Date().toISOString().split('T')[0] },
-  { url: '/bhajan-lyrics.html', priority: 0.7, changefreq: 'weekly', lastmod: new Date().toISOString().split('T')[0] },
+  { url: '/jain-bhajan-lyrics.html', priority: 0.7, changefreq: 'weekly', lastmod: new Date().toISOString().split('T')[0] },
 ];
 
 function generateSitemapXML(urls) {
@@ -55,7 +55,7 @@ function generateSitemap() {
               const slug = bhajan.title || '';
               if (slug) {
                 allUrls.push({
-                  url: `/bhajan-lyrics.html?id=${slug}`,
+                  url: `/jain-bhajan-lyrics.html?id=${slug}`,
                   priority: 0.6,
                   changefreq: 'monthly',
                   lastmod: new Date().toISOString().split('T')[0],

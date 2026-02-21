@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JZ4D7HKKBX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-JZ4D7HKKBX');
+    </script>
+    <meta charset="UTF-8">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Read sacred Jain bhajan lyrics online — devotional stotras, stutis and bhajans with video player. Best collection for spiritual meditation.">
+    <meta name="keywords" content="Jain bhajan lyrics, Jain stotras, Jain devotional songs, bhajan lyrics Hindi, spiritual meditation lyrics, Jain stuti">
+    <meta name="author" content="SaachoDharm">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <link rel="canonical" href="https://www.saachodharm.com/jain-bhajan-lyrics.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="music.song">
+    <meta property="og:url" content="https://www.saachodharm.com/jain-bhajan-lyrics.html">
+    <meta property="og:title" content="Jain Bhajan Lyrics — Sacred Devotional Music | SaachoDharm">
+    <meta property="og:description" content="Read and listen to sacred Jain bhajan lyrics for spiritual growth and meditation.">
+    <meta property="og:image" content="https://www.saachodharm.com/img/icon.jpeg">
+    <meta property="og:locale" content="en_IN">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Jain Bhajan Lyrics — Sacred Devotional Music">
+    <meta name="twitter:description" content="Read sacred Jain bhajan lyrics with video player.">
+    <meta name="twitter:image" content="https://www.saachodharm.com/img/icon.jpeg">
+    
+    <title>Jain Bhajan Lyrics — Sacred Devotional Music | SaachoDharm</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/bhajan-lyrics-styles.css">
+    
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MusicComposition",
+      "name": "Jain Bhajan Lyrics",
+      "url": "https://www.saachodharm.com/jain-bhajan-lyrics.html",
+      "description": "Sacred Jain devotional bhajan lyrics for spiritual meditation and inner peace."
+    }
+    </script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="img/logo-navbar.png" alt="Saacho Dharm Logo" class="nav-logo-img">
+               <span>Saacho Dharm</span>
+            </a>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="bhajans.html" class="nav-link">Bhajans</a></li>
+                <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="calendar.html" class="nav-link">Calendar</a></li>
+                <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="bl-breadcrumb">
+        <div class="container">
+            <a href="index.html"><i class="fas fa-home"></i></a>
+            <span class="bl-bc-sep"><i class="fas fa-chevron-right"></i></span>
+            <a href="bhajans.html">Bhajans</a>
+            <span class="bl-bc-sep"><i class="fas fa-chevron-right"></i></span>
+            <span class="bl-bc-current" id="breadcrumb-title">Lyrics</span>
+        </div>
+    </div>
+
+    <main class="bl-page">
+        <div class="container">
+            <div class="bl-layout">
+                <!-- Main Content -->
+                <article class="bl-main">
+                    <!-- Video (shown dynamically) -->
+                    <div class="video-section" style="display: none;">
+                        <div class="video-container">
+                            <iframe width="100%" height="400" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </div>
+
+                    <!-- Title Card -->
+                    <header class="bl-title-card">
+                        <div class="bl-title-top">
+                            <div>
+                                <h1 class="bhajan-main-title"></h1>
+                                <p class="bhajan-description"></p>
+                            </div>
+                            <div class="language-switcher">
+                                <button class="lang-btn lang-btn-active" data-lang="hindi"><i class="fas fa-om"></i> हिंदी</button>
+                                <button class="lang-btn" data-lang="english"><i class="fas fa-globe"></i> English</button>
+                            </div>
+                        </div>
+                    </header>
+
+                    <!-- Toolbar -->
+                    <div class="bl-toolbar">
+                        <div class="bl-toolbar-group">
+                            <button id="decrease-font" class="bl-tool-btn" title="Decrease text size"><i class="fas fa-minus"></i></button>
+                            <span class="bl-tool-label">Aa</span>
+                            <button id="increase-font" class="bl-tool-btn" title="Increase text size"><i class="fas fa-plus"></i></button>
+                            <button id="reset-font" class="bl-tool-btn" title="Reset text size"><i class="fas fa-redo-alt"></i></button>
+                        </div>
+                        <div class="bl-toolbar-group">
+                            <button id="copy-btn" class="bl-tool-btn" title="Copy lyrics"><i class="fas fa-copy"></i><span class="bl-tool-text">Copy</span></button>
+                            <button id="print-btn" class="bl-tool-btn" title="Print lyrics"><i class="fas fa-print"></i><span class="bl-tool-text">Print</span></button>
+                            <button id="share-btn" class="bl-tool-btn" title="Share"><i class="fas fa-share-alt"></i><span class="bl-tool-text">Share</span></button>
+                        </div>
+                    </div>
+
+                    <!-- Lyrics Body -->
+                    <section class="bl-lyrics-body">
+                        <div class="lyrics-content hindi">
+                            <!-- Dynamically loaded -->
+                        </div>
+                        <div class="lyrics-content english" style="display:none;">
+                            <!-- Dynamically loaded -->
+                        </div>
+                    </section>
+
+                    <!-- Share Modal -->
+                    <div id="share-modal" class="share-modal">
+                        <div class="share-modal-content">
+                            <span class="share-close">&times;</span>
+                            <h3>Share Bhajan</h3>
+                            <div class="share-buttons">
+                                <a href="#" class="share-link whatsapp" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                                <a href="#" class="share-link facebook" title="Share on Facebook"><i class="fab fa-facebook-f"></i> Facebook</a>
+                                <a href="#" class="share-link twitter" title="Share on Twitter"><i class="fab fa-twitter"></i> Twitter</a>
+                                <a href="#" class="share-link email" title="Share via Email"><i class="fas fa-envelope"></i> Email</a>
+                            </div>
+                            <div class="share-link-input">
+                                <input type="text" id="share-link" readonly>
+                                <button id="copy-link-btn" class="btn btn-primary">Copy Link</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Sidebar -->
+                <aside class="bl-sidebar">
+                    <!-- Audio Player -->
+                    <div class="audio-player-section" style="display:none;">
+                        <div class="audio-player">
+                            <div class="player-header"><h3><i class="fas fa-music"></i> Audio Player</h3></div>
+                            <div class="player-controls">
+                                <div class="bl-player-btns">
+                                    <button id="play-btn" class="control-btn" title="Play"><i class="fas fa-play"></i></button>
+                                    <button id="pause-btn" class="control-btn" title="Pause"><i class="fas fa-pause"></i></button>
+                                </div>
+                                <div class="progress-container">
+                                    <div id="progress-bar" class="progress-bar"><div class="progress-fill"></div></div>
+                                    <span id="time-display" class="time-display">0:00 / 0:00</span>
+                                </div>
+                                <div class="volume-control">
+                                    <i class="fas fa-volume-up"></i>
+                                    <input type="range" id="volume-slider" min="0" max="100" value="100">
+                                </div>
+                            </div>
+                            <audio id="audio-player" src=""></audio>
+                        </div>
+                    </div>
+
+                    <!-- Suggested Bhajans -->
+                    <div class="bl-suggested">
+                        <h3 class="bl-sidebar-title"><i class="fas fa-star"></i> More from this Category</h3>
+                        <div class="suggested-list">
+                            <!-- Dynamically loaded -->
+                        </div>
+                    </div>
+
+                    <!-- Quick Links -->
+                    <div class="bl-quick-links">
+                        <h3 class="bl-sidebar-title"><i class="fas fa-compass"></i> Explore</h3>
+                        <div class="bl-qlink-list">
+                            <a href="bhajans.html" class="bl-qlink"><i class="fas fa-list-ul"></i> All Bhajans</a>
+                            <a href="calendar.html" class="bl-qlink"><i class="fas fa-calendar-alt"></i> Jain Calendar</a>
+                            <a href="about.html" class="bl-qlink"><i class="fas fa-info-circle"></i> About Jain Dharma</a>
+                            <a href="contact.html" class="bl-qlink"><i class="fas fa-envelope"></i> Contact Us</a>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer-antique">
+        <div class="footer-ornament-top">· · ✦ · ·</div>
+        <div class="footer-antique-body">
+            <div class="container">
+                <div class="footer-antique-grid">
+                    <div class="footer-brand">
+                        <a class="footer-logo" href="index.html"><img src="img/logo-navbar.png" alt="Saacho Dharm Logo" class="footer-logo-img"><span>Saacho Dharm</span></a>
+                        <p class="footer-tagline">Preserving Jain bhajans, teachings and references for spiritual learning.</p>
+                        <div class="footer-verse">
+                            <span class="verse-mark">☸</span>
+                            <p class="verse-hindi">अहिंसा परमो धर्मः</p>
+                            <p class="verse-eng">Non-violence is the supreme religion</p>
+                        </div>
+                        <div class="footer-social">
+                            <a href="https://wa.me/919829027413" aria-label="WhatsApp" title="+91 98290 27413"><i class="fab fa-whatsapp"></i></a>
+                            <a href="https://www.instagram.com/saacho_dharm/" target="_blank" rel="noopener" aria-label="Instagram" title="@saacho_dharm"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-links">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="bhajans.html">Bhajans</a></li>
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="calendar.html">Calendar</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-contact">
+                        <h4>Get in Touch</h4>
+                        <form class="footer-antique-form" action="#" onsubmit="event.preventDefault(); alert('Thank you — message sent (demo)'); this.reset();">
+                            <input type="text" name="name" placeholder="Your name" required>
+                            <input type="email" name="email" placeholder="Your email" required>
+                            <textarea name="message" placeholder="Your message" rows="3" required></textarea>
+                            <button type="submit">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-antique-bottom">
+            <div class="container">
+                <p>&copy; 2026 Saacho Dharm. All rights reserved.</p>
+                <p>Made with devotion · <a href="https://www.saachodharm.com" target="_blank">saachodharm.com</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/seo-manager.js"></script>
+    <script src="js/social-share.js"></script>
+    <script src="js/theme-switcher.js"></script>
+    <script src="js/bhajan-lyrics-dynamic.js"></script>
+</body>
+</html>
+
+
+
+
+
+

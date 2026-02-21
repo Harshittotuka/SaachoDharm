@@ -43,10 +43,17 @@ function displayBhajanLyrics(categoryName, bhajanTitle) {
     
     // Update page title
     const titleElement = document.querySelector('.bhajan-main-title');
+    const displayTitle = currentBhajan.title.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
     if (titleElement) {
-        const displayTitle = currentBhajan.title.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
         titleElement.textContent = displayTitle;
     }
+    
+    // Update breadcrumb
+    const bcTitle = document.getElementById('breadcrumb-title');
+    if (bcTitle) { bcTitle.textContent = displayTitle; }
+    
+    // Update document title for SEO
+    document.title = displayTitle + ' — Jain Bhajan Lyrics | SaachoDharm';
     
     // Update video section - show only if video URL exists
     const videoSection = document.querySelector('.video-section');
@@ -108,7 +115,7 @@ function updateSuggestedBhajans(bhajansList) {
             // Navigate to another bhajan
             const params = new URLSearchParams(window.location.search);
             const category = params.get('category');
-            window.location.href = `bhajan-lyrics.html?category=${encodeURIComponent(category)}&bhajan=${encodeURIComponent(item.title)}`;
+            window.location.href = `jain-bhajan-lyrics.html?category=${encodeURIComponent(category)}&bhajan=${encodeURIComponent(item.title)}`;
         });
         
         suggestedList.appendChild(suggestedItem);
@@ -277,25 +284,9 @@ function initializeLyricsPageEvents() {
     }
 }
 
-// Add styles for formatted lyrics
+// Add styles for English request modal (formatted-lyrics handled in CSS)
 const style = document.createElement('style');
 style.textContent = `
-    .formatted-lyrics {
-        max-width: 900px;
-        margin: 20px auto;
-        padding: 24px 30px;
-        background: #faf8f5;
-        border-radius: 12px;
-        /* Accent border moved to parent .lyrics-content to avoid double-lines */
-        line-height: 1.9;
-        font-size: 1.18rem;
-        color: #2c3e50;
-        white-space: normal;
-        word-wrap: break-word;
-        text-align: center;
-        box-shadow: 0 8px 30px rgba(44, 62, 80, 0.06);
-    }
-
     /* Beautiful English Request Modal */
     .english-request-modal {
         display: none;

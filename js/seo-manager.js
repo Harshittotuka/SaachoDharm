@@ -18,7 +18,7 @@ class SEOManager {
     
     if (pathname.includes('bhajans.html') || pathname.includes('/bhajan/')) {
       this.handleBhajanPageSEO();
-    } else if (pathname.includes('bhajan-lyrics.html')) {
+    } else if (pathname.includes('jain-bhajan-lyrics.html')) {
       this.handleBhajanLyricsSEO();
     } else if (pathname.includes('calendar.html')) {
       this.handleCalendarPageSEO();
@@ -133,7 +133,7 @@ class SEOManager {
         title: `${readableTitle} - Bhajan Lyrics | SaachoDharm`,
         description: `Read the lyrics of ${readableTitle}. Sacred Jain devotional bhajan for spiritual meditation and inner peace.`,
         keywords: `${readableTitle}, bhajan lyrics, Jain devotional, spiritual music`,
-        url: `${this.domain}/bhajan-lyrics.html?id=${bhajanId}`
+        url: `${this.domain}/jain-bhajan-lyrics.html?id=${bhajanId}`
       });
     }
   }

@@ -115,7 +115,7 @@ function renderSearchResults(query, results) {
             <p><strong>Category:</strong> ${escapeHtml(res.category)}</p>
             <p>${escapeHtml(preview)}</p>
             <div class="bhajan-meta">
-                <a href="bhajan-lyrics.html?category=${encodeURIComponent(res.category)}&bhajan=${encodeURIComponent(item.title)}" class="btn btn-primary">
+                <a href="jain-bhajan-lyrics.html?category=${encodeURIComponent(res.category)}&bhajan=${encodeURIComponent(item.title)}" class="btn btn-primary">
                     <span>View Lyrics</span>
                 </a>
             </div>
@@ -224,7 +224,7 @@ function loadBhajansByCategory(categoryName) {
             <p>${preview}</p>
             <div class="bhajan-meta">
                 <span class="bhajan-duration">View</span>
-                <a href="bhajan-lyrics.html?category=${encodeURIComponent(categoryName)}&bhajan=${encodeURIComponent(item.title)}" 
+                <a href="jain-bhajan-lyrics.html?category=${encodeURIComponent(categoryName)}&bhajan=${encodeURIComponent(item.title)}" 
                    class="btn btn-primary" target="_blank">
                     <span>View Lyrics</span>
                 </a>
@@ -257,7 +257,7 @@ function loadAllBhajans() {
                 <p>${preview}</p>
                 <div class="bhajan-meta">
                     <span class="bhajan-duration">View</span>
-                    <a href="bhajan-lyrics.html?category=${encodeURIComponent(categoryData.category)}&bhajan=${encodeURIComponent(item.title)}" 
+                    <a href="jain-bhajan-lyrics.html?category=${encodeURIComponent(categoryData.category)}&bhajan=${encodeURIComponent(item.title)}" 
                        class="btn btn-primary" target="_blank">
                         <span>View Lyrics</span>
                     </a>
