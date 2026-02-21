@@ -18,14 +18,14 @@ class SEOManager {
     
     if (pathname.includes('bhajans.html') || pathname.includes('/bhajan/')) {
       this.handleBhajanPageSEO();
-    } else if (pathname.includes('tirth-sthal.html')) {
-      this.handleTirthStalSEO();
+    } else if (pathname.includes('bhajan-lyrics.html')) {
+      this.handleBhajanLyricsSEO();
+    } else if (pathname.includes('calendar.html')) {
+      this.handleCalendarPageSEO();
     } else if (pathname.includes('about.html')) {
       this.handleAboutPageSEO();
     } else if (pathname.includes('contact.html')) {
       this.handleContactPageSEO();
-    } else if (pathname.includes('gallery.html')) {
-      this.handleGallerySEO();
     } else {
       this.handleHomePageSEO();
     }
@@ -105,20 +105,37 @@ class SEOManager {
   }
 
   /**
-   * Handle SEO for Tirth Sthal page
+   * Handle SEO for Calendar page
    */
-  handleTirthStalSEO() {
+  handleCalendarPageSEO() {
     this.updateMetaTags({
-      title: 'Tirth Sthal - Sacred Pilgrimage Sites | SaachoDharm',
-      description: 'Explore sacred Jain pilgrimage destinations (Tirth Sthal) and learn about their spiritual significance in the path of Jainism.',
-      keywords: 'Tirth Sthal, pilgrimage sites, Jain temples, sacred places, spiritual destinations',
-      url: `${this.domain}/tirth-sthal.html`
+      title: 'Jain Panchang \u2014 Sacred Calendar & Festival Dates | SaachoDharm',
+      description: 'Interactive Jain calendar with Tithis, Parvs, festivals, Chaumasa dates, Paryushana and Dashlakshan. Navigate months and discover sacred days.',
+      keywords: 'Jain calendar, Jain Panchang, Tithi, Parv, Paryushana, Dashlakshan, Chaumasa, Jain festivals',
+      url: `${this.domain}/calendar.html`
     });
 
-    this.addSchemaMarkup('CollectionPage', {
-      name: 'Tirth Sthal - Pilgrimage Sites',
-      description: 'Collection of sacred Jain pilgrimage destinations'
+    this.addSchemaMarkup('WebPage', {
+      name: 'Jain Panchang \u2014 Sacred Calendar',
+      description: 'Interactive Jain calendar featuring Tithis, sacred days, and all major Jain festivals'
     });
+  }
+
+  /**
+   * Handle SEO for Bhajan Lyrics detail page
+   */
+  handleBhajanLyricsSEO() {
+    const params = new URLSearchParams(window.location.search);
+    const bhajanId = params.get('id');
+    if (bhajanId) {
+      const readableTitle = bhajanId.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+      this.updateMetaTags({
+        title: `${readableTitle} - Bhajan Lyrics | SaachoDharm`,
+        description: `Read the lyrics of ${readableTitle}. Sacred Jain devotional bhajan for spiritual meditation and inner peace.`,
+        keywords: `${readableTitle}, bhajan lyrics, Jain devotional, spiritual music`,
+        url: `${this.domain}/bhajan-lyrics.html?id=${bhajanId}`
+      });
+    }
   }
 
   /**
@@ -155,23 +172,6 @@ class SEOManager {
   }
 
   /**
-   * Handle SEO for Gallery page
-   */
-  handleGallerySEO() {
-    this.updateMetaTags({
-      title: 'Gallery - Jain Art & Sacred Imagery | SaachoDharm',
-      description: 'Explore our gallery of sacred Jain art, temple imagery, and spiritual photographs celebrating the beauty of Jainism.',
-      keywords: 'gallery, Jain art, temple photography, sacred imagery, spiritual pictures',
-      url: `${this.domain}/gallery.html`
-    });
-
-    this.addSchemaMarkup('ImageGallery', {
-      name: 'SaachoDharm Gallery',
-      description: 'Collection of sacred Jain art and spiritual imagery'
-    });
-  }
-
-  /**
    * Handle SEO for Home page
    */
   handleHomePageSEO() {
@@ -196,7 +196,17 @@ class SEOManager {
     document.title = data.title;
     this.updateOrCreateMetaTag('name', 'description', data.description);
     this.updateOrCreateMetaTag('name', 'keywords', data.keywords);
-    this.updateOrCreateMetaTag('name', 'canonical', data.url);
+
+    // Update canonical link element (not meta tag)
+    let canonical = document.head.querySelector('link[rel="canonical"]');
+    if (canonical) {
+      canonical.href = data.url;
+    } else {
+      canonical = document.createElement('link');
+      canonical.rel = 'canonical';
+      canonical.href = data.url;
+      document.head.appendChild(canonical);
+    }
 
     // Open Graph tags
     this.updateOrCreateMetaTag('property', 'og:title', data.title);

@@ -10,6 +10,7 @@ class SitemapGenerator {
       { url: '/', priority: '1.0', changefreq: 'weekly' },
       { url: '/bhajans.html', priority: '0.9', changefreq: 'weekly' },
       { url: '/about.html', priority: '0.7', changefreq: 'monthly' },
+      { url: '/calendar.html', priority: '0.8', changefreq: 'monthly' },
       { url: '/contact.html', priority: '0.6', changefreq: 'monthly' },
       { url: '/bhajan-lyrics.html', priority: '0.7', changefreq: 'weekly' }
     ];

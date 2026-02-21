@@ -17,7 +17,9 @@ const staticPages = [
   { url: '/index.html', priority: 1.0, changefreq: 'weekly', lastmod: new Date().toISOString().split('T')[0] },
   { url: '/bhajans.html', priority: 0.9, changefreq: 'weekly', lastmod: new Date().toISOString().split('T')[0] },
   { url: '/about.html', priority: 0.8, changefreq: 'monthly', lastmod: new Date().toISOString().split('T')[0] },
+  { url: '/calendar.html', priority: 0.8, changefreq: 'monthly', lastmod: new Date().toISOString().split('T')[0] },
   { url: '/contact.html', priority: 0.5, changefreq: 'yearly', lastmod: new Date().toISOString().split('T')[0] },
+  { url: '/bhajan-lyrics.html', priority: 0.7, changefreq: 'weekly', lastmod: new Date().toISOString().split('T')[0] },
 ];
 
 function generateSitemapXML(urls) {
@@ -45,17 +47,20 @@ function generateSitemap() {
     if (fs.existsSync(DATA_PATH)) {
       const data = JSON.parse(fs.readFileSync(DATA_PATH, 'utf8'));
       
-      if (data.categories && Array.isArray(data.categories)) {
-        data.categories.forEach(category => {
-          if (category.bhajans && Array.isArray(category.bhajans)) {
-            category.bhajans.forEach(bhajan => {
-              const slug = bhajan.id || bhajan.title.toLowerCase().replace(/\s+/g, '-');
-              allUrls.push({
-                url: `/bhajan-lyrics.html?id=${slug}`,
-                priority: 0.7,
-                changefreq: 'monthly',
-                lastmod: new Date().toISOString().split('T')[0],
-              });
+      // Data is an array of category objects: [{category, url, items: [{title, video, audio, link, lyrics}]}]
+      if (Array.isArray(data)) {
+        data.forEach(category => {
+          if (category.items && Array.isArray(category.items)) {
+            category.items.forEach(bhajan => {
+              const slug = bhajan.title || '';
+              if (slug) {
+                allUrls.push({
+                  url: `/bhajan-lyrics.html?id=${slug}`,
+                  priority: 0.6,
+                  changefreq: 'monthly',
+                  lastmod: new Date().toISOString().split('T')[0],
+                });
+              }
             });
           }
         });
