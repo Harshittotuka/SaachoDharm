@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Jain Panchang — Interactive Jain calendar with Tithis, Parvs, festivals, Chaumasa dates, Paryushana and Dashlakshan. Navigate months and discover sacred days.">
+    <meta name="keywords" content="Jain calendar, Jain Panchang, Tithi, Parv, Paryushana, Dashlakshan, Chaumasa, Jain festivals, Ashtami, Chaturdashi, Purnima, Amavasya">
+    <meta name="author" content="SaachoDharm">
+    <link rel="canonical" href="https://www.saachodharm.com/calendar.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.saachodharm.com/calendar.html">
+    <meta property="og:title" content="Jain Panchang — Sacred Calendar & Festival Dates">
+    <meta property="og:description" content="Interactive Jain calendar with Tithis, sacred Parvs, festivals and important dates for the Jain community.">
+    <meta property="og:image" content="https://www.saachodharm.com/img/icon.jpeg">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Jain Panchang — Sacred Calendar & Festival Dates">
+    <meta name="twitter:description" content="Navigate the Jain Panchang with Tithis, Parv Tithis, and all major Jain festivals.">
+
+    <title>Jain Panchang — Sacred Calendar | Saacho Dharm</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/calendar.css">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Jain Panchang — Sacred Calendar",
+      "description": "Interactive Jain calendar featuring Tithis, sacred days, Paryushana, Dashlakshan and all major Jain festivals.",
+      "url": "https://www.saachodharm.com/calendar.html"
+    }
+    </script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="img/logo-navbar.png" alt="Saacho Dharm Logo" class="nav-logo-img">
+                <span>Saacho Dharm</span>
+            </a>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="bhajans.html" class="nav-link">Bhajans</a></li>
+                <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="calendar.html" class="nav-link active">Calendar</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="cal-hero">
+        <div class="container">
+            <div class="mandala-pattern" aria-hidden="true"></div>
+            <div class="cal-hero-badge fade-in-up">
+                <i class="fas fa-moon"></i> Jain Panchang
+            </div>
+            <h1 class="fade-in-up stagger-1">Jain Calendar</h1>
+            <p class="muted fade-in-up stagger-2">Navigate the sacred Tithis, Parvs and festivals of Jain Dharma</p>
+            <p class="cal-hero-sanskrit fade-in-up stagger-2" style="font-style:italic;color:var(--accent-saffron);font-size:0.92rem;margin-top:16px;opacity:0.8;letter-spacing:0.02em;">
+                "धम्मो मंगलमुक्किट्ठं, अहिंसा संजमो तवो" — Uttaradhyayana Sutra
+            </p>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- Legend / Info Strip -->
+        <section class="cal-legend fade-in-up">
+            <div class="legend-items">
+                <span class="legend-dot legend-parv"><i class="fas fa-star"></i> Parv Tithi</span>
+                <span class="legend-dot legend-festival"><i class="fas fa-bell"></i> Festival</span>
+                <span class="legend-dot legend-auspicious"><i class="fas fa-sun"></i> Auspicious</span>
+                <span class="legend-dot legend-today"><i class="fas fa-circle"></i> Today</span>
+            </div>
+        </section>
+
+        <!-- Month Navigator -->
+        <section class="cal-controls fade-in-up">
+            <button class="cal-nav-btn" id="prevMonth" aria-label="Previous month">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <div class="cal-month-display">
+                <h2 id="monthTitle" class="cal-month-title"></h2>
+                <span id="jainMonthTitle" class="cal-jain-month"></span>
+            </div>
+            <button class="cal-nav-btn" id="nextMonth" aria-label="Next month">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            <button class="cal-today-btn" id="todayBtn" title="Go to today">
+                <i class="fas fa-calendar-day"></i> Today
+            </button>
+        </section>
+
+        <!-- Two-column layout: Calendar + Months sidebar -->
+        <div class="cal-layout">
+            <div class="cal-main-col">
+                <!-- Calendar Grid -->
+                <section class="cal-grid-wrapper fade-in-up">
+                    <div class="cal-weekdays">
+                        <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+                    </div>
+                    <div class="cal-grid" id="calGrid">
+                        <!-- Filled by JS -->
+                    </div>
+                </section>
+
+                <!-- Event Detail Panel -->
+                <section class="cal-detail-panel" id="detailPanel">
+                    <div class="cal-detail-card">
+                        <button class="cal-detail-close" id="detailClose" aria-label="Close"><i class="fas fa-times"></i></button>
+                        <div class="cal-detail-header">
+                            <span class="cal-detail-date" id="detailDate"></span>
+                            <span class="cal-detail-tithi" id="detailTithi"></span>
+                        </div>
+                        <div class="cal-detail-body" id="detailBody">
+                            <!-- Filled by JS -->
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Jain Months — right sidebar on desktop -->
+            <aside class="cal-sidebar fade-in-up">
+                <h3 class="cal-sidebar-title"><i class="fas fa-moon"></i> Jain Months</h3>
+                <div class="cal-months-grid" id="jainMonthsGrid">
+                    <!-- Filled by JS -->
+                </div>
+            </aside>
+        </div>
+
+        <!-- Upcoming Festivals Section -->
+        <section class="cal-upcoming fade-in-up">
+            <h2 class="cal-section-title"><i class="fas fa-calendar-alt"></i> Upcoming Festivals & Parvs</h2>
+            <div class="cal-upcoming-grid" id="upcomingGrid">
+                <!-- Filled by JS -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer footer-new">
+        <div class="container">
+            <div class="footer-card">
+                <div class="footer-left">
+                    <a class="nav-logo" href="index.html"><img src="img/logo-navbar.png" alt="Saacho Dharm Logo" class="nav-logo-img"><span>Saacho Dharm</span></a>
+                    <p>Preserving Jain bhajans, teachings and references for spiritual learning.</p>
+                    <div class="social-links">
+                        <a href="https://wa.me/919829027413" aria-label="WhatsApp" title="+91 98290 27413"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.instagram.com/saacho_dharm/" target="_blank" rel="noopener" aria-label="Instagram" title="@saacho_dharm"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-middle">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="bhajans.html">Bhajans</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="calendar.html">Calendar</a></li>
+                    </ul>
+                </div>
+                <div class="footer-right">
+                    <h4>Contact</h4>
+                    <form class="footer-contact-form" action="#" onsubmit="event.preventDefault(); alert('Thank you — message sent (demo)'); this.reset();">
+                        <input type="text" name="name" placeholder="Your name" required>
+                        <input type="email" name="email" placeholder="Your email" required>
+                        <textarea name="message" placeholder="Your message" rows="3" required></textarea>
+                        <button type="submit">Send</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Saacho Dharm. All rights reserved.</p>
+                <p>Made with care · <a href="https://www.saachodharm.com" target="_blank">saachodharm.com</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/seo-manager.js"></script>
+    <script src="js/social-share.js"></script>
+    <script src="js/theme-switcher.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/jain-calendar.js"></script>
+</body>
+</html>
