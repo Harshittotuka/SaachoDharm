@@ -135,6 +135,35 @@ function initSearch() {
 
     const doSearch = debounce(function(e) {
         const q = searchInput.value || '';
+
+        // Secret admin access
+        if (q.trim().toLowerCase() === 'admin') {
+            searchInput.value = '';
+            // Overlay flash animation then open in new tab
+            const overlay = document.createElement('div');
+            Object.assign(overlay.style, {
+                position: 'fixed', inset: '0', zIndex: '99999',
+                background: 'radial-gradient(circle, rgba(99,102,241,.9) 0%, rgba(0,0,0,.95) 100%)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                opacity: '0', transition: 'opacity .35s ease'
+            });
+            overlay.innerHTML = '<div style="text-align:center;transform:scale(.7);transition:transform .4s cubic-bezier(.34,1.56,.64,1),opacity .4s;opacity:0">' +
+                '<i class="fas fa-shield-alt" style="font-size:3rem;color:#a5b4fc;margin-bottom:.5rem;display:block"></i>' +
+                '<span style="color:#e0e7ff;font-size:1.25rem;font-weight:600;letter-spacing:1px">Opening Admin Panel…</span></div>';
+            document.body.appendChild(overlay);
+            requestAnimationFrame(() => {
+                overlay.style.opacity = '1';
+                overlay.firstChild.style.opacity = '1';
+                overlay.firstChild.style.transform = 'scale(1)';
+            });
+            setTimeout(() => {
+                window.open('admin.html', '_blank');
+                overlay.style.opacity = '0';
+                setTimeout(() => overlay.remove(), 400);
+            }, 700);
+            return;
+        }
+
         const pathname = window.location.pathname;
         const isIndexPage = pathname.includes('index.html') || pathname === '/' || pathname.endsWith('/');
         const isBhajansPage = pathname.includes('bhajans.html');

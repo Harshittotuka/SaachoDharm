@@ -5,6 +5,7 @@ Allow: /css/
 Allow: /img/
 Allow: /data/
 Disallow: /admin/
+Disallow: /admin.html
 Disallow: /private/
 Disallow: /temp/
 

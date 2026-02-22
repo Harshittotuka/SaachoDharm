@@ -43,84 +43,26 @@
     const PARV_TITHI_INDICES = new Set([2, 5, 8, 11, 14, 15, 17, 20, 23, 26, 29, 30]);
 
     /* ------------------------------------------------
-       MAJOR JAIN FESTIVALS (keyed by month-day
-       using Gregorian dates for 2025-2027 cycle)
+       MAJOR JAIN FESTIVALS — loaded from JSON file
        Format: { 'YYYY-MM-DD': [{ name, type, desc }] }
        ------------------------------------------------ */
-    const FESTIVALS = {
-        // ===== 2025 =====
-        '2025-01-10': [{ name: 'Mauni Amavasya', type: 'auspicious', desc: 'Day of silent meditation and fasting.' }],
-        '2025-01-14': [{ name: 'Makar Sankranti', type: 'auspicious', desc: 'Sun enters Makar rashi — auspicious for charity.' }],
-        '2025-02-12': [{ name: 'Magh Shukla Purnima', type: 'parv', desc: 'Full moon of Magh — sacred bathing and prayers.' }],
-        '2025-02-26': [{ name: 'Panchami (Rishi Panchami)', type: 'parv', desc: 'Observance of penance and fasting.' }],
-        '2025-03-14': [{ name: 'Holi Purnima', type: 'festival', desc: 'Falgun Purnima — community celebrations.' }],
-        '2025-03-31': [{ name: 'Chaitra Shukla Pratipada', type: 'festival', desc: 'Hindu / Jain New Year (Vikram Samvat).' }],
-        '2025-04-01': [{ name: 'Nav Varsh', type: 'festival', desc: 'Beginning of new Vikram Samvat year.' }],
-        '2025-04-10': [{ name: 'Mahavir Jayanti', type: 'festival', desc: 'Birth anniversary of Lord Mahavira — the 24th Tirthankara. Grand processions and abhishek in every Jain temple.' }],
-        '2025-04-14': [{ name: 'Chaitra Purnima', type: 'parv', desc: 'Full moon of Chaitra — Dana-Punya.' }],
-        '2025-05-01': [{ name: 'Akshaya Tritiya', type: 'festival', desc: 'Lord Rishabhdeva broke his first fast with sugarcane juice — day of eternal merit.' }],
-        '2025-05-12': [{ name: 'Buddha / Vaishakh Purnima', type: 'parv', desc: 'Vaishakh full moon — sacred fasting.' }],
-        '2025-06-10': [{ name: 'Nirjala Ekadashi', type: 'parv', desc: 'Waterless fasting Ekadashi — highly meritorious.' }],
-        '2025-07-10': [{ name: 'Chaumasa Begins (Guru Purnima)', type: 'festival', desc: 'Start of the four-month monsoon retreat for monks and devotees. Special vows taken.' }],
-        '2025-08-06': [{ name: 'Shravan Shukla Ashtami', type: 'parv', desc: 'Sacred eighth day of Shravan — important parv tithi.' }],
-        '2025-08-23': [{ name: 'Paryushana Begins (Shvetambar)', type: 'festival', desc: 'Eight days of intense fasting, prayer and self-reflection. The holiest period for Shvetambar Jains.' }],
-        '2025-08-24': [{ name: 'Paryushana Day 2', type: 'festival', desc: 'Continuation of Paryushana — devotional lectures and fasting.' }],
-        '2025-08-25': [{ name: 'Paryushana Day 3', type: 'festival', desc: 'Spiritual discourses and scriptural study.' }],
-        '2025-08-26': [{ name: 'Paryushana Day 4', type: 'festival', desc: 'Intensified fasting — Atthai / Upvas.' }],
-        '2025-08-27': [{ name: 'Paryushana Day 5', type: 'festival', desc: 'Pratikraman and self-purification.' }],
-        '2025-08-28': [{ name: 'Paryushana Day 6', type: 'festival', desc: 'Sutra recitation and charitable giving.' }],
-        '2025-08-29': [{ name: 'Paryushana Day 7', type: 'festival', desc: 'Penultimate day — deep meditation.' }],
-        '2025-08-30': [{ name: 'Samvatsari (Forgiveness Day)', type: 'festival', desc: 'Final day of Paryushana — "Micchami Dukkadam" — universal forgiveness. The most sacred day in Jainism.' }],
-        '2025-08-31': [{ name: 'Dashlakshan Begins (Digambar)', type: 'festival', desc: 'Ten-day festival of supreme virtues for Digambar Jains.' }],
-        '2025-09-01': [{ name: 'Dashlakshan Day 2 — Mardava (Humility)', type: 'festival', desc: 'Observance of humility and gentle conduct.' }],
-        '2025-09-02': [{ name: 'Dashlakshan Day 3 — Arjava (Straightforwardness)', type: 'festival', desc: 'Practice of sincerity and honesty.' }],
-        '2025-09-03': [{ name: 'Dashlakshan Day 4 — Shaucha (Purity)', type: 'festival', desc: 'Inner and outer cleanliness.' }],
-        '2025-09-04': [{ name: 'Dashlakshan Day 5 — Satya (Truth)', type: 'festival', desc: 'Commitment to truthfulness.' }],
-        '2025-09-05': [{ name: 'Dashlakshan Day 6 — Sanyam (Self-Restraint)', type: 'festival', desc: 'Practice of restraint over senses and mind.' }],
-        '2025-09-06': [{ name: 'Dashlakshan Day 7 — Tapa (Austerity)', type: 'festival', desc: 'Observance of penance and fasting.' }],
-        '2025-09-07': [{ name: 'Dashlakshan Day 8 — Tyaga (Renunciation)', type: 'festival', desc: 'Letting go of attachments and material desires.' }],
-        '2025-09-08': [{ name: 'Dashlakshan Day 9 — Akinchanya (Non-Possessiveness)', type: 'festival', desc: 'Practicing detachment from worldly possessions.' }],
-        '2025-09-09': [{ name: 'Dashlakshan Day 10 — Brahmacharya (Celibacy)', type: 'festival', desc: 'Final day — observance of supreme celibacy and purity.' }],
-        '2025-09-14': [{ name: 'Anant Chaturdashi', type: 'parv', desc: 'Chaturdashi parv — fasting and prayer.' }],
-        '2025-10-02': [{ name: 'Sharad Purnima', type: 'parv', desc: 'Ashwin Purnima — night-long meditation.' }],
-        '2025-10-20': [{ name: 'Diwali (Jain New Year Eve)', type: 'festival', desc: 'Lord Mahavira attained Nirvana (Moksha). Deepak Puja and final Namokar Mantra of the year.' }],
-        '2025-10-21': [{ name: 'Jain New Year (Vikram Samvat 2082)', type: 'festival', desc: 'Kartik Shukla Pratipada — beginning of new Jain year. Visit temples and seek blessings.' }],
-        '2025-10-22': [{ name: 'Bhai Dooj / Yama Dwitiya', type: 'auspicious', desc: 'Celebration of sibling bond.' }],
-        '2025-11-01': [{ name: 'Gyaras (Kartik Ekadashi)', type: 'parv', desc: 'Ekadashi fasting — highly meritorious.' }],
-        '2025-11-05': [{ name: 'Kartik Purnima', type: 'parv', desc: 'Sacred full moon — pilgrimage and fasting.' }],
-        '2025-12-25': [{ name: 'Paush Dashami', type: 'parv', desc: 'Dashami tithi observance.' }],
+    let FESTIVALS = {};
+    const CALENDAR_DATA_URL = 'data/calendar_data.json';
 
-        // ===== 2026 =====
-        '2026-01-29': [{ name: 'Mauni Amavasya', type: 'auspicious', desc: 'Silent meditation and fasting day.' }],
-        '2026-01-14': [{ name: 'Makar Sankranti', type: 'auspicious', desc: 'Sun transitions — auspicious charity day.' }],
-        '2026-03-03': [{ name: 'Holi Purnima', type: 'festival', desc: 'Falgun Purnima — celebration of colors.' }],
-        '2026-03-20': [{ name: 'Chaitra Shukla Pratipada', type: 'festival', desc: 'Nav Varsh — Jain New Year celebration.' }],
-        '2026-03-29': [{ name: 'Mahavir Jayanti', type: 'festival', desc: 'Birth anniversary of Bhagwan Mahavira — the 24th Tirthankara. Abhishek and processions at all Jain temples.' }],
-        '2026-04-19': [{ name: 'Akshaya Tritiya', type: 'festival', desc: 'Rishabhdeva\'s first Parna — eternal merit day.' }],
-        '2026-05-31': [{ name: 'Nirjala Ekadashi', type: 'parv', desc: 'Waterless Ekadashi fasting.' }],
-        '2026-06-29': [{ name: 'Guru Purnima / Chaumasa Start', type: 'festival', desc: 'Chaturmas begins — monks stay at one place.' }],
-        '2026-08-12': [{ name: 'Paryushana Begins (Shvetambar)', type: 'festival', desc: 'Eight sacred days of fasting, atthai and pratikraman begin.' }],
-        '2026-08-19': [{ name: 'Samvatsari (Forgiveness Day)', type: 'festival', desc: 'Micchami Dukkadam — seeking and granting forgiveness from all beings.' }],
-        '2026-08-20': [{ name: 'Dashlakshan Begins (Digambar)', type: 'festival', desc: 'Ten-day festival of ten supreme virtues.' }],
-        '2026-08-29': [{ name: 'Dashlakshan Ends (Anant Chaturdashi)', type: 'festival', desc: 'Concluding day of Dashlakshan Parv.' }],
-        '2026-09-03': [{ name: 'Anant Chaturdashi', type: 'parv', desc: 'Sacred Chaturdashi — fasting and devotion.' }],
-        '2026-10-09': [{ name: 'Diwali (Nirvana of Mahavira)', type: 'festival', desc: 'Lord Mahavira\'s Moksha Divas — Deepak Puja and year-end prayers.' }],
-        '2026-10-10': [{ name: 'Jain New Year (Vikram Samvat 2083)', type: 'festival', desc: 'Kartik Shukla Pratipada — new year begins.' }],
-        '2026-10-25': [{ name: 'Kartik Purnima', type: 'parv', desc: 'Full moon of Kartik — pilgrimage day.' }],
-
-        // ===== 2027 =====
-        '2027-01-14': [{ name: 'Makar Sankranti', type: 'auspicious', desc: 'Auspicious transition — charity and prayers.' }],
-        '2027-03-22': [{ name: 'Holi Purnima', type: 'festival', desc: 'Falgun Purnima.' }],
-        '2027-03-29': [{ name: 'Mahavir Jayanti', type: 'festival', desc: 'Bhagwan Mahavira birth anniversary celebrations.' }],
-        '2027-04-08': [{ name: 'Chaitra Shukla Pratipada / Nav Varsh', type: 'festival', desc: 'Jain New Year.' }],
-        '2027-05-09': [{ name: 'Akshaya Tritiya', type: 'festival', desc: 'Day of eternal merit — Rishabhdeva Parna.' }],
-        '2027-07-18': [{ name: 'Guru Purnima / Chaumasa Start', type: 'festival', desc: 'Beginning of rainy retreat.' }],
-        '2027-09-01': [{ name: 'Paryushana Begins', type: 'festival', desc: 'Eight holy days begin.' }],
-        '2027-09-08': [{ name: 'Samvatsari', type: 'festival', desc: 'Forgiveness Day — Micchami Dukkadam.' }],
-        '2027-09-09': [{ name: 'Dashlakshan Begins', type: 'festival', desc: 'Ten virtues festival begins (Digambar).' }],
-        '2027-10-29': [{ name: 'Diwali (Mahavira Nirvana)', type: 'festival', desc: 'Moksha Divas of Bhagwan Mahavira.' }],
-        '2027-10-30': [{ name: 'Jain New Year', type: 'festival', desc: 'Kartik Shukla Pratipada.' }]
-    };
+    async function loadFestivalData() {
+        try {
+            const resp = await fetch(CALENDAR_DATA_URL);
+            const arr = await resp.json();
+            // Convert flat array to date-keyed map
+            arr.forEach(item => {
+                const key = item.date;
+                if (!FESTIVALS[key]) FESTIVALS[key] = [];
+                FESTIVALS[key].push({ name: item.name, type: item.type, desc: item.desc });
+            });
+        } catch (e) {
+            console.warn('Could not load calendar data:', e);
+        }
+    }
 
     /* ------------------------------------------------
        TITHI CALC — approximate lunar tithi for a date
@@ -436,7 +378,8 @@
     /* ------------------------------------------------
        INIT
        ------------------------------------------------ */
-    function init() {
+    async function init() {
+        await loadFestivalData();
         const now = new Date();
         renderCalendar(now.getFullYear(), now.getMonth());
         renderUpcoming();

@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>SaachoDharm Admin Panel</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="admin-header">
+        <div class="header-left">
+            <i class="fas fa-shield-alt header-icon"></i>
+            <div>
+                <h1>SaachoDharm Admin</h1>
+                <p class="header-subtitle">Content Management Panel</p>
+            </div>
+        </div>
+        <div class="header-right">
+            <span class="cache-status" id="cacheStatus">
+                <i class="fas fa-database"></i>
+                <span id="cacheText">Cache: Empty</span>
+            </span>
+            <button class="btn btn-outline btn-sm" onclick="clearAllCache()" title="Clear all saved data">
+                <i class="fas fa-trash-alt"></i> Clear Cache
+            </button>
+        </div>
+    </header>
+
+    <!-- Tab Navigation -->
+    <div class="tab-container">
+        <div class="tabs">
+            <button class="tab active" data-tab="bhajan" onclick="switchTab('bhajan')">
+                <i class="fas fa-music"></i>
+                <span>Bhajans / Lyrics</span>
+                <span class="badge" id="bhajanCount">0</span>
+            </button>
+            <button class="tab" data-tab="tirth" onclick="switchTab('tirth')">
+                <i class="fas fa-place-of-worship"></i>
+                <span>Tirth Sthal</span>
+                <span class="badge" id="tirthCount">0</span>
+            </button>
+            <button class="tab" data-tab="calendar" onclick="switchTab('calendar')">
+                <i class="fas fa-calendar-alt"></i>
+                <span>Calendar Events</span>
+                <span class="badge" id="calendarCount">0</span>
+            </button>
+            <button class="tab" data-tab="preview" onclick="switchTab('preview')">
+                <i class="fas fa-eye"></i>
+                <span>Preview & Download</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+
+        <!-- ===== BHAJAN TAB ===== -->
+        <section class="tab-content active" id="tab-bhajan">
+            <div class="section-header">
+                <div>
+                    <h2><i class="fas fa-music"></i> Add Bhajan / Lyrics Entry</h2>
+                    <p>Fill in the details below to add a new bhajan, stotra, or prayer entry.</p>
+                </div>
+                <button class="btn btn-primary" onclick="resetBhajanForm()">
+                    <i class="fas fa-plus"></i> New Entry
+                </button>
+            </div>
+
+            <form id="bhajanForm" class="admin-form" onsubmit="return saveBhajan(event)">
+                <div class="form-grid cols-2">
+                    <!-- Category -->
+                    <div class="form-group">
+                        <label for="bhajan-category">
+                            <i class="fas fa-folder"></i> Category <span class="required">*</span>
+                        </label>
+                        <select id="bhajan-category" required>
+                            <option value="">-- Select Category --</option>
+                            <option value="स्तोत्र">स्तोत्र</option>
+                            <option value="धर्म ज्ञान">धर्म ज्ञान</option>
+                            <option value="जैन कथाएं">जैन कथाएं</option>
+                            <option value="जैन पूजन">जैन पूजन</option>
+                            <option value="स्तुति संग्रह">स्तुति संग्रह</option>
+                            <option value="चालीसा संग्रह">चालीसा संग्रह</option>
+                            <option value="जैन भजन संग्रह">जैन भजन संग्रह</option>
+                            <option value="आरती संग्रह">आरती संग्रह</option>
+                            <option value="पाठशाला">पाठशाला</option>
+                            <option value="पर्व">पर्व</option>
+                            <option value="__custom__">+ Add New Category</option>
+                        </select>
+                        <input type="text" id="bhajan-category-custom" class="hidden" placeholder="Enter new category name...">
+                    </div>
+
+                    <!-- Title (slug) -->
+                    <div class="form-group">
+                        <label for="bhajan-title">
+                            <i class="fas fa-heading"></i> Title Slug <span class="required">*</span>
+                        </label>
+                        <input type="text" id="bhajan-title" required
+                            placeholder="e.g. my-bhajan-title-hindi" 
+                            pattern="[a-z0-9\-]+"
+                            title="Only lowercase letters, numbers and hyphens">
+                        <span class="form-hint">URL-friendly slug (lowercase, hyphens only)</span>
+                    </div>
+                </div>
+
+                <div class="form-grid cols-2">
+                    <!-- Video URL -->
+                    <div class="form-group">
+                        <label for="bhajan-video">
+                            <i class="fas fa-video"></i> Video URL
+                        </label>
+                        <input type="url" id="bhajan-video" placeholder="https://youtube.com/...">
+                    </div>
+
+                    <!-- Audio URL -->
+                    <div class="form-group">
+                        <label for="bhajan-audio">
+                            <i class="fas fa-headphones"></i> Audio URL
+                        </label>
+                        <input type="url" id="bhajan-audio" placeholder="https://...">
+                    </div>
+                </div>
+
+                <!-- Link -->
+                <div class="form-group">
+                    <label for="bhajan-link">
+                        <i class="fas fa-link"></i> Source Link <span class="required">*</span>
+                    </label>
+                    <input type="url" id="bhajan-link" required placeholder="https://jainsaar.com/...">
+                    <span class="form-hint">Full URL to the original source page</span>
+                </div>
+
+                <!-- Lyrics -->
+                <div class="form-group">
+                    <label for="bhajan-lyrics">
+                        <i class="fas fa-align-left"></i> Lyrics <span class="required">*</span>
+                    </label>
+                    <textarea id="bhajan-lyrics" rows="12" required
+                        placeholder="Paste the full lyrics here...&#10;&#10;Use line breaks to separate verses."></textarea>
+                    <div class="form-hint-row">
+                        <span class="form-hint">Supports Hindi/Sanskrit text with line breaks</span>
+                        <span class="char-count" id="lyricsCount">0 chars</span>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-success btn-lg">
+                        <i class="fas fa-save"></i> Save Bhajan Entry
+                    </button>
+                    <button type="button" class="btn btn-ghost" onclick="resetBhajanForm()">
+                        <i class="fas fa-undo"></i> Reset
+                    </button>
+                </div>
+            </form>
+
+            <!-- Saved Bhajan List -->
+            <div class="saved-entries" id="bhajanEntries">
+                <h3><i class="fas fa-list"></i> Saved Entries <span class="badge" id="bhajanSavedCount">0</span></h3>
+                <div class="entries-list" id="bhajanList">
+                    <p class="empty-state"><i class="fas fa-inbox"></i> No saved bhajan entries yet.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== TIRTH STHAL TAB ===== -->
+        <section class="tab-content" id="tab-tirth">
+            <div class="section-header">
+                <div>
+                    <h2><i class="fas fa-place-of-worship"></i> Add Tirth Sthal Entry</h2>
+                    <p>Fill in temple/pilgrimage site details below.</p>
+                </div>
+                <button class="btn btn-primary" onclick="resetTirthForm()">
+                    <i class="fas fa-plus"></i> New Entry
+                </button>
+            </div>
+
+            <form id="tirthForm" class="admin-form" onsubmit="return saveTirth(event)">
+                <!-- Step 1: Basic Info -->
+                <div class="form-section">
+                    <h3 class="form-section-title">
+                        <span class="step-num">1</span> Basic Information
+                    </h3>
+                    <div class="form-grid cols-2">
+                        <div class="form-group">
+                            <label for="tirth-id">
+                                <i class="fas fa-fingerprint"></i> ID (Slug) <span class="required">*</span>
+                            </label>
+                            <input type="text" id="tirth-id" required
+                                placeholder="e.g. my-temple-name"
+                                pattern="[a-z0-9\-]+"
+                                title="Only lowercase letters, numbers and hyphens">
+                            <span class="form-hint">Unique identifier (lowercase, hyphens)</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="tirth-name">
+                                <i class="fas fa-tag"></i> Name (English) <span class="required">*</span>
+                            </label>
+                            <input type="text" id="tirth-name" required placeholder="e.g. Shri Palitana Temples">
+                        </div>
+                    </div>
+                    <div class="form-grid cols-2">
+                        <div class="form-group">
+                            <label for="tirth-nameHindi">
+                                <i class="fas fa-language"></i> Name (Hindi) <span class="required">*</span>
+                            </label>
+                            <input type="text" id="tirth-nameHindi" required placeholder="e.g. श्री पालीताना मंदिर">
+                        </div>
+                        <div class="form-group">
+                            <label for="tirth-type">
+                                <i class="fas fa-shapes"></i> Type <span class="required">*</span>
+                            </label>
+                            <select id="tirth-type" required>
+                                <option value="">-- Select Type --</option>
+                                <option value="Tirth Sthal">Tirth Sthal</option>
+                                <option value="Mandir">Mandir</option>
+                                <option value="Historical">Historical</option>
+                                <option value="Local Temple">Local Temple</option>
+                                <option value="Dharamshala">Dharamshala</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Classification -->
+                <div class="form-section">
+                    <h3 class="form-section-title">
+                        <span class="step-num">2</span> Classification
+                    </h3>
+                    <div class="form-grid cols-3">
+                        <div class="form-group">
+                            <label for="tirth-category">
+                                <i class="fas fa-th-large"></i> Category <span class="required">*</span>
+                            </label>
+                            <select id="tirth-category" required>
+                                <option value="">-- Select --</option>
+                                <option value="Shvetambara">Shvetambara</option>
+                                <option value="Digambara">Digambara</option>
+                                <option value="Both">Both</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="tirth-significance">
+                                <i class="fas fa-star"></i> Significance <span class="required">*</span>
+                            </label>
+                            <select id="tirth-significance" required>
+                                <option value="">-- Select --</option>
+                                <option value="Siddhakshetra">Siddhakshetra</option>
+                                <option value="Kalakshetra">Kalakshetra</option>
+                                <option value="Puranakshetra">Puranakshetra</option>
+                                <option value="Atishetra">Atishetra</option>
+                                <option value="Panch Tirth">Panch Tirth</option>
+                                <option value="Historical">Historical</option>
+                                <option value="Local Temple">Local Temple</option>
+                                <option value="Dharamshala">Dharamshala</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="tirth-deity">
+                                <i class="fas fa-praying-hands"></i> Deity
+                            </label>
+                            <input type="text" id="tirth-deity" placeholder="e.g. Shri Adinath">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3: Location -->
+                <div class="form-section">
+                    <h3 class="form-section-title">
+                        <span class="step-num">3</span> Location Details
+                    </h3>
+                    <div class="form-grid cols-2">
+                        <div class="form-group">
+                            <label for="tirth-location">
+                                <i class="fas fa-map-marker-alt"></i> Full Location <span class="required">*</span>
+                            </label>
+                            <input type="text" id="tirth-location" required placeholder="e.g. Palitana, Bhavnagar, Gujarat">
+                        </div>
+                        <div class="form-group">
+                            <label for="tirth-state">
+                                <i class="fas fa-map"></i> State <span class="required">*</span>
+                            </label>
+                            <select id="tirth-state" required>
+                                <option value="">-- Select State --</option>
+                                <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                <option value="Bihar">Bihar</option>
+                                <option value="Chhattisgarh">Chhattisgarh</option>
+                                <option value="Delhi">Delhi</option>
+                                <option value="Goa">Goa</option>
+                                <option value="Gujarat">Gujarat</option>
+                                <option value="Haryana">Haryana</option>
+                                <option value="Jharkhand">Jharkhand</option>
+                                <option value="Karnataka">Karnataka</option>
+                                <option value="Kerala">Kerala</option>
+                                <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                <option value="Maharashtra">Maharashtra</option>
+                                <option value="Odisha">Odisha</option>
+                                <option value="Punjab">Punjab</option>
+                                <option value="Rajasthan">Rajasthan</option>
+                                <option value="Tamil Nadu">Tamil Nadu</option>
+                                <option value="Telangana">Telangana</option>
+                                <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                <option value="Uttarakhand">Uttarakhand</option>
+                                <option value="West Bengal">West Bengal</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-grid cols-2">
+                        <div class="form-group">
+                            <label for="tirth-lat">
+                                <i class="fas fa-crosshairs"></i> Latitude
+                            </label>
+                            <input type="number" id="tirth-lat" step="0.0001" placeholder="e.g. 21.5167" min="-90" max="90">
+                        </div>
+                        <div class="form-group">
+                            <label for="tirth-lng">
+                                <i class="fas fa-crosshairs"></i> Longitude
+                            </label>
+                            <input type="number" id="tirth-lng" step="0.0001" placeholder="e.g. 71.8333" min="-180" max="180">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 4: Descriptions -->
+                <div class="form-section">
+                    <h3 class="form-section-title">
+                        <span class="step-num">4</span> Descriptions
+                    </h3>
+                    <div class="form-group">
+                        <label for="tirth-shortDesc">
+                            <i class="fas fa-comment"></i> Short Description <span class="required">*</span>
+                        </label>
+                        <input type="text" id="tirth-shortDesc" required maxlength="200"
+                            placeholder="Brief one-liner about the temple (max 200 chars)">
+                        <div class="form-hint-row">
+                            <span class="form-hint">Displayed in listing cards</span>
+                            <span class="char-count" id="shortDescCount">0 / 200</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="tirth-desc">
+                            <i class="fas fa-align-left"></i> Full Description <span class="required">*</span>
+                        </label>
+                        <textarea id="tirth-desc" rows="6" required
+                            placeholder="Detailed description of the temple, its history, significance..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Step 5: Images & Highlights -->
+                <div class="form-section">
+                    <h3 class="form-section-title">
+                        <span class="step-num">5</span> Images & Highlights
+                    </h3>
+                    <!-- Images dynamic list -->
+                    <div class="form-group">
+                        <label>
+                            <i class="fas fa-images"></i> Image URLs
+                        </label>
+                        <div class="dynamic-list" id="tirth-images-list">
+                            <div class="dynamic-item">
+                                <input type="url" placeholder="https://example.com/image1.jpg" class="dynamic-input">
+                                <button type="button" class="btn-icon btn-remove" onclick="removeDynamicItem(this)" title="Remove">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-sm btn-outline add-item-btn" onclick="addDynamicItem('tirth-images-list', 'url', 'https://example.com/image.jpg')">
+                            <i class="fas fa-plus"></i> Add Image URL
+                        </button>
+                    </div>
+
+                    <!-- Highlights dynamic list -->
+                    <div class="form-group">
+                        <label>
+                            <i class="fas fa-lightbulb"></i> Highlights
+                        </label>
+                        <div class="dynamic-list" id="tirth-highlights-list">
+                            <div class="dynamic-item">
+                                <input type="text" placeholder="e.g. 863+ marble-carved temples" class="dynamic-input">
+                                <button type="button" class="btn-icon btn-remove" onclick="removeDynamicItem(this)" title="Remove">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-sm btn-outline add-item-btn" onclick="addDynamicItem('tirth-highlights-list', 'text', 'e.g. Key highlight...')">
+                            <i class="fas fa-plus"></i> Add Highlight
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 6: Visitor Info -->
+                <div class="form-section">
+                    <h3 class="form-section-title">
+                        <span class="step-num">6</span> Visitor Information
+                    </h3>
+                    <div class="form-grid cols-2">
+                        <div class="form-group">
+                            <label for="tirth-timings">
+                                <i class="fas fa-clock"></i> Timings
+                            </label>
+                            <input type="text" id="tirth-timings" placeholder="e.g. 6:30 AM – 6:30 PM">
+                        </div>
+                        <div class="form-group">
+                            <label for="tirth-bestTime">
+                                <i class="fas fa-calendar-alt"></i> Best Time to Visit
+                            </label>
+                            <input type="text" id="tirth-bestTime" placeholder="e.g. October to March">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="tirth-howToReach">
+                            <i class="fas fa-route"></i> How to Reach
+                        </label>
+                        <textarea id="tirth-howToReach" rows="3"
+                            placeholder="Nearest airport, railway station, road connectivity..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Step 7: Dharamshala & Flags -->
+                <div class="form-section">
+                    <h3 class="form-section-title">
+                        <span class="step-num">7</span> Additional
+                    </h3>
+                    <div class="form-grid cols-2">
+                        <div class="form-group">
+                            <label class="toggle-label">
+                                <span><i class="fas fa-home"></i> Has Dharamshala</span>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="tirth-hasDharamshala" onchange="toggleDharamshalaInfo()">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="toggle-label">
+                                <span><i class="fas fa-star"></i> Featured</span>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="tirth-featured">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group hidden" id="dharamshalaInfoGroup">
+                        <label for="tirth-dharamshalaInfo">
+                            <i class="fas fa-info-circle"></i> Dharamshala Details
+                        </label>
+                        <textarea id="tirth-dharamshalaInfo" rows="2"
+                            placeholder="Details about available dharamshalas, facilities, trusts..."></textarea>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-success btn-lg">
+                        <i class="fas fa-save"></i> Save Tirth Sthal Entry
+                    </button>
+                    <button type="button" class="btn btn-ghost" onclick="resetTirthForm()">
+                        <i class="fas fa-undo"></i> Reset
+                    </button>
+                </div>
+            </form>
+
+            <!-- Saved Tirth List -->
+            <div class="saved-entries" id="tirthEntries">
+                <h3><i class="fas fa-list"></i> Saved Entries <span class="badge" id="tirthSavedCount">0</span></h3>
+                <div class="entries-list" id="tirthList">
+                    <p class="empty-state"><i class="fas fa-inbox"></i> No saved tirth entries yet.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== CALENDAR TAB ===== -->
+        <section class="tab-content" id="tab-calendar">
+            <div class="section-header">
+                <div>
+                    <h2><i class="fas fa-calendar-alt"></i> Add Calendar Event</h2>
+                    <p>Add festivals, parv days, and auspicious dates to the Jain calendar.</p>
+                </div>
+                <button class="btn btn-primary" onclick="resetCalendarForm()">
+                    <i class="fas fa-plus"></i> New Event
+                </button>
+            </div>
+
+            <form id="calendarForm" class="admin-form" onsubmit="return saveCalendar(event)">
+                <div class="form-grid cols-2">
+                    <div class="form-group">
+                        <label for="cal-date">
+                            <i class="fas fa-calendar-day"></i> Date <span class="required">*</span>
+                        </label>
+                        <input type="date" id="cal-date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cal-type">
+                            <i class="fas fa-tag"></i> Type <span class="required">*</span>
+                        </label>
+                        <select id="cal-type" required>
+                            <option value="">-- Select Type --</option>
+                            <option value="festival">Festival (त्यौहार)</option>
+                            <option value="parv">Parv (पर्व)</option>
+                            <option value="auspicious">Auspicious (शुभ दिन)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="cal-name">
+                        <i class="fas fa-heading"></i> Event Name <span class="required">*</span>
+                    </label>
+                    <input type="text" id="cal-name" placeholder="e.g. Mahavir Jayanti" required>
+                </div>
+                <div class="form-group">
+                    <label for="cal-desc">
+                        <i class="fas fa-align-left"></i> Description
+                    </label>
+                    <textarea id="cal-desc" rows="3"
+                        placeholder="Brief description of the event..."></textarea>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-success btn-lg">
+                        <i class="fas fa-save"></i> Save Calendar Event
+                    </button>
+                    <button type="button" class="btn btn-ghost" onclick="resetCalendarForm()">
+                        <i class="fas fa-undo"></i> Reset
+                    </button>
+                </div>
+            </form>
+
+            <!-- Saved Calendar List -->
+            <div class="saved-entries" id="calendarEntries">
+                <h3><i class="fas fa-list"></i> Saved Events <span class="badge" id="calendarSavedCount">0</span></h3>
+                <div class="entries-list" id="calendarList">
+                    <p class="empty-state"><i class="fas fa-inbox"></i> No saved calendar events yet.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== PREVIEW & DOWNLOAD TAB ===== -->
+        <section class="tab-content" id="tab-preview">
+            <div class="section-header">
+                <div>
+                    <h2><i class="fas fa-eye"></i> Preview & Download</h2>
+                    <p>Review your entries and download the merged JSON files.</p>
+                </div>
+            </div>
+
+            <div class="download-cards">
+                <!-- Bhajan Download Card -->
+                <div class="download-card">
+                    <div class="download-card-header bhajan-gradient">
+                        <i class="fas fa-music fa-3x"></i>
+                        <h3>Bhajan Data</h3>
+                    </div>
+                    <div class="download-card-body">
+                        <div class="stats-row">
+                            <div class="stat">
+                                <span class="stat-num" id="previewBhajanExisting">0</span>
+                                <span class="stat-label">Existing Entries</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-num highlight" id="previewBhajanNew">0</span>
+                                <span class="stat-label">New Entries</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-num" id="previewBhajanTotal">0</span>
+                                <span class="stat-label">Total</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary btn-lg btn-block" onclick="downloadBhajanJSON()" id="downloadBhajanBtn" disabled>
+                            <i class="fas fa-download"></i> Download jainsaar_full_data.json
+                        </button>
+                        <button class="btn btn-outline btn-sm btn-block" onclick="previewJSON('bhajan')">
+                            <i class="fas fa-code"></i> Preview JSON
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tirth Download Card -->
+                <div class="download-card">
+                    <div class="download-card-header tirth-gradient">
+                        <i class="fas fa-place-of-worship fa-3x"></i>
+                        <h3>Tirth Sthal Data</h3>
+                    </div>
+                    <div class="download-card-body">
+                        <div class="stats-row">
+                            <div class="stat">
+                                <span class="stat-num" id="previewTirthExisting">0</span>
+                                <span class="stat-label">Existing Entries</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-num highlight" id="previewTirthNew">0</span>
+                                <span class="stat-label">New Entries</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-num" id="previewTirthTotal">0</span>
+                                <span class="stat-label">Total</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary btn-lg btn-block" onclick="downloadTirthJSON()" id="downloadTirthBtn" disabled>
+                            <i class="fas fa-download"></i> Download tirth_sthal_data.json
+                        </button>
+                        <button class="btn btn-outline btn-sm btn-block" onclick="previewJSON('tirth')">
+                            <i class="fas fa-code"></i> Preview JSON
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+                <!-- Calendar Download Card -->
+                <div class="download-card">
+                    <div class="download-card-header calendar-gradient">
+                        <i class="fas fa-calendar-alt fa-3x"></i>
+                        <h3>Calendar Data</h3>
+                    </div>
+                    <div class="download-card-body">
+                        <div class="stats-row">
+                            <div class="stat">
+                                <span class="stat-num" id="previewCalendarExisting">0</span>
+                                <span class="stat-label">Existing Events</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-num highlight" id="previewCalendarNew">0</span>
+                                <span class="stat-label">New Events</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-num" id="previewCalendarTotal">0</span>
+                                <span class="stat-label">Total</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary btn-lg btn-block" onclick="downloadCalendarJSON()" id="downloadCalendarBtn" disabled>
+                            <i class="fas fa-download"></i> Download calendar_data.json
+                        </button>
+                        <button class="btn btn-outline btn-sm btn-block" onclick="previewJSON('calendar')">
+                            <i class="fas fa-code"></i> Preview JSON
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- JSON Preview Modal Area -->
+            <div class="json-preview-area hidden" id="jsonPreviewArea">
+                <div class="json-preview-header">
+                    <h3 id="jsonPreviewTitle">JSON Preview</h3>
+                    <div>
+                        <button class="btn btn-sm btn-outline" onclick="copyJSON()">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                        <button class="btn btn-sm btn-ghost" onclick="closePreview()">
+                            <i class="fas fa-times"></i> Close
+                        </button>
+                    </div>
+                </div>
+                <pre class="json-preview-code" id="jsonPreviewCode"></pre>
+            </div>
+        </section>
+    </main>
+
+    <!-- Toast Notification -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="js/admin.js"></script>
+</body>
+
+</html>
