@@ -3,10 +3,10 @@ Allow: /
 Allow: /js/
 Allow: /css/
 Allow: /img/
+Allow: /data/
 Disallow: /admin/
 Disallow: /private/
 Disallow: /temp/
-Disallow: /data/
 
 # Specific rules for Googlebot
 User-agent: Googlebot

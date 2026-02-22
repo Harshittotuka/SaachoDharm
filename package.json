@@ -2,9 +2,9 @@
   "name": "saachodharm",
   "version": "2.0.0",
   "description": "SaachoDharm - Jain Dharma, Bhajans, and Pilgrimage Sites Portal with SEO optimization",
-  "main": "js/sitemap-generator.js",
+  "main": "index.html",
   "scripts": {
-    "generate-sitemap": "node js/sitemap-generator.js",
+    "generate-sitemap": "py generate_sitemap.py",
     "build": "npm run generate-sitemap",
     "dev": "http-server -p 5000"
   },

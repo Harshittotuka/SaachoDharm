@@ -417,9 +417,108 @@
     // ---- Update page meta ----
     function updatePageMeta() {
         if (!currentTirth) return;
-        document.title = `${currentTirth.name} — Tirth Sthal | Saacho Dharm`;
-        const desc = document.querySelector('meta[name="description"]');
-        if (desc) desc.content = currentTirth.shortDescription;
+        const t = currentTirth;
+        const canonicalUrl = `https://www.saachodharm.com/tirth-sthal-detail.html?id=${encodeURIComponent(t.id)}`;
+        const title = `${t.name} | Jain ${t.type || 'Temple'} in ${t.state || 'India'} | SaachoDharm`;
+        const descriptionText = t.shortDescription || `${t.name} — Jain temple details including location, significance, timings, and travel information.`;
+        const imageUrl = (t.images && t.images.length > 0)
+            ? t.images[0]
+            : 'https://www.saachodharm.com/img/temple_alt.png';
+
+        document.title = title;
+
+        function setMeta(attrName, attrValue, content) {
+            let tag = document.head.querySelector(`meta[${attrName}="${attrValue}"]`);
+            if (!tag) {
+                tag = document.createElement('meta');
+                tag.setAttribute(attrName, attrValue);
+                document.head.appendChild(tag);
+            }
+            tag.setAttribute('content', content);
+        }
+
+        let canonical = document.head.querySelector('link[rel="canonical"]');
+        if (!canonical) {
+            canonical = document.createElement('link');
+            canonical.rel = 'canonical';
+            document.head.appendChild(canonical);
+        }
+        canonical.href = canonicalUrl;
+
+        setMeta('name', 'description', descriptionText);
+        setMeta('name', 'keywords', `${t.name}, Jain tirth, ${t.state}, Jain temple, ${t.type}`);
+        setMeta('property', 'og:type', 'article');
+        setMeta('property', 'og:title', title);
+        setMeta('property', 'og:description', descriptionText);
+        setMeta('property', 'og:url', canonicalUrl);
+        setMeta('property', 'og:image', imageUrl);
+        setMeta('name', 'twitter:title', title);
+        setMeta('name', 'twitter:description', descriptionText);
+        setMeta('name', 'twitter:image', imageUrl);
+
+        const oldPlaceSchema = document.getElementById('td-place-schema');
+        if (oldPlaceSchema) oldPlaceSchema.remove();
+        const oldBreadcrumbSchema = document.getElementById('td-breadcrumb-schema');
+        if (oldBreadcrumbSchema) oldBreadcrumbSchema.remove();
+
+        const placeSchema = {
+            '@context': 'https://schema.org',
+            '@type': 'Place',
+            name: t.name,
+            description: descriptionText,
+            image: imageUrl,
+            url: canonicalUrl,
+            address: {
+                '@type': 'PostalAddress',
+                addressRegion: t.state || 'India',
+                addressCountry: 'IN'
+            },
+            geo: t.coordinates
+                ? {
+                    '@type': 'GeoCoordinates',
+                    latitude: t.coordinates.lat,
+                    longitude: t.coordinates.lng
+                }
+                : undefined,
+            additionalType: t.type || 'Jain Temple'
+        };
+
+        const breadcrumbSchema = {
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+                {
+                    '@type': 'ListItem',
+                    position: 1,
+                    name: 'Home',
+                    item: 'https://www.saachodharm.com/'
+                },
+                {
+                    '@type': 'ListItem',
+                    position: 2,
+                    name: 'Tirth Sthal',
+                    item: 'https://www.saachodharm.com/tirth-sthal.html'
+                },
+                {
+                    '@type': 'ListItem',
+                    position: 3,
+                    name: t.name,
+                    item: canonicalUrl
+                }
+            ]
+        };
+
+        const placeScript = document.createElement('script');
+        placeScript.id = 'td-place-schema';
+        placeScript.type = 'application/ld+json';
+        placeScript.textContent = JSON.stringify(placeSchema);
+        document.head.appendChild(placeScript);
+
+        const breadcrumbScript = document.createElement('script');
+        breadcrumbScript.id = 'td-breadcrumb-schema';
+        breadcrumbScript.type = 'application/ld+json';
+        breadcrumbScript.textContent = JSON.stringify(breadcrumbSchema);
+        document.head.appendChild(breadcrumbScript);
     }
 
     // ---- Escape HTML ----

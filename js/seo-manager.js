@@ -18,6 +18,10 @@ class SEOManager {
     
     if (pathname.includes('bhajans.html') || pathname.includes('/bhajan/')) {
       this.handleBhajanPageSEO();
+    } else if (pathname.includes('tirth-sthal-detail.html')) {
+      this.handleTirthDetailSEO();
+    } else if (pathname.includes('tirth-sthal.html')) {
+      this.handleTirthListingSEO();
     } else if (pathname.includes('jain-bhajan-lyrics.html')) {
       this.handleBhajanLyricsSEO();
     } else if (pathname.includes('calendar.html')) {
@@ -136,6 +140,53 @@ class SEOManager {
         url: `${this.domain}/jain-bhajan-lyrics.html?id=${bhajanId}`
       });
     }
+  }
+
+  /**
+   * Handle SEO for Tirth Sthal listing page
+   */
+  handleTirthListingSEO() {
+    this.updateMetaTags({
+      title: 'Jain Tirth Sthals & Local Temples in India | SaachoDharm',
+      description: 'Explore Jain Tirth Sthals and local Jain temples across India with state-wise discovery, temple details, significance, timings, and how to reach.',
+      keywords: 'Jain Tirth Sthal, Jain temples in India, Jain local temples, Jain pilgrimage, Digambar temple, Shwetambar temple',
+      url: `${this.domain}/tirth-sthal.html`
+    });
+
+    this.addSchemaMarkup('CollectionPage', {
+      name: 'Jain Tirth Sthals & Local Temples',
+      description: 'State-wise collection of major Jain pilgrimage sites and local temples in India',
+      url: `${this.domain}/tirth-sthal.html`
+    });
+
+    this.addBreadcrumbSchema([
+      { name: 'Home', url: `${this.domain}/` },
+      { name: 'Tirth Sthal', url: `${this.domain}/tirth-sthal.html` }
+    ]);
+  }
+
+  /**
+   * Handle SEO for Tirth Sthal detail page
+   */
+  handleTirthDetailSEO() {
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('id');
+    const readableTitle = id
+      ? id.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase())
+      : 'Tirth Sthal Details';
+
+    this.updateMetaTags({
+      title: `${readableTitle} | Jain Temple Details | SaachoDharm`,
+      description: `Read detailed information for ${readableTitle} including history, significance, location, timings, and how to reach.`,
+      keywords: `${readableTitle}, Jain temple, Jain tirth, pilgrimage details, Jain history`,
+      url: `${this.domain}/tirth-sthal-detail.html${id ? `?id=${encodeURIComponent(id)}` : ''}`
+    });
+
+    this.addBreadcrumbSchema([
+      { name: 'Home', url: `${this.domain}/` },
+      { name: 'Tirth Sthal', url: `${this.domain}/tirth-sthal.html` },
+      { name: readableTitle, url: `${this.domain}/tirth-sthal-detail.html${id ? `?id=${encodeURIComponent(id)}` : ''}` }
+    ]);
   }
 
   /**

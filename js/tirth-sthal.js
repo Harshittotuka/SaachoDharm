@@ -44,6 +44,7 @@
             const res = await fetch('data/tirth_sthal_data.json');
             if (!res.ok) throw new Error('Failed to load data');
             allTirths = await res.json();
+            updateCollectionSEO();
             populateStateFilter();
             updateStats();
             initIndiaMap();
@@ -95,6 +96,67 @@
         if (discoveryNote) {
             discoveryNote.innerHTML = '<strong>More discoveries coming soon</strong> — we are continuously adding new tirth sthals and local temples.';
         }
+    }
+
+    function upsertMeta(attrName, attrValue, content) {
+        let tag = document.head.querySelector(`meta[${attrName}="${attrValue}"]`);
+        if (!tag) {
+            tag = document.createElement('meta');
+            tag.setAttribute(attrName, attrValue);
+            document.head.appendChild(tag);
+        }
+        tag.setAttribute('content', content);
+    }
+
+    function updateCollectionSEO() {
+        const total = allTirths.length;
+        const stateCount = new Set(allTirths.map(t => t.state)).size;
+        const localTempleCount = allTirths.filter(t => t.type === 'Local Temple').length;
+        const pageUrl = 'https://www.saachodharm.com/tirth-sthal.html';
+        const pageTitle = `Jain Tirth Sthals & Local Temples (${total}) in India | SaachoDharm`;
+        const pageDescription = `Explore ${total} Jain sacred places across ${stateCount} states, including ${localTempleCount} local temples. Discover Jain pilgrimage sites, timings, significance, and travel details.`;
+
+        document.title = pageTitle;
+        upsertMeta('name', 'description', pageDescription);
+        upsertMeta('name', 'keywords', 'Jain tirth sthal, Jain temples India, Jain local temples, Jain pilgrimage sites, Digambar temple, Shwetambar temple');
+        upsertMeta('property', 'og:title', pageTitle);
+        upsertMeta('property', 'og:description', pageDescription);
+        upsertMeta('property', 'og:url', pageUrl);
+        upsertMeta('name', 'twitter:title', pageTitle);
+        upsertMeta('name', 'twitter:description', pageDescription);
+
+        let canonical = document.head.querySelector('link[rel="canonical"]');
+        if (!canonical) {
+            canonical = document.createElement('link');
+            canonical.rel = 'canonical';
+            document.head.appendChild(canonical);
+        }
+        canonical.href = pageUrl;
+
+        const existingSchema = document.getElementById('ts-itemlist-schema');
+        if (existingSchema) existingSchema.remove();
+
+        const itemListElement = allTirths.slice(0, 30).map((t, index) => ({
+            '@type': 'ListItem',
+            position: index + 1,
+            name: t.name,
+            url: `https://www.saachodharm.com/tirth-sthal-detail.html?id=${encodeURIComponent(t.id)}`
+        }));
+
+        const schema = {
+            '@context': 'https://schema.org',
+            '@type': 'ItemList',
+            name: 'Jain Tirth Sthals and Local Temples',
+            numberOfItems: total,
+            itemListOrder: 'https://schema.org/ItemListOrderAscending',
+            itemListElement
+        };
+
+        const script = document.createElement('script');
+        script.id = 'ts-itemlist-schema';
+        script.type = 'application/ld+json';
+        script.textContent = JSON.stringify(schema);
+        document.head.appendChild(script);
     }
 
     // ---- Filter logic ----

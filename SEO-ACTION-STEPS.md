@@ -124,7 +124,7 @@ If you plan to add Hindi-language pages alongside English:
 | Task | Command |
 |------|---------|
 | Regenerate sitemap after adding bhajans | `py generate_sitemap.py` |
-| Generate sitemap via Node.js | `npm run generate-sitemap` |
+| Generate sitemap (npm script) | `npm run generate-sitemap` |
 | Start local dev server | `npm run dev` |
 
 ---
