@@ -1729,40 +1729,104 @@ h1, .about-hero h1 { font-family: 'Merriweather', serif; letter-spacing: -0.5px;
     .hamburger {
         display: flex;
         z-index: 999;
+        width: 40px;
+        height: 40px;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+    
+    .hamburger .bar {
+        position: absolute;
+        transition: transform 0.35s cubic-bezier(.4,.0,.2,1), opacity 0.25s ease, width 0.25s ease;
+    }
+    .hamburger .bar:nth-child(1) { transform: translateY(-8px); }
+    .hamburger .bar:nth-child(2) { transform: translateY(0); }
+    .hamburger .bar:nth-child(3) { transform: translateY(8px); }
+    
+    .hamburger.active .bar:nth-child(1) {
+        transform: rotate(45deg) translateY(0);
+        width: 22px;
+    }
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+        transform: translateX(10px);
+    }
+    .hamburger.active .bar:nth-child(3) {
+        transform: rotate(-45deg) translateY(0);
+        width: 22px;
     }
     
     .nav-menu {
         position: fixed;
-        left: -100%;
         top: 70px;
+        left: 0;
+        right: 0;
         flex-direction: column;
-        background-color: var(--bg-white);
-        width: 100%;
+        background: rgba(255, 255, 255, 0.97);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
         text-align: center;
-        transition: 0.3s;
-        box-shadow: 0 10px 27px var(--shadow-light);
-        padding: 20px 0;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        padding: 12px 0 20px;
         max-height: calc(100vh - 70px);
         overflow-y: auto;
+        border-bottom: 1px solid var(--border-light);
+        transform: translateY(-10px);
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: transform 0.35s cubic-bezier(.4,.0,.2,1),
+                    opacity 0.3s ease,
+                    visibility 0.3s ease;
     }
     
     .nav-menu.active {
-        left: 0;
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
     }
     
     .nav-menu li {
-        margin: 12px 0;
-        padding: 8px 0;
+        margin: 0;
+        padding: 0;
+        opacity: 0;
+        transform: translateY(-8px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
     }
     
+    .nav-menu.active li {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    .nav-menu.active li:nth-child(1) { transition-delay: 0.05s; }
+    .nav-menu.active li:nth-child(2) { transition-delay: 0.1s; }
+    .nav-menu.active li:nth-child(3) { transition-delay: 0.15s; }
+    .nav-menu.active li:nth-child(4) { transition-delay: 0.2s; }
+    .nav-menu.active li:nth-child(5) { transition-delay: 0.25s; }
+    .nav-menu.active li:nth-child(6) { transition-delay: 0.3s; }
+    
     .nav-link {
-        padding: 12px 20px;
-        display: block;
-        font-size: 1rem;
-        min-height: 44px;
+        padding: 14px 24px;
         display: flex;
         align-items: center;
         justify-content: center;
+        font-size: 1.02rem;
+        min-height: 48px;
+        border-radius: 12px;
+        margin: 2px 16px;
+        transition: background 0.25s ease, color 0.25s ease;
+    }
+    
+    .nav-link:hover,
+    .nav-link.active {
+        background: rgba(255,107,53,0.06);
+        color: var(--accent-saffron);
+    }
+    
+    .nav-link::after {
+        display: none;
     }
     
     .hero-title {
@@ -1860,7 +1924,11 @@ h1, .about-hero h1 { font-family: 'Merriweather', serif; letter-spacing: -0.5px;
     .bar {
         width: 20px;
         height: 2.5px;
-        margin: 4px 0;
+    }
+    
+    .nav-menu {
+        top: 60px;
+        max-height: calc(100vh - 60px);
     }
     
     .hero {
@@ -2105,6 +2173,216 @@ h1, .about-hero h1 { font-family: 'Merriweather', serif; letter-spacing: -0.5px;
     
     .theme-swatch .label {
         font-size: 0.65rem;
+    }
+}
+
+/* =========================================
+   TIRTH STHAL PROMO SECTION (Homepage/About)
+   ========================================= */
+.tirth-promo {
+    padding: 70px 0;
+    background: linear-gradient(180deg, var(--bg-white) 0%, var(--bg-light-beige) 100%);
+    position: relative;
+    overflow: hidden;
+}
+.tirth-promo::before {
+    content: '🛕';
+    position: absolute;
+    top: 50%;
+    right: -60px;
+    transform: translateY(-50%);
+    font-size: 16rem;
+    opacity: 0.03;
+    pointer-events: none;
+}
+
+.tirth-promo .section-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.tirth-promo-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,107,53,0.08);
+    color: var(--accent-saffron);
+    padding: 6px 18px;
+    border-radius: 999px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    margin-bottom: 14px;
+    border: 1px solid rgba(255,107,53,0.14);
+    letter-spacing: 0.03em;
+}
+
+.tirth-promo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 36px;
+}
+
+.tirth-promo-card {
+    background: var(--bg-white);
+    border: 1px solid var(--border-light);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+}
+.tirth-promo-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 40px rgba(255,107,53,0.1);
+}
+
+.tirth-promo-card-img {
+    height: 180px;
+    background: linear-gradient(135deg, var(--bg-light-beige), var(--bg-dark-beige));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+.tirth-promo-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.tirth-promo-card-img .tirth-promo-icon {
+    font-size: 3rem;
+    opacity: 0.6;
+    color: var(--accent-saffron);
+}
+.tirth-promo-card-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: rgba(255,107,53,0.9);
+    color: #fff;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 600;
+}
+
+.tirth-promo-card-body {
+    padding: 18px 20px 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+.tirth-promo-card-body h3 {
+    font-family: 'Merriweather', serif;
+    font-size: 1.05rem;
+    color: var(--text-dark);
+    margin-bottom: 6px;
+}
+.tirth-promo-card-body p {
+    color: var(--text-light);
+    font-size: 0.88rem;
+    line-height: 1.55;
+    margin-bottom: 12px;
+    flex: 1;
+}
+.tirth-promo-card-loc {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.82rem;
+    color: var(--accent-saffron);
+    font-weight: 500;
+}
+.tirth-promo-card-loc i {
+    font-size: 0.78rem;
+}
+
+/* Tirth promo stats strip */
+.tirth-promo-stats {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+}
+.tirth-promo-stat {
+    text-align: center;
+    padding: 14px 20px;
+    background: var(--bg-white);
+    border: 1px solid var(--border-light);
+    border-radius: 14px;
+    min-width: 120px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.tirth-promo-stat:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(255,107,53,0.08);
+}
+.tirth-promo-stat-num {
+    font-family: 'Merriweather', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--accent-saffron);
+    line-height: 1;
+    margin-bottom: 4px;
+}
+.tirth-promo-stat-label {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    font-weight: 500;
+}
+
+/* Tirth promo CTA */
+.tirth-promo-cta {
+    text-align: center;
+}
+.tirth-promo-cta .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 32px;
+    font-size: 1rem;
+    border-radius: 14px;
+}
+
+/* Tirth promo responsive */
+@media (max-width: 900px) {
+    .tirth-promo-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    .tirth-promo-grid .tirth-promo-card:nth-child(3) {
+        grid-column: 1 / -1;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+}
+@media (max-width: 600px) {
+    .tirth-promo {
+        padding: 50px 0;
+    }
+    .tirth-promo-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    .tirth-promo-grid .tirth-promo-card:nth-child(3) {
+        max-width: 100%;
+    }
+    .tirth-promo-card-img {
+        height: 150px;
+    }
+    .tirth-promo-stats {
+        gap: 12px;
+    }
+    .tirth-promo-stat {
+        min-width: 90px;
+        padding: 12px 14px;
+    }
+    .tirth-promo-stat-num {
+        font-size: 1.4rem;
     }
 }
 

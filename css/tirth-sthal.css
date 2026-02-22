@@ -1164,6 +1164,21 @@ body.ts-map-overlay-open {
         padding: 10px 13px;
         font-size: 0.85rem;
     }
+    .ts-map-fab span {
+        display: none;
+    }
+    .ts-map-fab {
+        width: 44px;
+        height: 44px;
+        padding: 0;
+        border-radius: 50%;
+        align-items: center;
+        justify-content: center;
+        gap: 0;
+    }
+    .ts-map-fab i {
+        font-size: 1.1rem;
+    }
     .ts-map-modal {
         width: calc(100vw - 22px);
     }
