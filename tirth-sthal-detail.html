@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JZ4D7HKKBX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-JZ4D7HKKBX');
+    </script>
+    <meta charset="UTF-8">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Detailed information about this Jain Tirth Sthal — photos, history, how to reach, timings and visitor insights.">
+    <meta name="author" content="SaachoDharm">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+
+    <title>Tirth Sthal Details | Saacho Dharm</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/tirth-sthal.css">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="img/logo-navbar.png" alt="Saacho Dharm Logo" class="nav-logo-img">
+                <span>Saacho Dharm</span>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="bhajans.html" class="nav-link">Bhajans</a>
+                </li>
+                <li class="nav-item">
+                    <a href="tirth-sthal.html" class="nav-link active">Tirth Sthal</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="calendar.html" class="nav-link">Calendar</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Detail Hero -->
+    <section class="td-hero" id="td-hero">
+        <div class="td-hero-bg">
+            <div class="td-hero-img" id="td-hero-img"></div>
+            <div class="td-hero-overlay"></div>
+        </div>
+        <div class="td-hero-content">
+            <a href="tirth-sthal.html" class="td-back-link fade-in">
+                <i class="fas fa-arrow-left"></i>
+                <span>All Tirth Sthals</span>
+            </a>
+            <div class="td-hero-badges fade-in" id="td-hero-badges"></div>
+            <h1 class="td-hero-title fade-in" id="td-hero-title">Loading...</h1>
+            <p class="td-hero-name-hindi fade-in" id="td-hero-hindi"></p>
+            <div class="td-hero-location fade-in" id="td-hero-location">
+                <i class="fas fa-map-marker-alt"></i>
+                <span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detail Content -->
+    <section class="td-content">
+        <div class="container">
+            <div class="td-layout">
+                <!-- Main Content -->
+                <div class="td-main">
+                    <!-- About Section -->
+                    <div class="td-card td-about" id="td-about">
+                        <h2><i class="fas fa-book-open"></i> About this Tirth Sthal</h2>
+                        <p id="td-description"></p>
+                    </div>
+
+                    <!-- Highlights -->
+                    <div class="td-card td-highlights">
+                        <h2><i class="fas fa-star"></i> Highlights</h2>
+                        <ul id="td-highlights-list"></ul>
+                    </div>
+
+                    <!-- Photo Gallery -->
+                    <div class="td-card td-gallery">
+                        <h2><i class="fas fa-images"></i> Photo Gallery</h2>
+                        <div class="td-gallery-grid" id="td-gallery-grid"></div>
+                    </div>
+
+                    <!-- Comments Section -->
+                    <div class="td-card td-comments">
+                        <h2><i class="fas fa-comments"></i> Visitor Comments</h2>
+                        <div class="td-comment-form">
+                            <div class="td-comment-input-row">
+                                <input type="text" id="td-comment-name" placeholder="Your name" maxlength="50">
+                                <div class="td-rating-input" id="td-rating-input">
+                                    <span class="td-rating-star" data-star="1"><i class="far fa-star"></i></span>
+                                    <span class="td-rating-star" data-star="2"><i class="far fa-star"></i></span>
+                                    <span class="td-rating-star" data-star="3"><i class="far fa-star"></i></span>
+                                    <span class="td-rating-star" data-star="4"><i class="far fa-star"></i></span>
+                                    <span class="td-rating-star" data-star="5"><i class="far fa-star"></i></span>
+                                </div>
+                            </div>
+                            <textarea id="td-comment-text" placeholder="Share your experience visiting this Tirth Sthal..." rows="3" maxlength="500"></textarea>
+                            <button class="btn btn-primary td-comment-submit" id="td-comment-submit">
+                                <i class="fas fa-paper-plane"></i> Post Comment
+                            </button>
+                        </div>
+                        <div class="td-comments-list" id="td-comments-list">
+                            <!-- Comments loaded dynamically -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="td-sidebar">
+                    <!-- Quick Info -->
+                    <div class="td-card td-info-card">
+                        <h3><i class="fas fa-info-circle"></i> Quick Info</h3>
+                        <div class="td-info-list" id="td-info-list"></div>
+                    </div>
+
+                    <!-- Map -->
+                    <div class="td-card td-map-card">
+                        <h3><i class="fas fa-map-marked-alt"></i> Location</h3>
+                        <div class="td-map" id="td-map"></div>
+                        <a class="td-directions-btn" id="td-directions-btn" href="#" target="_blank" rel="noopener">
+                            <i class="fas fa-directions"></i> Get Directions
+                        </a>
+                    </div>
+
+                    <!-- How to Reach -->
+                    <div class="td-card td-reach-card">
+                        <h3><i class="fas fa-route"></i> How to Reach</h3>
+                        <p id="td-how-to-reach"></p>
+                    </div>
+
+                    <!-- Share -->
+                    <div class="td-card td-share-card">
+                        <h3><i class="fas fa-share-alt"></i> Share</h3>
+                        <div class="td-share-buttons">
+                            <button class="td-share-btn td-share-whatsapp" id="td-share-whatsapp" title="Share on WhatsApp">
+                                <i class="fab fa-whatsapp"></i>
+                            </button>
+                            <button class="td-share-btn td-share-twitter" id="td-share-twitter" title="Share on Twitter">
+                                <i class="fab fa-twitter"></i>
+                            </button>
+                            <button class="td-share-btn td-share-facebook" id="td-share-facebook" title="Share on Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </button>
+                            <button class="td-share-btn td-share-copy" id="td-share-copy" title="Copy Link">
+                                <i class="fas fa-link"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Image Lightbox -->
+    <div class="td-lightbox" id="td-lightbox">
+        <button class="td-lightbox-close" id="td-lightbox-close"><i class="fas fa-times"></i></button>
+        <button class="td-lightbox-prev" id="td-lightbox-prev"><i class="fas fa-chevron-left"></i></button>
+        <button class="td-lightbox-next" id="td-lightbox-next"><i class="fas fa-chevron-right"></i></button>
+        <div class="td-lightbox-content">
+            <img id="td-lightbox-img" src="" alt="">
+        </div>
+        <div class="td-lightbox-counter" id="td-lightbox-counter"></div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer-antique">
+        <div class="footer-ornament-top">· · ✦ · ·</div>
+        <div class="footer-antique-body">
+            <div class="container">
+                <div class="footer-antique-grid">
+                    <div class="footer-brand">
+                        <a class="footer-logo" href="index.html"><img src="img/logo-navbar.png" alt="Saacho Dharm Logo" class="footer-logo-img"><span>Saacho Dharm</span></a>
+                        <p class="footer-tagline">Preserving Jain bhajans, teachings and references for spiritual learning.</p>
+                        <div class="footer-verse">
+                            <span class="verse-mark">☸</span>
+                            <p class="verse-hindi">अहिंसा परमो धर्मः</p>
+                            <p class="verse-eng">Non-violence is the supreme religion</p>
+                        </div>
+                        <div class="footer-social">
+                            <a href="https://wa.me/919829027413" aria-label="WhatsApp" title="+91 98290 27413"><i class="fab fa-whatsapp"></i></a>
+                            <a href="https://www.instagram.com/saacho_dharm/" target="_blank" rel="noopener" aria-label="Instagram" title="@saacho_dharm"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-links">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="bhajans.html">Bhajans</a></li>
+                            <li><a href="tirth-sthal.html">Tirth Sthal</a></li>
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="calendar.html">Calendar</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-contact">
+                        <h4>Get in Touch</h4>
+                        <form class="footer-antique-form" action="#" onsubmit="event.preventDefault(); alert('Thank you — message sent (demo)'); this.reset();">
+                            <input type="text" name="name" placeholder="Your name" required>
+                            <input type="email" name="email" placeholder="Your email" required>
+                            <textarea name="message" placeholder="Your message" rows="3" required></textarea>
+                            <button type="submit">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-antique-bottom">
+            <div class="container">
+                <p>&copy; 2026 Saacho Dharm. All rights reserved.</p>
+                <p>Made with devotion · <a href="https://www.saachodharm.com" target="_blank">saachodharm.com</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/tirth-sthal-detail.js"></script>
+    <script src="js/seo-manager.js"></script>
+    <script src="js/theme-switcher.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
