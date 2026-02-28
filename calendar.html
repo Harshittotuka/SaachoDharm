@@ -15,6 +15,11 @@
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Jain Panchang">
+    <meta name="theme-color" content="#ff6b35">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Jain Panchang — Interactive Jain calendar with Tithis, Parvs, festivals, Chaumasa dates, Paryushana and Dashlakshan. Navigate months and discover sacred days.">
     <meta name="keywords" content="Jain calendar, Jain Panchang, Tithi, Parv, Paryushana, Dashlakshan, Chaumasa, Jain festivals, Ashtami, Chaturdashi, Purnima, Amavasya">
@@ -102,6 +107,27 @@
             </p>
         </div>
     </header>
+
+    <!-- Install App Banner (shown only on mobile when installable) -->
+    <div class="pwa-install-bar" id="pwaInstallBar">
+        <div class="pwa-install-inner">
+            <div class="pwa-install-info">
+                <img src="img/icon.jpeg" alt="App Icon" class="pwa-install-icon">
+                <div>
+                    <strong>Jain Panchang</strong>
+                    <span>Install app for quick access</span>
+                </div>
+            </div>
+            <div class="pwa-install-actions">
+                <button class="pwa-install-btn" id="pwaInstallBtn">
+                    <i class="fas fa-download"></i> Install App
+                </button>
+                <button class="pwa-dismiss-btn" id="pwaDismissBtn" aria-label="Dismiss">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+    </div>
 
     <main class="container">
 
@@ -234,5 +260,6 @@
     <script src="js/theme-switcher.js"></script>
     <script src="js/script.js"></script>
     <script src="js/jain-calendar.js"></script>
+    <script src="js/pwa-install.js"></script>
 </body>
 </html>

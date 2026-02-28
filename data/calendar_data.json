@@ -239,102 +239,739 @@
     "type": "parv",
     "desc": "Dashami tithi observance."
   },
+
   {
-    "date": "2026-01-14",
-    "name": "Makar Sankranti",
+    "date": "2026-01-01",
+    "name": "New Year's Day",
     "type": "auspicious",
-    "desc": "Sun transitions — auspicious charity day."
+    "desc": "Paush Shukla 13 — New Year celebration."
   },
   {
-    "date": "2026-01-29",
+    "date": "2026-01-02",
+    "name": "Gyan Abhinandan Nath",
+    "type": "parv",
+    "desc": "Paush Shukla 14 — Kevalgyan Kalyanak of Bhagwan Abhinandannath."
+  },
+  {
+    "date": "2026-01-03",
+    "name": "Gyan Dharmanath",
+    "type": "parv",
+    "desc": "Paush Shukla 15 — Kevalgyan Kalyanak of Bhagwan Dharmanath."
+  },
+  {
+    "date": "2026-01-11",
+    "name": "Gyan Shreyansnath",
+    "type": "parv",
+    "desc": "Magh Krishna 8 — Kevalgyan Kalyanak of Bhagwan Shreyansnath."
+  },
+  {
+    "date": "2026-01-14",
+    "name": "Makar Sankranti / Janm-Tap Ajitnath",
+    "type": "auspicious",
+    "desc": "Magh Krishna 11 — Auspicious Sun transition & Janma-Tap Kalyanak of Bhagwan Ajitnath."
+  },
+  {
+    "date": "2026-01-15",
+    "name": "Janm-Tap Sheetalnath",
+    "type": "parv",
+    "desc": "Magh Krishna 12 — Janma-Tap Kalyanak of Bhagwan Sheetalnath."
+  },
+  {
+    "date": "2026-01-17",
+    "name": "Moksh Adinath",
+    "type": "parv",
+    "desc": "Magh Krishna 14 — Moksha Kalyanak of Bhagwan Adinath (Rishabhdeva)."
+  },
+  {
+    "date": "2026-01-18",
     "name": "Mauni Amavasya",
     "type": "auspicious",
-    "desc": "Silent meditation and fasting day."
+    "desc": "Magh Krishna 30 — Day of silent meditation and fasting."
+  },
+  {
+    "date": "2026-01-22",
+    "name": "Janm-Tap Bimalnath",
+    "type": "parv",
+    "desc": "Magh Shukla 4 — Janma-Tap Kalyanak of Bhagwan Vimalnath."
+  },
+  {
+    "date": "2026-01-23",
+    "name": "Acharya Kundkund Dev Diwas",
+    "type": "parv",
+    "desc": "Magh Shukla 5 — Commemoration of the great Acharya Kundkund."
+  },
+  {
+    "date": "2026-01-26",
+    "name": "Republic Day",
+    "type": "auspicious",
+    "desc": "Magh Shukla 8 — National holiday."
+  },
+  {
+    "date": "2026-01-30",
+    "name": "Janm-Tap Abhinandan Nath",
+    "type": "parv",
+    "desc": "Magh Shukla 12+13 — Janma-Tap Kalyanak of Bhagwan Abhinandannath."
+  },
+
+  {
+    "date": "2026-02-05",
+    "name": "Moksh Padmaprabhu",
+    "type": "parv",
+    "desc": "Phalgun Krishna 4 — Moksha Kalyanak of Bhagwan Padmaprabhu."
+  },
+  {
+    "date": "2026-02-07",
+    "name": "Gyan Suparshvanath",
+    "type": "parv",
+    "desc": "Phalgun Krishna 6 — Kevalgyan Kalyanak of Bhagwan Suparshvanath."
+  },
+  {
+    "date": "2026-02-08",
+    "name": "Gyan Chandraprabhu / Moksh Suparshvanath",
+    "type": "parv",
+    "desc": "Phalgun Krishna 7 — Kevalgyan Kalyanak of Chandraprabhu & Moksha of Suparshvanath."
+  },
+  {
+    "date": "2026-02-13",
+    "name": "Janm-Tap Shreyansnath / Gyan Adinath",
+    "type": "parv",
+    "desc": "Phalgun Krishna 11 — Janma-Tap of Shreyansnath & Kevalgyan of Adinath."
+  },
+  {
+    "date": "2026-02-14",
+    "name": "Moksh Munisuvratnath",
+    "type": "parv",
+    "desc": "Phalgun Krishna 12 — Moksha Kalyanak of Bhagwan Munisuvratnath."
+  },
+  {
+    "date": "2026-02-15",
+    "name": "Maha Shivratri",
+    "type": "auspicious",
+    "desc": "Phalgun Krishna 13 — Auspicious night of devotion."
+  },
+  {
+    "date": "2026-02-16",
+    "name": "Janm-Tap Vasupujya",
+    "type": "parv",
+    "desc": "Phalgun Krishna 14 — Janma-Tap Kalyanak of Bhagwan Vasupujya."
+  },
+  {
+    "date": "2026-02-17",
+    "name": "Amavasya",
+    "type": "auspicious",
+    "desc": "Phalgun Krishna 30 — New moon day of Phalgun."
+  },
+  {
+    "date": "2026-02-22",
+    "name": "Moksh Mallinath",
+    "type": "parv",
+    "desc": "Phalgun Shukla 5+6 — Moksha Kalyanak of Bhagwan Mallinath."
+  },
+  {
+    "date": "2026-02-23",
+    "name": "Moksh Chandraprabhu",
+    "type": "parv",
+    "desc": "Phalgun Shukla 7 — Moksha Kalyanak of Bhagwan Chandraprabhu."
+  },
+  {
+    "date": "2026-02-24",
+    "name": "Garbh Sambhavnath",
+    "type": "parv",
+    "desc": "Phalgun Shukla 8 — Garbha Kalyanak of Bhagwan Sambhavnath."
+  },
+
+  {
+    "date": "2026-03-02",
+    "name": "Holi",
+    "type": "festival",
+    "desc": "Phalgun Shukla 14 — Festival of colors and community celebrations."
   },
   {
     "date": "2026-03-03",
-    "name": "Holi Purnima",
+    "name": "Dhulandi",
     "type": "festival",
-    "desc": "Falgun Purnima — celebration of colors."
+    "desc": "Phalgun Shukla 15 — Day after Holi celebrations."
+  },
+  {
+    "date": "2026-03-07",
+    "name": "Moksh Anantnath / Gyan Parshvanath",
+    "type": "parv",
+    "desc": "Chaitra Krishna 4 — Moksha of Anantnath & Kevalgyan of Parshvanath."
+  },
+  {
+    "date": "2026-03-12",
+    "name": "Janm-Tap Adinath",
+    "type": "parv",
+    "desc": "Chaitra Krishna 9 — Janma-Tap Kalyanak of Bhagwan Adinath (Rishabhdeva)."
+  },
+  {
+    "date": "2026-03-18",
+    "name": "Amavasya / Gyan Anantnath",
+    "type": "auspicious",
+    "desc": "Chaitra Krishna 30 — New moon & Kevalgyan Kalyanak of Bhagwan Anantnath."
+  },
+  {
+    "date": "2026-03-19",
+    "name": "Chaitra Shukla Pratipada (Nav Varsh 2083)",
+    "type": "festival",
+    "desc": "Chaitra Shukla 1 — Hindu/Jain New Year (Vikram Samvat 2083)."
   },
   {
     "date": "2026-03-20",
-    "name": "Chaitra Shukla Pratipada",
-    "type": "festival",
-    "desc": "Nav Varsh — Jain New Year celebration."
+    "name": "Cheti Chand",
+    "type": "auspicious",
+    "desc": "Chaitra Shukla 2 — Sindhi New Year celebration."
   },
   {
-    "date": "2026-03-29",
+    "date": "2026-03-21",
+    "name": "Gyan Kunthunath",
+    "type": "parv",
+    "desc": "Chaitra Shukla 3 — Kevalgyan Kalyanak of Bhagwan Kunthunath."
+  },
+  {
+    "date": "2026-03-23",
+    "name": "Moksh Ajitnath",
+    "type": "parv",
+    "desc": "Chaitra Shukla 5 — Moksha Kalyanak of Bhagwan Ajitnath."
+  },
+  {
+    "date": "2026-03-24",
+    "name": "Moksh Sambhavnath",
+    "type": "parv",
+    "desc": "Chaitra Shukla 6 — Moksha Kalyanak of Bhagwan Sambhavnath."
+  },
+  {
+    "date": "2026-03-26",
+    "name": "Ram Navami",
+    "type": "festival",
+    "desc": "Chaitra Shukla 8 — Celebration of Lord Rama's birth."
+  },
+  {
+    "date": "2026-03-28",
+    "name": "Janm-Tap-Gyan-Moksh Sumatinath",
+    "type": "parv",
+    "desc": "Chaitra Shukla 11 — All four Kalyanaks of Bhagwan Sumatinath."
+  },
+  {
+    "date": "2026-03-30",
+    "name": "Mahavir Janma Kalyanak",
+    "type": "festival",
+    "desc": "Chaitra Shukla 13 — Sacred birth celebration of Bhagwan Mahavira, the 24th Tirthankara."
+  },
+  {
+    "date": "2026-03-31",
     "name": "Mahavir Jayanti",
     "type": "festival",
-    "desc": "Birth anniversary of Bhagwan Mahavira — the 24th Tirthankara. Abhishek and processions at all Jain temples."
+    "desc": "Chaitra Shukla 14 — Grand processions and abhishek at all Jain temples for Bhagwan Mahavira's birth anniversary."
+  },
+
+  {
+    "date": "2026-04-01",
+    "name": "Gyan Padmaprabhu",
+    "type": "parv",
+    "desc": "Chaitra Shukla 15 — Kevalgyan Kalyanak of Bhagwan Padmaprabhu."
+  },
+  {
+    "date": "2026-04-02",
+    "name": "Shodhakaran Vrat Samapan",
+    "type": "parv",
+    "desc": "Vaishakha Krishna 1 — Completion of the purification vow."
+  },
+  {
+    "date": "2026-04-03",
+    "name": "Good Friday / Garbh Parshvanath",
+    "type": "parv",
+    "desc": "Vaishakha Krishna 2 — Garbha Kalyanak of Bhagwan Parshvanath."
+  },
+  {
+    "date": "2026-04-11",
+    "name": "Gyan Munisuvrat",
+    "type": "parv",
+    "desc": "Vaishakha Krishna 9 — Kevalgyan Kalyanak of Bhagwan Munisuvratnath."
+  },
+  {
+    "date": "2026-04-12",
+    "name": "Janm-Tap Munisuvratnath",
+    "type": "parv",
+    "desc": "Vaishakha Krishna 10 — Janma-Tap Kalyanak of Bhagwan Munisuvratnath."
+  },
+  {
+    "date": "2026-04-14",
+    "name": "Ambedkar Jayanti",
+    "type": "auspicious",
+    "desc": "Vaishakha Krishna 12 — National holiday."
+  },
+  {
+    "date": "2026-04-16",
+    "name": "Moksh Naminath",
+    "type": "parv",
+    "desc": "Vaishakha Krishna 14 — Moksha Kalyanak of Bhagwan Naminath."
+  },
+  {
+    "date": "2026-04-17",
+    "name": "Amavasya",
+    "type": "auspicious",
+    "desc": "Vaishakha Krishna 30 — New moon day of Vaishakha."
+  },
+  {
+    "date": "2026-04-18",
+    "name": "Janm-Tap-Moksh Kunthunath",
+    "type": "parv",
+    "desc": "Vaishakha Shukla 1 — Janma-Tap-Moksha Kalyanak of Bhagwan Kunthunath."
   },
   {
     "date": "2026-04-19",
-    "name": "Akshaya Tritiya",
+    "name": "Akshaya Tritiya / Bhagwan Parshuram Jayanti",
     "type": "festival",
-    "desc": "Rishabhdeva's first Parna — eternal merit day."
+    "desc": "Vaishakha Shukla 2+3 — Lord Rishabhdeva broke his first fast with sugarcane juice — day of eternal merit."
   },
   {
-    "date": "2026-05-31",
-    "name": "Nirjala Ekadashi",
+    "date": "2026-04-22",
+    "name": "Garbh-Moksh Abhinandan",
     "type": "parv",
-    "desc": "Waterless Ekadashi fasting."
+    "desc": "Vaishakha Shukla 6 — Garbha & Moksha Kalyanak of Bhagwan Abhinandannath."
   },
   {
-    "date": "2026-06-29",
-    "name": "Guru Purnima / Chaumasa Start",
+    "date": "2026-04-24",
+    "name": "Garbh Dharmanath",
+    "type": "parv",
+    "desc": "Vaishakha Shukla 8 — Garbha Kalyanak of Bhagwan Dharmanath."
+  },
+  {
+    "date": "2026-04-26",
+    "name": "Gyan Mahavir Swami",
+    "type": "parv",
+    "desc": "Vaishakha Shukla 10 — Kevalgyan Kalyanak of Bhagwan Mahavira."
+  },
+
+  {
+    "date": "2026-05-16",
+    "name": "Amavasya",
+    "type": "auspicious",
+    "desc": "Jyeshtha Krishna 30 — New moon day of Jyeshtha."
+  },
+
+  {
+    "date": "2026-06-08",
+    "name": "Garbh Shreyansnath",
+    "type": "parv",
+    "desc": "Jyeshtha Krishna 8 — Garbha Kalyanak of Bhagwan Shreyansnath."
+  },
+  {
+    "date": "2026-06-10",
+    "name": "Garbh Vimalnath",
+    "type": "parv",
+    "desc": "Jyeshtha Krishna 10 — Garbha Kalyanak of Bhagwan Vimalnath."
+  },
+  {
+    "date": "2026-06-12",
+    "name": "Janm-Tap Anantnath",
+    "type": "parv",
+    "desc": "Jyeshtha Krishna 12 — Janma-Tap Kalyanak of Bhagwan Anantnath."
+  },
+  {
+    "date": "2026-06-14",
+    "name": "Janm-Tap-Moksh Shantinath",
+    "type": "parv",
+    "desc": "Jyeshtha Krishna 14 — Janma-Tap-Moksha Kalyanak of Bhagwan Shantinath."
+  },
+  {
+    "date": "2026-06-15",
+    "name": "Amavasya / Garbh Ajitnath",
+    "type": "auspicious",
+    "desc": "Jyeshtha Krishna 30 — New moon & Garbha Kalyanak of Bhagwan Ajitnath."
+  },
+  {
+    "date": "2026-06-17",
+    "name": "Maharana Pratap Jayanti",
+    "type": "auspicious",
+    "desc": "Jyeshtha Shukla 3 — Birth anniversary of Maharana Pratap."
+  },
+  {
+    "date": "2026-06-18",
+    "name": "Moksh Dharmanath",
+    "type": "parv",
+    "desc": "Jyeshtha Shukla 4 — Moksha Kalyanak of Bhagwan Dharmanath."
+  },
+  {
+    "date": "2026-06-19",
+    "name": "Shrut Panchami",
+    "type": "parv",
+    "desc": "Jyeshtha Shukla 5 — Sacred day honouring Jain scriptures (Agamas)."
+  },
+  {
+    "date": "2026-06-26",
+    "name": "Janm-Tap Suparshvanath",
+    "type": "parv",
+    "desc": "Ashadha Krishna 12 — Janma-Tap Kalyanak of Bhagwan Suparshvanath."
+  },
+
+  {
+    "date": "2026-07-01",
+    "name": "Garbh Adinath",
+    "type": "parv",
+    "desc": "Ashadha Krishna 2 — Garbha Kalyanak of Bhagwan Adinath (Rishabhdeva)."
+  },
+  {
+    "date": "2026-07-06",
+    "name": "Moksh Vimalnath / Garbh Vasupujya",
+    "type": "parv",
+    "desc": "Ashadha Krishna 6 — Moksha of Vimalnath & Garbha of Vasupujya."
+  },
+  {
+    "date": "2026-07-09",
+    "name": "Janm-Tap Naminath",
+    "type": "parv",
+    "desc": "Ashadha Krishna 9+10 — Janma-Tap Kalyanak of Bhagwan Naminath."
+  },
+  {
+    "date": "2026-07-14",
+    "name": "Amavasya",
+    "type": "auspicious",
+    "desc": "Ashadha Krishna 30 — New moon day of Ashadha."
+  },
+  {
+    "date": "2026-07-19",
+    "name": "Garbh Mahavir Swami",
+    "type": "parv",
+    "desc": "Ashadha Shukla 6 — Garbha Kalyanak of Bhagwan Mahavira."
+  },
+  {
+    "date": "2026-07-21",
+    "name": "Moksh Neminath / Ashtanhika Parv Begins",
     "type": "festival",
-    "desc": "Chaturmas begins — monks stay at one place."
+    "desc": "Ashadha Shukla 8 — Moksha of Bhagwan Neminath & start of eight-day Ashtanhika Parv."
+  },
+  {
+    "date": "2026-07-29",
+    "name": "Ashtanhika Parv Samapan",
+    "type": "festival",
+    "desc": "Conclusion of the sacred eight-day Ashtanhika Parv."
+  },
+  {
+    "date": "2026-07-30",
+    "name": "Veer Shashan Jayanti",
+    "type": "festival",
+    "desc": "Shravan Krishna 1 — Celebration of the establishment of Bhagwan Mahavira's order."
+  },
+  {
+    "date": "2026-07-31",
+    "name": "Garbh Munisuvratnath",
+    "type": "parv",
+    "desc": "Shravan Krishna 2 — Garbha Kalyanak of Bhagwan Munisuvratnath."
+  },
+
+  {
+    "date": "2026-08-08",
+    "name": "Garbh Kunthunath",
+    "type": "parv",
+    "desc": "Shravan Krishna 10 — Garbha Kalyanak of Bhagwan Kunthunath."
+  },
+  {
+    "date": "2026-08-09",
+    "name": "Shodhakaran Vrat Prarambh",
+    "type": "parv",
+    "desc": "Shravan Krishna 11+12 — Beginning of the purification vow period."
   },
   {
     "date": "2026-08-12",
-    "name": "Paryushana Begins (Shvetambar)",
-    "type": "festival",
-    "desc": "Eight sacred days of fasting, atthai and pratikraman begin."
+    "name": "Amavasya",
+    "type": "auspicious",
+    "desc": "Shravan Krishna 30 — New moon day of Shravan."
+  },
+  {
+    "date": "2026-08-14",
+    "name": "Garbh Sumatinath",
+    "type": "parv",
+    "desc": "Shravan Shukla 2 — Garbha Kalyanak of Bhagwan Sumatinath."
+  },
+  {
+    "date": "2026-08-15",
+    "name": "Independence Day",
+    "type": "auspicious",
+    "desc": "Shravan Shukla 3 — National holiday."
+  },
+  {
+    "date": "2026-08-18",
+    "name": "Janm-Tap Neminath",
+    "type": "parv",
+    "desc": "Shravan Shukla 6 — Janma-Tap Kalyanak of Bhagwan Neminath."
   },
   {
     "date": "2026-08-19",
-    "name": "Samvatsari (Forgiveness Day)",
-    "type": "festival",
-    "desc": "Micchami Dukkadam — seeking and granting forgiveness from all beings."
+    "name": "Moksh Parshvanath",
+    "type": "parv",
+    "desc": "Shravan Shukla 7 — Moksha Kalyanak of Bhagwan Parshvanath."
   },
   {
-    "date": "2026-08-20",
-    "name": "Dashlakshan Begins (Digambar)",
-    "type": "festival",
-    "desc": "Ten-day festival of ten supreme virtues."
+    "date": "2026-08-22",
+    "name": "Saubhagya Dashami",
+    "type": "parv",
+    "desc": "Shravan Shukla 10 — Auspicious Dashami of Shravan."
   },
   {
-    "date": "2026-08-29",
-    "name": "Dashlakshan Ends (Anant Chaturdashi)",
+    "date": "2026-08-28",
+    "name": "Raksha Bandhan / Moksh Shreyansnath",
     "type": "festival",
-    "desc": "Concluding day of Dashlakshan Parv."
+    "desc": "Shravan Shukla 15 — Festival of sibling bond & Moksha of Bhagwan Shreyansnath."
   },
+  {
+    "date": "2026-08-30",
+    "name": "Gyan Vasupujya",
+    "type": "parv",
+    "desc": "Bhadrapad Krishna 2 — Kevalgyan Kalyanak of Bhagwan Vasupujya."
+  },
+
   {
     "date": "2026-09-03",
-    "name": "Anant Chaturdashi",
+    "name": "Garbh Shantinath",
     "type": "parv",
-    "desc": "Sacred Chaturdashi — fasting and devotion."
+    "desc": "Bhadrapad Krishna 7 — Garbha Kalyanak of Bhagwan Shantinath."
   },
   {
-    "date": "2026-10-09",
-    "name": "Diwali (Nirvana of Mahavira)",
+    "date": "2026-09-11",
+    "name": "Amavasya",
+    "type": "auspicious",
+    "desc": "Bhadrapad Krishna 30 — New moon day of Bhadrapad."
+  },
+  {
+    "date": "2026-09-13",
+    "name": "Chandan Shashti / Rot Teej",
+    "type": "parv",
+    "desc": "Bhadrapad Shukla 3 — Sacred observance of Chandan Shashti."
+  },
+  {
+    "date": "2026-09-15",
+    "name": "Dashlakshan Begins — Uttam Kshama (Forgiveness)",
     "type": "festival",
-    "desc": "Lord Mahavira's Moksha Divas — Deepak Puja and year-end prayers."
+    "desc": "Bhadrapad Shukla 5 — Day 1 of Das Lakshan Parv. Supreme virtue of forgiveness."
+  },
+  {
+    "date": "2026-09-16",
+    "name": "Uttam Mardav (Humility)",
+    "type": "festival",
+    "desc": "Bhadrapad Shukla 5 — Day 2 of Das Lakshan. Observance of humility and gentle conduct."
+  },
+  {
+    "date": "2026-09-17",
+    "name": "Garbh Suparshvanath / Uttam Aarjav (Straightforwardness)",
+    "type": "festival",
+    "desc": "Bhadrapad Shukla 6 — Garbha of Suparshvanath & Day 3 — practice of sincerity."
+  },
+  {
+    "date": "2026-09-18",
+    "name": "Uttam Shauch (Purity)",
+    "type": "festival",
+    "desc": "Bhadrapad Shukla 7 — Day 4 of Das Lakshan. Inner and outer cleanliness."
+  },
+  {
+    "date": "2026-09-19",
+    "name": "Uttam Satya (Truth)",
+    "type": "festival",
+    "desc": "Bhadrapad Shukla 8 — Day 5 of Das Lakshan. Commitment to truthfulness."
+  },
+  {
+    "date": "2026-09-20",
+    "name": "Uttam Sanyam (Self-Restraint)",
+    "type": "festival",
+    "desc": "Bhadrapad Shukla 9 — Day 6 of Das Lakshan. Restraint over senses and mind."
+  },
+  {
+    "date": "2026-09-21",
+    "name": "Sugandh Dashami / Ramdev Jayanti",
+    "type": "parv",
+    "desc": "Bhadrapad Shukla 10 — Sugandh Dashami, Teja Dashami & Baba Ramdev Jayanti."
+  },
+  {
+    "date": "2026-09-22",
+    "name": "Uttam Tap (Austerity)",
+    "type": "festival",
+    "desc": "Bhadrapad Shukla 11 — Day 7 of Das Lakshan. Observance of penance and fasting."
+  },
+  {
+    "date": "2026-09-23",
+    "name": "Uttam Tyag (Renunciation)",
+    "type": "festival",
+    "desc": "Bhadrapad Shukla 12 — Day 8 of Das Lakshan. Letting go of attachments."
+  },
+  {
+    "date": "2026-09-24",
+    "name": "Uttam Akinchanya (Non-Possessiveness)",
+    "type": "festival",
+    "desc": "Bhadrapad Shukla 13 — Day 9 of Das Lakshan. Detachment from worldly possessions."
+  },
+  {
+    "date": "2026-09-25",
+    "name": "Anant Chaturdashi / Das Lakshan Samapan / Uttam Brahmacharya",
+    "type": "festival",
+    "desc": "Bhadrapad Shukla 14 — Day 10 — supreme celibacy & concluding day of Das Lakshan Parv."
+  },
+  {
+    "date": "2026-09-26",
+    "name": "Shodhakaran Samapan",
+    "type": "parv",
+    "desc": "Bhadrapad Shukla 15 — Completion of the purification observance."
+  },
+  {
+    "date": "2026-09-27",
+    "name": "Kshama Vaani",
+    "type": "parv",
+    "desc": "Ashwin Krishna 1 — Day of seeking and granting forgiveness."
+  },
+  {
+    "date": "2026-09-28",
+    "name": "Garbh Naminath",
+    "type": "parv",
+    "desc": "Ashwin Krishna 2 — Garbha Kalyanak of Bhagwan Naminath."
+  },
+
+  {
+    "date": "2026-10-02",
+    "name": "Gandhi Jayanti",
+    "type": "auspicious",
+    "desc": "Ashwin Krishna 6+7 — National holiday honouring Mahatma Gandhi."
   },
   {
     "date": "2026-10-10",
-    "name": "Jain New Year (Vikram Samvat 2083)",
-    "type": "festival",
-    "desc": "Kartik Shukla Pratipada — new year begins."
+    "name": "Amavasya",
+    "type": "auspicious",
+    "desc": "Ashwin Krishna 30 — New moon day of Ashwin."
   },
   {
-    "date": "2026-10-25",
-    "name": "Kartik Purnima",
-    "type": "parv",
-    "desc": "Full moon of Kartik — pilgrimage day."
+    "date": "2026-10-11",
+    "name": "Navratri Sthapana / Gyan Neminath",
+    "type": "festival",
+    "desc": "Ashwin Shukla 1 — Beginning of Navratri & Kevalgyan of Bhagwan Neminath."
   },
+  {
+    "date": "2026-10-18",
+    "name": "Moksh Pushpadant / Moksh Sheetalnath",
+    "type": "parv",
+    "desc": "Ashwin Shukla 8 — Moksha Kalyanak of Bhagwan Pushpadantnath & Sheetalnath."
+  },
+  {
+    "date": "2026-10-19",
+    "name": "Durgashtami",
+    "type": "festival",
+    "desc": "Ashwin Shukla 8 — Durgashtami celebration."
+  },
+  {
+    "date": "2026-10-20",
+    "name": "Dussehra (Vijayadashami)",
+    "type": "festival",
+    "desc": "Ashwin Shukla 9 — Victory of good over evil."
+  },
+  {
+    "date": "2026-10-26",
+    "name": "Garbh Anantnath",
+    "type": "parv",
+    "desc": "Kartik Krishna 15+1 — Garbha Kalyanak of Bhagwan Anantnath."
+  },
+  {
+    "date": "2026-10-29",
+    "name": "Gyan Sambhavnath",
+    "type": "parv",
+    "desc": "Kartik Krishna 4 — Kevalgyan Kalyanak of Bhagwan Sambhavnath."
+  },
+
+  {
+    "date": "2026-11-07",
+    "name": "Janm-Tap Padmaprabhu",
+    "type": "parv",
+    "desc": "Kartik Krishna 13 — Janma-Tap Kalyanak of Bhagwan Padmaprabhu."
+  },
+  {
+    "date": "2026-11-08",
+    "name": "Deepavali",
+    "type": "festival",
+    "desc": "Kartik Krishna 14 — Lord Mahavira attained Nirvana (Moksha). Deepak Puja and year-end prayers."
+  },
+  {
+    "date": "2026-11-09",
+    "name": "Mahavir Nirvanotsav / Amavasya",
+    "type": "festival",
+    "desc": "Kartik Krishna 30 — Celebration of Bhagwan Mahavira's liberation."
+  },
+  {
+    "date": "2026-11-10",
+    "name": "Govardhan Puja / Jain New Year",
+    "type": "festival",
+    "desc": "Kartik Shukla 1 — Kartik Shukla Pratipada — new Jain year begins."
+  },
+  {
+    "date": "2026-11-11",
+    "name": "Bhaiya Dooj / Gyan Pushpadant",
+    "type": "festival",
+    "desc": "Kartik Shukla 2 — Sibling bond celebration & Kevalgyan of Bhagwan Pushpadantnath."
+  },
+  {
+    "date": "2026-11-15",
+    "name": "Garbh Neminath",
+    "type": "parv",
+    "desc": "Kartik Shukla 6 — Garbha Kalyanak of Bhagwan Neminath."
+  },
+  {
+    "date": "2026-11-17",
+    "name": "Ashtanhika Parv Begins",
+    "type": "festival",
+    "desc": "Start of the eight-day Ashtanhika Parv of Kartik."
+  },
+  {
+    "date": "2026-11-21",
+    "name": "Gyan Arhanath",
+    "type": "parv",
+    "desc": "Kartik Shukla 12 — Kevalgyan Kalyanak of Bhagwan Arahanath."
+  },
+  {
+    "date": "2026-11-24",
+    "name": "Guru Nanak Jayanti / Janm-Tap Sambhavnath / Kartik Purnima",
+    "type": "festival",
+    "desc": "Kartik Shukla 15 — Guru Nanak Dev Jayanti, Janma-Tap of Sambhavnath & sacred full moon pilgrimage day."
+  },
+
+  {
+    "date": "2026-12-03",
+    "name": "Tap Mahavir Swami",
+    "type": "parv",
+    "desc": "Margashirsha Krishna 10 — Tap Kalyanak of Bhagwan Mahavira."
+  },
+  {
+    "date": "2026-12-08",
+    "name": "Amavasya",
+    "type": "auspicious",
+    "desc": "Margashirsha Krishna 30 — New moon day of Margashirsha."
+  },
+  {
+    "date": "2026-12-09",
+    "name": "Janm-Tap Pushpadant",
+    "type": "parv",
+    "desc": "Margashirsha Shukla 1 — Janma-Tap Kalyanak of Bhagwan Pushpadantnath."
+  },
+  {
+    "date": "2026-12-20",
+    "name": "Gyan Naminath / Janm-Tap Mallinath",
+    "type": "parv",
+    "desc": "Margashirsha Shukla 11 — Kevalgyan of Naminath & Janma-Tap of Mallinath."
+  },
+  {
+    "date": "2026-12-23",
+    "name": "Janm-Tap Arhanath",
+    "type": "parv",
+    "desc": "Margashirsha Shukla 14 — Janma-Tap Kalyanak of Bhagwan Arahanath."
+  },
+  {
+    "date": "2026-12-24",
+    "name": "Tap Sambhavnath",
+    "type": "parv",
+    "desc": "Paush Krishna 15+1 — Tap Kalyanak of Bhagwan Sambhavnath."
+  },
+  {
+    "date": "2026-12-25",
+    "name": "Christmas Day / Gyan Mallinath",
+    "type": "parv",
+    "desc": "Paush Krishna 2 — Kevalgyan Kalyanak of Bhagwan Mallinath."
+  },
+
   {
     "date": "2027-01-14",
     "name": "Makar Sankranti",

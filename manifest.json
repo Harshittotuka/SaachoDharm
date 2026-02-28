@@ -1,0 +1,28 @@
+{
+  "name": "Jain Panchang — SaachoDharm",
+  "short_name": "Jain Panchang",
+  "description": "Interactive Jain calendar with Tithis, Parvs, festivals, Chaumasa dates, Paryushana and Dashlakshan.",
+  "start_url": "/calendar.html",
+  "display": "standalone",
+  "background_color": "#faf8f5",
+  "theme_color": "#ff6b35",
+  "orientation": "portrait",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "img/icon.jpeg",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "img/icon2.jpeg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "lifestyle"],
+  "lang": "en",
+  "dir": "ltr"
+}

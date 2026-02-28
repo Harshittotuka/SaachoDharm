@@ -2393,6 +2393,7 @@ h1, .about-hero h1 { font-family: 'Merriweather', serif; letter-spacing: -0.5px;
     bottom: 18px;
     width: 52px;
     height: 52px;
+    border: 1px solid var(--border-light);
     border-radius: 50%;
     background: var(--btn-primary-bg);
     color: var(--btn-primary-text);
@@ -2402,9 +2403,46 @@ h1, .about-hero h1 { font-family: 'Merriweather', serif; letter-spacing: -0.5px;
     z-index: 3000;
     box-shadow: 0 8px 24px var(--shadow-saffron-light);
     cursor: pointer;
-    transition: transform 0.15s ease;
+    animation: themeToggleShadowPulse 2.8s ease-in-out infinite;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease, filter 0.25s ease;
 }
-.theme-toggle:hover { transform: scale(1.04); }
+.theme-toggle:hover,
+.theme-toggle:focus-visible {
+    transform: scale(1.06);
+    background: color-mix(in srgb, var(--btn-primary-bg) 85%, #ffffff 15%);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.22);
+    filter: saturate(1.08);
+}
+.theme-toggle:active {
+    transform: scale(0.98);
+}
+.theme-toggle i,
+.theme-toggle svg {
+    font-size: 1.2rem;
+    transition: transform 0.25s ease;
+}
+.theme-toggle:hover i,
+.theme-toggle:focus-visible i,
+.theme-toggle:hover svg,
+.theme-toggle:focus-visible svg {
+    transform: rotate(10deg);
+}
+
+@keyframes themeToggleShadowPulse {
+    0%,
+    100% {
+        box-shadow: 0 8px 24px var(--shadow-saffron-light);
+    }
+    50% {
+        box-shadow: 0 11px 30px var(--shadow-hover);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .theme-toggle {
+        animation: none;
+    }
+}
 
 .theme-panel {
     position: fixed;

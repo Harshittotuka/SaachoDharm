@@ -133,13 +133,84 @@
         return localStorage.getItem(STORAGE_KEY);
     }
 
-    function makeToggle(){
-        const btn = document.createElement('button');
-        btn.className = 'theme-toggle';
-        btn.title = 'Theme options';
-        btn.setAttribute('aria-label','Theme options');
-        btn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3v2M12 19v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42M12 7a5 5 0 100 10 5 5 0 000-10z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>';
-        return btn;
+    function makeToggle(isCalendarPage){
+        if (!isCalendarPage) {
+            const btn = document.createElement('button');
+            btn.className = 'theme-toggle';
+            btn.title = 'Theme options';
+            btn.setAttribute('aria-label','Theme options');
+            btn.innerHTML = '<i class="fas fa-palette"></i>';
+            return btn;
+        }
+
+        // Create the FAB hub container
+        const hub = document.createElement('div');
+        hub.className = 'fab-hub';
+        hub.id = 'fabHub';
+
+        // Main toggle button (gear / close)
+        const toggle = document.createElement('button');
+        toggle.className = 'fab-hub-toggle';
+        toggle.title = 'Quick actions';
+        toggle.setAttribute('aria-label', 'Quick actions');
+        toggle.innerHTML = '<i class="fas fa-cog"></i><i class="fas fa-times"></i>';
+
+        // Child items container
+        const items = document.createElement('div');
+        items.className = 'fab-hub-items';
+
+        // Theme child
+        const themeChild = document.createElement('button');
+        themeChild.className = 'fab-child fab-child-theme';
+        themeChild.id = 'fabThemeBtn';
+        themeChild.setAttribute('data-label', 'Theme');
+        themeChild.setAttribute('aria-label', 'Change theme');
+        themeChild.innerHTML = '<i class="fas fa-palette"></i>';
+
+        // Install child
+        const installChild = document.createElement('button');
+        installChild.className = 'fab-child fab-child-install';
+        installChild.id = 'fabInstallBtn';
+        installChild.setAttribute('data-label', 'Install App');
+        installChild.setAttribute('aria-label', 'Install App');
+        installChild.innerHTML = '<i class="fas fa-download"></i>';
+
+        items.appendChild(installChild);
+        items.appendChild(themeChild);
+        hub.appendChild(items);
+        hub.appendChild(toggle);
+
+        // Backdrop
+        const backdrop = document.createElement('div');
+        backdrop.className = 'fab-hub-backdrop';
+
+        // Toggle open/close
+        toggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            hub.classList.toggle('open');
+            backdrop.classList.toggle('active', hub.classList.contains('open'));
+            if (hub.classList.contains('open')) {
+                hub.classList.remove('hide-labels');
+            }
+            // When closing the hub, also close the theme panel
+            if (!hub.classList.contains('open')) {
+                window.dispatchEvent(new CustomEvent('fab-hub-closed'));
+            }
+        });
+
+        backdrop.addEventListener('click', () => {
+            hub.classList.remove('open');
+            backdrop.classList.remove('active');
+            window.dispatchEvent(new CustomEvent('fab-hub-closed'));
+        });
+
+        document.body.appendChild(backdrop);
+
+        // Store references for other scripts
+        hub._themeChild = themeChild;
+        hub._installChild = installChild;
+
+        return hub;
     }
 
     function makePanel(){
@@ -232,21 +303,78 @@
     // wire up
     document.addEventListener('DOMContentLoaded', ()=>{
         try{
-            const toggle = makeToggle();
+            const currentPage = (window.location.pathname.split('/').pop() || '').toLowerCase();
+            const isCalendarPage = currentPage === 'calendar.html';
+
+            const toggleControl = makeToggle(isCalendarPage);
             const panel = makePanel();
             let open = false;
 
-            toggle.addEventListener('click', ()=>{
-                if(!open){
-                    document.body.appendChild(panel);
-                    open = true;
-                } else {
+            if (isCalendarPage) {
+                const hub = toggleControl;
+
+                hub._themeChild.addEventListener('click', (e)=>{
+                    e.stopPropagation();
+                    hub.classList.add('hide-labels');
+                    if(!open){
+                        document.body.appendChild(panel);
+                        open = true;
+                    } else {
+                        if(panel.parentNode) panel.parentNode.removeChild(panel);
+                        open = false;
+                    }
+                });
+
+                hub._installChild.addEventListener('click', (e)=>{
+                    e.stopPropagation();
+                    hub.classList.add('hide-labels');
+                    hub.classList.remove('open');
+                    const backdrop = document.querySelector('.fab-hub-backdrop');
+                    if (backdrop) backdrop.classList.remove('active');
+                    window.dispatchEvent(new CustomEvent('fab-install-click'));
+                });
+
+                document.body.appendChild(hub);
+                window.__fabHub = hub;
+
+                document.addEventListener('click', (e)=>{
+                    if(!open) return;
+                    if(e.target.closest('.theme-panel') || e.target.closest('.fab-hub')) return;
                     if(panel.parentNode) panel.parentNode.removeChild(panel);
                     open = false;
-                }
-            });
+                    hub.classList.remove('open');
+                    const backdrop = document.querySelector('.fab-hub-backdrop');
+                    if (backdrop) backdrop.classList.remove('active');
+                });
 
-            document.body.appendChild(toggle);
+                window.addEventListener('fab-hub-closed', ()=>{
+                    if(open && panel.parentNode){
+                        panel.parentNode.removeChild(panel);
+                        open = false;
+                    }
+                });
+            } else {
+                const toggle = toggleControl;
+
+                toggle.addEventListener('click', ()=>{
+                    if(!open){
+                        document.body.appendChild(panel);
+                        open = true;
+                    } else {
+                        if(panel.parentNode) panel.parentNode.removeChild(panel);
+                        open = false;
+                    }
+                });
+
+                document.body.appendChild(toggle);
+
+                document.addEventListener('click', (e)=>{
+                    if(!open) return;
+                    if(e.target.closest('.theme-panel') || e.target.closest('.theme-toggle')) return;
+                    if(panel.parentNode) panel.parentNode.removeChild(panel);
+                    open = false;
+                });
+            }
 
             // apply saved theme or default
             const saved = loadSavedTheme();
@@ -260,13 +388,6 @@
                 applyTheme(presets['default']);
             }
 
-            // close panel when clicking outside
-            document.addEventListener('click', (e)=>{
-                if(!open) return;
-                if(e.target.closest('.theme-panel') || e.target.closest('.theme-toggle')) return;
-                if(panel.parentNode) panel.parentNode.removeChild(panel);
-                open = false;
-            });
         }catch(err){
             console.error('Theme switcher failed', err);
         }
