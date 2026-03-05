@@ -93,6 +93,24 @@
         return PARV_TITHI_INDICES.has(tithiNum);
     }
 
+    function normalizeEventName(name) {
+        return String(name || '')
+            .toLowerCase()
+            .replace(/ekdashi/g, 'ekadashi')
+            .replace(/ashtimi/g, 'ashtami')
+            .replace(/\//g, ' ')
+            .replace(/[^a-z\s]/g, ' ')
+            .replace(/\s+/g, ' ')
+            .trim();
+    }
+
+    function matchesDayTithi(eventName, paksha, tithiName) {
+        const eventKey = normalizeEventName(eventName);
+        const fullTithiKey = normalizeEventName(`${paksha} ${tithiName}`);
+        const shortTithiKey = normalizeEventName(tithiName);
+        return eventKey === fullTithiKey || eventKey === shortTithiKey;
+    }
+
     /* ------------------------------------------------
        APPROXIMATE JAIN MONTH from Gregorian date
        (simplified — based on lunar month mapping)
@@ -171,28 +189,27 @@
             if (dayOfWeek === 0) classes += ' sunday';
             if (isToday) classes += ' today';
 
-            // Dots
-            let dots = '';
-            if (parvDay) dots += '<span class="day-dot parv"></span>';
+            // Show all event names in the date cell (phone-calendar style readability)
+            const dayItems = [];
+            const seenDayItemNames = new Set();
             events.forEach(e => {
-                dots += `<span class="day-dot ${e.type}"></span>`;
+                const eventName = String(e.name || '').trim();
+                const key = normalizeEventName(eventName);
+                if (matchesDayTithi(eventName, paksha, tithiName)) return;
+                if (!eventName || seenDayItemNames.has(key)) return;
+                dayItems.push({ name: eventName, type: e.type || 'festival' });
+                seenDayItemNames.add(key);
             });
 
-            // Label (show first event or Parv)
-            let label = '';
-            if (events.length) {
-                const e = events[0];
-                label = `<div class="day-label ${e.type}" title="${e.name}">${e.name}</div>`;
-            } else if (parvDay) {
-                label = `<div class="day-label parv" title="Parv Tithi">Parv</div>`;
-            }
+            const dayEventsHtml = dayItems
+                .map(item => `<div class="day-event-item ${item.type}" title="${item.name}">${item.name}</div>`)
+                .join('');
 
             html += `
                 <div class="${classes}" data-date="${dateStr}" data-tithi="${tithi}" onclick="window._calSelectDay(this)">
                     <span class="day-num">${d}</span>
                     <span class="day-tithi">${paksha} ${tithiName}</span>
-                    <div class="day-dots">${dots}</div>
-                    ${label}
+                    <div class="day-events">${dayEventsHtml}</div>
                 </div>`;
         }
 
@@ -238,19 +255,30 @@
                 <div class="detail-event parv">
                     <span class="event-icon">⭐</span>
                     <div class="event-info">
-                        <h4>Parv Tithi</h4>
-                        <p>${paksha} ${tithiName} — one of the sacred Parv Tithis. Fasting, Samayik, Pratikraman and temple visits are especially meritorious today.</p>
+                        <h4>${paksha} ${tithiName}</h4>
+                        <p>This is a sacred Parv day (${paksha} ${tithiName}). Fasting, Samayik, Pratikraman and temple visits are especially meritorious today.</p>
                     </div>
                 </div>`;
         }
 
+        const seenDetailNames = new Set();
+        if (parvDay) {
+            seenDetailNames.add(normalizeEventName(`${paksha} ${tithiName}`));
+        }
+
         events.forEach(e => {
+            const eventName = String(e.name || '').trim();
+            const key = normalizeEventName(eventName);
+            if (matchesDayTithi(eventName, paksha, tithiName)) return;
+            if (!eventName || seenDetailNames.has(key)) return;
+            seenDetailNames.add(key);
+
             const icon = e.type === 'festival' ? '🔔' : e.type === 'parv' ? '⭐' : '☀️';
             bodyHTML += `
                 <div class="detail-event ${e.type}">
                     <span class="event-icon">${icon}</span>
                     <div class="event-info">
-                        <h4>${e.name}</h4>
+                        <h4>${eventName}</h4>
                         <p>${e.desc}</p>
                     </div>
                 </div>`;
