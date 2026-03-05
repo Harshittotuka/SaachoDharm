@@ -112,11 +112,67 @@
         }
     };
 
+    function parseColorToRgb(color){
+        if(!color || typeof color !== 'string') return null;
+        const value = color.trim();
+
+        const hexMatch = value.match(/^#([0-9a-f]{3}|[0-9a-f]{6})$/i);
+        if(hexMatch){
+            const hex = hexMatch[1];
+            if(hex.length === 3){
+                const r = parseInt(hex[0] + hex[0], 16);
+                const g = parseInt(hex[1] + hex[1], 16);
+                const b = parseInt(hex[2] + hex[2], 16);
+                return [r, g, b];
+            }
+            return [
+                parseInt(hex.slice(0, 2), 16),
+                parseInt(hex.slice(2, 4), 16),
+                parseInt(hex.slice(4, 6), 16)
+            ];
+        }
+
+        const rgbMatch = value.match(/^rgb\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})\s*\)$/i);
+        if(rgbMatch){
+            return [
+                Math.min(255, parseInt(rgbMatch[1], 10)),
+                Math.min(255, parseInt(rgbMatch[2], 10)),
+                Math.min(255, parseInt(rgbMatch[3], 10))
+            ];
+        }
+
+        return null;
+    }
+
+    function darken(rgb, ratio){
+        return rgb.map(channel => Math.max(0, Math.round(channel * (1 - ratio))));
+    }
+
+    function setDerivedThemeVars(preset){
+        const root = document.documentElement;
+        const accentRgb = parseColorToRgb(preset['--accent-saffron'] || preset['--btn-primary-bg'] || '#ff6b35');
+        const goldenRgb = parseColorToRgb(preset['--accent-golden'] || preset['--golden'] || '#ffd700');
+
+        if (accentRgb) {
+            root.style.setProperty('--accent-rgb', accentRgb.join(', '));
+            const accentStrong = darken(accentRgb, 0.1);
+            root.style.setProperty('--accent-strong', `rgb(${accentStrong.join(', ')})`);
+            root.style.setProperty('--shadow-saffron', `rgba(${accentRgb.join(', ')}, 0.3)`);
+            root.style.setProperty('--shadow-saffron-light', `rgba(${accentRgb.join(', ')}, 0.1)`);
+            root.style.setProperty('--shadow-saffron-medium', `rgba(${accentRgb.join(', ')}, 0.2)`);
+        }
+
+        if (goldenRgb) {
+            root.style.setProperty('--golden-rgb', goldenRgb.join(', '));
+        }
+    }
+
     function applyTheme(preset){
         const root = document.documentElement;
         Object.keys(preset).forEach(k => {
             try{ root.style.setProperty(k, preset[k]); }catch(e){}
         });
+        setDerivedThemeVars(preset);
     }
 
     function setActiveSwatch(panel, id){
@@ -303,8 +359,9 @@
     // wire up
     document.addEventListener('DOMContentLoaded', ()=>{
         try{
-            const currentPage = (window.location.pathname.split('/').pop() || '').toLowerCase();
-            const isCalendarPage = currentPage === 'calendar.html';
+            const pathname = (window.location.pathname || '').toLowerCase();
+            const currentPage = (pathname.split('/').pop() || '').toLowerCase();
+            const isCalendarPage = currentPage === 'calendar.html' || currentPage === 'calendar' || pathname.endsWith('/calendar/');
 
             const toggleControl = makeToggle(isCalendarPage);
             const panel = makePanel();
@@ -316,6 +373,9 @@
                 hub._themeChild.addEventListener('click', (e)=>{
                     e.stopPropagation();
                     hub.classList.add('hide-labels');
+                    hub.classList.remove('open');
+                    const backdrop = document.querySelector('.fab-hub-backdrop');
+                    if (backdrop) backdrop.classList.remove('active');
                     if(!open){
                         document.body.appendChild(panel);
                         open = true;

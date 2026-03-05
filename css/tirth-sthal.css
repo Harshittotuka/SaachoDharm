@@ -60,14 +60,14 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: rgba(255,107,53,0.08);
+    background: rgba(var(--accent-rgb),0.08);
     color: var(--accent-saffron);
     padding: 7px 22px;
     border-radius: 999px;
     font-size: 0.88rem;
     font-weight: 600;
     margin-bottom: 18px;
-    border: 1px solid rgba(255,107,53,0.14);
+    border: 1px solid rgba(var(--accent-rgb),0.14);
     letter-spacing: 0.03em;
 }
 .ts-hero-title {
@@ -76,7 +76,7 @@
     color: var(--text-dark);
     margin-bottom: 12px;
     line-height: 1.2;
-    background: linear-gradient(135deg, var(--accent-saffron), #e85d26);
+    background: linear-gradient(135deg, var(--accent-saffron), var(--accent-strong));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -173,7 +173,7 @@
 .ts-search-box input:focus {
     outline: none;
     border-color: var(--accent-saffron);
-    box-shadow: 0 0 0 3px rgba(255,107,53,0.1);
+    box-shadow: 0 0 0 3px rgba(var(--accent-rgb),0.1);
 }
 .ts-search-clear {
     position: absolute;
@@ -228,7 +228,7 @@
 .ts-filter-group select:focus {
     outline: none;
     border-color: var(--accent-saffron);
-    box-shadow: 0 0 0 3px rgba(255,107,53,0.1);
+    box-shadow: 0 0 0 3px rgba(var(--accent-rgb),0.1);
 }
 
 .ts-active-filters {
@@ -242,17 +242,17 @@
     align-items: center;
     gap: 6px;
     padding: 5px 14px;
-    background: rgba(255,107,53,0.08);
+    background: rgba(var(--accent-rgb),0.08);
     color: var(--accent-saffron);
     border-radius: 50px;
     font-size: 0.82rem;
     font-weight: 600;
-    border: 1px solid rgba(255,107,53,0.15);
+    border: 1px solid rgba(var(--accent-rgb),0.15);
     cursor: pointer;
     transition: all 0.2s ease;
 }
 .ts-filter-tag:hover {
-    background: rgba(255,107,53,0.14);
+    background: rgba(var(--accent-rgb),0.14);
 }
 .ts-filter-tag i {
     font-size: 0.7rem;
@@ -331,19 +331,19 @@
     border: none;
     border-radius: 999px;
     padding: 12px 16px;
-    background: linear-gradient(135deg, var(--accent-saffron), #e85d26);
+    background: linear-gradient(135deg, var(--accent-saffron), var(--accent-strong));
     color: #fff;
     display: inline-flex;
     align-items: center;
     gap: 8px;
     font-weight: 700;
     cursor: pointer;
-    box-shadow: 0 12px 28px rgba(255,107,53,0.3);
+    box-shadow: 0 12px 28px rgba(var(--accent-rgb),0.3);
     transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 .ts-map-fab:hover {
     transform: translateY(-50%) scale(1.03);
-    box-shadow: 0 18px 34px rgba(255,107,53,0.35);
+    box-shadow: 0 18px 34px rgba(var(--accent-rgb),0.35);
 }
 
 .ts-map-overlay {
@@ -437,8 +437,8 @@ body.ts-map-overlay-open {
 }
 .ts-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 16px 48px rgba(255,107,53,0.1);
-    border-color: rgba(255,107,53,0.2);
+    box-shadow: 0 16px 48px rgba(var(--accent-rgb),0.1);
+    border-color: rgba(var(--accent-rgb),0.2);
 }
 .ts-card-img {
     position: relative;
@@ -488,7 +488,7 @@ body.ts-map-overlay-open {
     color: var(--accent-saffron);
 }
 .ts-badge-featured {
-    background: rgba(255,107,53,0.9);
+    background: rgba(var(--accent-rgb),0.9);
     color: #fff;
 }
 .ts-badge-significance {
@@ -847,7 +847,7 @@ body.ts-map-overlay-open {
 .td-lightbox-prev { left: 20px; top: 50%; transform: translateY(-50%); }
 .td-lightbox-next { right: 20px; top: 50%; transform: translateY(-50%); }
 .td-lightbox-close:hover, .td-lightbox-prev:hover, .td-lightbox-next:hover {
-    background: rgba(255,107,53,0.7);
+    background: rgba(var(--accent-rgb),0.7);
 }
 .td-lightbox-counter {
     position: absolute;
@@ -924,9 +924,9 @@ body.ts-map-overlay-open {
     transition: all 0.3s ease;
 }
 .td-directions-btn:hover {
-    background: #e55a2b;
+    background: var(--accent-strong);
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(255,107,53,0.2);
+    box-shadow: 0 6px 20px rgba(var(--accent-rgb),0.2);
 }
 
 /* How to Reach */
@@ -972,10 +972,10 @@ body.ts-map-overlay-open {
 }
 .td-share-facebook:hover { background: #1877f2; color: #fff; box-shadow: 0 6px 18px rgba(24,119,242,0.25); }
 .td-share-copy {
-    background: rgba(255,107,53,0.1);
+    background: rgba(var(--accent-rgb),0.1);
     color: var(--accent-saffron);
 }
-.td-share-copy:hover { background: var(--accent-saffron); color: #fff; box-shadow: 0 6px 18px rgba(255,107,53,0.25); }
+.td-share-copy:hover { background: var(--accent-saffron); color: #fff; box-shadow: 0 6px 18px rgba(var(--accent-rgb),0.25); }
 
 /* ---- Comments Section ---- */
 .td-comment-form {
@@ -1004,7 +1004,7 @@ body.ts-map-overlay-open {
 .td-comment-input-row input:focus {
     outline: none;
     border-color: var(--accent-saffron);
-    box-shadow: 0 0 0 3px rgba(255,107,53,0.08);
+    box-shadow: 0 0 0 3px rgba(var(--accent-rgb),0.08);
 }
 .td-rating-input {
     display: flex;
@@ -1037,7 +1037,7 @@ body.ts-map-overlay-open {
 .td-comment-form textarea:focus {
     outline: none;
     border-color: var(--accent-saffron);
-    box-shadow: 0 0 0 3px rgba(255,107,53,0.08);
+    box-shadow: 0 0 0 3px rgba(var(--accent-rgb),0.08);
 }
 .td-comment-submit {
     font-size: 0.9rem;
