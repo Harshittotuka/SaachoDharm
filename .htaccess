@@ -24,8 +24,9 @@
   RewriteRule ^tirth-sthal-detail(?:\.html)?$ /tirth/%2? [R=301,L,NE,NC]
 
   # Pretty dynamic routes (internally served by existing HTML files)
-  RewriteRule ^bhajan/([^/]+)/?$ /jain-bhajan-lyrics.html?id=$1 [L,NC,QSA]
-  RewriteRule ^tirth/([^/]+)/?$ /tirth-sthal-detail.html?id=$1 [L,NC,QSA]
+  # Use a unique marker (bhajan_slug) that JavaScript can reliably detect
+  RewriteRule ^bhajan/([^/]+)/?$ /jain-bhajan-lyrics.html?bhajan_slug=$1 [L,NC,QSA]
+  RewriteRule ^tirth/([^/]+)/?$ /tirth-sthal-detail.html?tirth_id=$1 [L,NC,QSA]
 
   # Redirect /index.html to /
   RewriteRule ^index\.html$ / [R=301,L,NC]

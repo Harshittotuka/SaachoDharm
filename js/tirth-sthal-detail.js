@@ -50,10 +50,14 @@
     // ---- Init ----
     async function init() {
         const params = new URLSearchParams(window.location.search);
-        const pathMatch = window.location.pathname.match(/^\/tirth\/([^/]+)\/?$/i);
-        const pathId = pathMatch ? decodeURIComponent(pathMatch[1]) : null;
-        const id = pathId || params.get('id');
-        if (!id) {
+        
+        // Try to get ID from multiple sources (in order of preference)
+        const tirth_id = params.get('tirth_id');    // New clean parameter
+        const id_legacy = params.get('id');         // Legacy parameter
+        
+        const finalId = tirth_id || id_legacy;
+        
+        if (!finalId) {
             window.location.href = 'tirth-sthal';
             return;
         }
@@ -62,7 +66,7 @@
             const res = await fetch('data/tirth_sthal_data.json');
             if (!res.ok) throw new Error('Failed to load data');
             allTirths = await res.json();
-            currentTirth = allTirths.find(t => t.id === id);
+            currentTirth = allTirths.find(t => t.id === finalId);
 
             if (!currentTirth) {
                 window.location.href = 'tirth-sthal';

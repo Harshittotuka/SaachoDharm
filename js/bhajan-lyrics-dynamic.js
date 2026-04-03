@@ -13,16 +13,21 @@ async function loadLyricsData() {
         
         // Get parameters from URL
         const params = new URLSearchParams(window.location.search);
-        const pathMatch = window.location.pathname.match(/^\/bhajan\/([^/]+)\/?$/i);
-        const pathId = pathMatch ? decodeURIComponent(pathMatch[1]) : null;
-        const id = pathId || params.get('id');
-        currentCategory = params.get('category');
-        const bhajanTitle = params.get('bhajan');
         
-        if (id) {
-            displayBhajanById(id);
-        } else if (currentCategory && bhajanTitle) {
-            displayBhajanLyrics(currentCategory, bhajanTitle);
+        // Try to get ID from multiple sources (in order of preference)
+        const bhajan_slug = params.get('bhajan_slug');      // New clean parameter
+        const id = params.get('id');                        // Legacy parameter
+        const bhajan = params.get('bhajan');                // Legacy parameter
+        
+        currentCategory = params.get('category');
+        
+        // Use whichever parameter is available
+        const finalBhajanId = bhajan_slug || id || bhajan;
+        
+        if (finalBhajanId) {
+            displayBhajanById(finalBhajanId);
+        } else if (currentCategory && bhajan) {
+            displayBhajanLyrics(currentCategory, bhajan);
         }
     } catch (error) {
         console.error('✗ Error loading lyrics data:', error);
