@@ -16,7 +16,7 @@ let selectedCategory = null;
 // Fetch JSON data from the server
 async function fetchJainData() {
     try {
-        const response = await fetch('data/jainsaar_full_data.json');
+        const response = await fetch('/data/jainsaar_full_data.json');
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
         allData = await response.json();
         console.log('✓ Data loaded successfully:', allData.length, 'categories');
@@ -121,7 +121,7 @@ function renderSearchResults(query, results) {
             <p><strong>Category:</strong> ${escapeHtml(res.category)}</p>
             <p>${escapeHtml(preview)}</p>
             <div class="bhajan-meta">
-                <a href="bhajan/${encodeURIComponent(item.title)}" class="btn btn-primary">
+                <a href="jain-bhajan-lyrics.html?bhajan_slug=${encodeURIComponent(item.title)}" class="btn btn-primary">
                     <span>View Lyrics</span>
                 </a>
             </div>
@@ -216,7 +216,7 @@ function loadCategories() {
            
             <div class="bhajan-meta">
                 <span class="bhajan-duration">${categoryData.items.length} items</span>
-                <a href="bhajans?cat=${index}" class="btn btn-primary">
+                <a href="bhajans.html?cat=${index}" class="btn btn-primary">
                     <span>Explore</span>
                 </a>
             </div>
@@ -259,7 +259,7 @@ function loadBhajansByCategory(categoryName) {
             <p>${preview}</p>
             <div class="bhajan-meta">
                 <span class="bhajan-duration">View</span>
-                                <a href="bhajan/${encodeURIComponent(item.title)}" 
+                                <a href="jain-bhajan-lyrics.html?bhajan_slug=${encodeURIComponent(item.title)}" 
                    class="btn btn-primary" target="_blank">
                     <span>View Lyrics</span>
                 </a>
@@ -292,7 +292,7 @@ function loadAllBhajans() {
                 <p>${preview}</p>
                 <div class="bhajan-meta">
                     <span class="bhajan-duration">View</span>
-                      <a href="bhajan/${encodeURIComponent(item.title)}" 
+                      <a href="jain-bhajan-lyrics.html?bhajan_slug=${encodeURIComponent(item.title)}" 
                        class="btn btn-primary" target="_blank">
                         <span>View Lyrics</span>
                     </a>

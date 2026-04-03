@@ -18,7 +18,7 @@ class SEOManager {
     
     if (pathname.includes('/bhajans')) {
       this.handleBhajanPageSEO();
-    } else if (pathname.includes('/tirth/')) {
+    } else if (pathname.includes('/tirth/') || pathname.includes('/tirth-sthal-detail')) {
       this.handleTirthDetailSEO();
     } else if (pathname.includes('/tirth-sthal')) {
       this.handleTirthListingSEO();
@@ -131,7 +131,7 @@ class SEOManager {
    */
   handleBhajanLyricsSEO() {
     const params = new URLSearchParams(window.location.search);
-    const bhajanId = params.get('id');
+    const bhajanId = params.get('bhajan_slug') || params.get('id');
     const bhajanSlug = params.get('bhajan');
     const pathMatch = window.location.pathname.match(/^\/bhajan\/([^/]+)\/?$/i);
     const pathId = pathMatch ? decodeURIComponent(pathMatch[1]) : '';
@@ -182,7 +182,7 @@ class SEOManager {
     const params = new URLSearchParams(window.location.search);
     const pathMatch = window.location.pathname.match(/^\/tirth\/([^/]+)\/?$/i);
     const pathId = pathMatch ? decodeURIComponent(pathMatch[1]) : '';
-    const id = pathId || params.get('id');
+    const id = pathId || params.get('tirth_id') || params.get('id');
 
     if (!id) {
       this.setRobots('noindex, follow');

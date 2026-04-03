@@ -348,7 +348,7 @@
 
         filteredTirths.forEach((t, idx) => {
             const card = document.createElement('a');
-            card.href = `tirth/${encodeURIComponent(t.id)}`;
+            card.href = `tirth-sthal-detail.html?tirth_id=${encodeURIComponent(t.id)}`;
             card.className = 'ts-card fade-in';
             card.style.animationDelay = `${idx * 0.06}s`;
 

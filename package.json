@@ -6,7 +6,7 @@
   "scripts": {
     "generate-sitemap": "py generate_sitemap.py",
     "build": "npm run generate-sitemap",
-    "dev": "http-server -p 5000"
+    "dev": "http-server -p 5000 -e html"
   },
   "keywords": [
     "jain",

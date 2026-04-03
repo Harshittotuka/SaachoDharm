@@ -6,7 +6,7 @@ let currentCategory = null;
 // Fetch all data from JSON
 async function loadLyricsData() {
     try {
-        const response = await fetch('data/jainsaar_full_data.json');
+        const response = await fetch('/data/jainsaar_full_data.json');
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
         allData = await response.json();
         console.log('✓ Data loaded:', allData.length, 'categories');
@@ -137,7 +137,7 @@ function updateSuggestedBhajans(bhajansList) {
         
         suggestedItem.addEventListener('click', () => {
             // Navigate to another bhajan
-            window.location.href = `bhajan/${encodeURIComponent(item.title)}`;
+            window.location.href = `jain-bhajan-lyrics.html?bhajan_slug=${encodeURIComponent(item.title)}`;
         });
         
         suggestedList.appendChild(suggestedItem);
@@ -157,7 +157,7 @@ function updateSuggestedBhajans(bhajansList) {
 }
 
 function updateCanonicalContentUrl(bhajanId) {
-    const canonicalPath = `bhajan/${encodeURIComponent(bhajanId)}`;
+    const canonicalPath = `jain-bhajan-lyrics.html?bhajan_slug=${encodeURIComponent(bhajanId)}`;
     const params = new URLSearchParams(window.location.search);
     const currentId = params.get('id');
     const hasLegacyParams = params.has('category') || params.has('bhajan');

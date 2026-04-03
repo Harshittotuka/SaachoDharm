@@ -58,18 +58,18 @@
         const finalId = tirth_id || id_legacy;
         
         if (!finalId) {
-            window.location.href = 'tirth-sthal';
+            window.location.href = '/tirth-sthal.html';
             return;
         }
 
         try {
-            const res = await fetch('data/tirth_sthal_data.json');
+            const res = await fetch('/data/tirth_sthal_data.json');
             if (!res.ok) throw new Error('Failed to load data');
             allTirths = await res.json();
             currentTirth = allTirths.find(t => t.id === finalId);
 
             if (!currentTirth) {
-                window.location.href = 'tirth-sthal';
+                window.location.href = '/tirth-sthal.html';
                 return;
             }
 
