@@ -1,19 +1,46 @@
 # Enable mod_rewrite
 <IfModule mod_rewrite.c>
   RewriteEngine On
+
+  # Enforce a single host/protocol for canonical URLs
+  RewriteCond %{HTTPS} off [OR]
+  RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+  RewriteRule ^ https://saachodharm.com%{REQUEST_URI} [R=301,L]
+
+  # Canonicalize old lyric URLs to clean English-only path
+  RewriteCond %{QUERY_STRING} (^|&)bhajan=([^&]+) [NC]
+  RewriteRule ^(?:bhajan-lyrics|jain-bhajan-lyrics)(?:\.html)?$ /bhajan/%2? [R=301,L,NE,NC]
+
+  # Canonicalize legacy lyric query URL to clean path
+  RewriteCond %{QUERY_STRING} (^|&)bhajan=([^&]+) [NC]
+  RewriteRule ^jain-bhajan-lyrics$ /bhajan/%2? [R=301,L,NE,NC]
+
+  # Canonicalize id query URL to clean path
+  RewriteCond %{QUERY_STRING} (^|&)id=([^&]+) [NC]
+  RewriteRule ^jain-bhajan-lyrics(?:\.html)?$ /bhajan/%2? [R=301,L,NE,NC]
+
+  # Canonicalize tirth detail query URL to clean path
+  RewriteCond %{QUERY_STRING} (^|&)id=([^&]+) [NC]
+  RewriteRule ^tirth-sthal-detail(?:\.html)?$ /tirth/%2? [R=301,L,NE,NC]
+
+  # Pretty dynamic routes (internally served by existing HTML files)
+  RewriteRule ^bhajan/([^/]+)/?$ /jain-bhajan-lyrics.html?id=$1 [L,NC,QSA]
+  RewriteRule ^tirth/([^/]+)/?$ /tirth-sthal-detail.html?id=$1 [L,NC,QSA]
+
+  # Redirect /index.html to /
+  RewriteRule ^index\.html$ / [R=301,L,NC]
+
+  # Redirect .html URLs to extensionless canonical URLs
+  RewriteCond %{THE_REQUEST} \s/+([^.\s?]+)\.html(?:[\s?]|$) [NC]
+  RewriteRule ^ /%1 [R=301,L,NE]
+
+  # Legacy URL compatibility: old bhajan route now points to jain-bhajan-lyrics
+  RewriteRule ^bhajan-lyrics(?:\.html)?$ /jain-bhajan-lyrics [R=301,L,NC]
   
   # Remove .html extension from URLs
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteRule ^([^\.]+)$ $1.html [NC,L]
-  
-  # Redirect HTTP to HTTPS
-  RewriteCond %{HTTPS} off
-  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-  
-  # Remove www from URLs
-  RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
-  RewriteRule ^(.*)$ https://%1%{REQUEST_URI} [R=301,L]
 </IfModule>
 
 # Enable Gzip Compression

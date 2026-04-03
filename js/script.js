@@ -31,9 +31,15 @@ async function fetchJainData() {
         }
         
         // If on bhajans page, check for category parameter
-        if (window.location.pathname.includes('bhajans.html')) {
+        if (window.location.pathname.includes('bhajans')) {
             const params = new URLSearchParams(window.location.search);
             selectedCategory = params.get('category');
+            const catIndex = parseInt(params.get('cat') || '', 10);
+
+            if (!selectedCategory && Number.isInteger(catIndex) && catIndex >= 0 && catIndex < allData.length) {
+                selectedCategory = allData[catIndex].category;
+            }
+
             if (selectedCategory) {
                 selectedCategory = decodeURIComponent(selectedCategory);
                 loadBhajansByCategory(selectedCategory);
@@ -115,7 +121,7 @@ function renderSearchResults(query, results) {
             <p><strong>Category:</strong> ${escapeHtml(res.category)}</p>
             <p>${escapeHtml(preview)}</p>
             <div class="bhajan-meta">
-                <a href="jain-bhajan-lyrics.html?category=${encodeURIComponent(res.category)}&bhajan=${encodeURIComponent(item.title)}" class="btn btn-primary">
+                <a href="bhajan/${encodeURIComponent(item.title)}" class="btn btn-primary">
                     <span>View Lyrics</span>
                 </a>
             </div>
@@ -166,7 +172,7 @@ function initSearch() {
 
         const pathname = window.location.pathname;
         const isIndexPage = pathname.includes('index.html') || pathname === '/' || pathname.endsWith('/');
-        const isBhajansPage = pathname.includes('bhajans.html');
+        const isBhajansPage = pathname.includes('bhajans');
 
         if (!q) {
             // no query -> restore default view depending on page
@@ -210,7 +216,7 @@ function loadCategories() {
            
             <div class="bhajan-meta">
                 <span class="bhajan-duration">${categoryData.items.length} items</span>
-                <a href="bhajans.html?category=${encodeURIComponent(categoryData.category)}" class="btn btn-primary">
+                <a href="bhajans?cat=${index}" class="btn btn-primary">
                     <span>Explore</span>
                 </a>
             </div>
@@ -253,7 +259,7 @@ function loadBhajansByCategory(categoryName) {
             <p>${preview}</p>
             <div class="bhajan-meta">
                 <span class="bhajan-duration">View</span>
-                <a href="jain-bhajan-lyrics.html?category=${encodeURIComponent(categoryName)}&bhajan=${encodeURIComponent(item.title)}" 
+                                <a href="bhajan/${encodeURIComponent(item.title)}" 
                    class="btn btn-primary" target="_blank">
                     <span>View Lyrics</span>
                 </a>
@@ -286,7 +292,7 @@ function loadAllBhajans() {
                 <p>${preview}</p>
                 <div class="bhajan-meta">
                     <span class="bhajan-duration">View</span>
-                    <a href="jain-bhajan-lyrics.html?category=${encodeURIComponent(categoryData.category)}&bhajan=${encodeURIComponent(item.title)}" 
+                      <a href="bhajan/${encodeURIComponent(item.title)}" 
                        class="btn btn-primary" target="_blank">
                         <span>View Lyrics</span>
                     </a>

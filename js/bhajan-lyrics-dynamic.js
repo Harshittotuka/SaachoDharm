@@ -13,16 +13,33 @@ async function loadLyricsData() {
         
         // Get parameters from URL
         const params = new URLSearchParams(window.location.search);
+        const pathMatch = window.location.pathname.match(/^\/bhajan\/([^/]+)\/?$/i);
+        const pathId = pathMatch ? decodeURIComponent(pathMatch[1]) : null;
+        const id = pathId || params.get('id');
         currentCategory = params.get('category');
         const bhajanTitle = params.get('bhajan');
         
-        if (currentCategory && bhajanTitle) {
-            displayBhajanLyrics(decodeURIComponent(currentCategory), decodeURIComponent(bhajanTitle));
+        if (id) {
+            displayBhajanById(id);
+        } else if (currentCategory && bhajanTitle) {
+            displayBhajanLyrics(currentCategory, bhajanTitle);
         }
     } catch (error) {
         console.error('✗ Error loading lyrics data:', error);
         document.querySelector('.lyrics-content.hindi').innerHTML = '<p>Error loading lyrics. Please go back and try again.</p>';
     }
+}
+
+function displayBhajanById(bhajanId) {
+    for (const categoryData of allData) {
+        const found = (categoryData.items || []).find(item => item.title === bhajanId);
+        if (found) {
+            displayBhajanLyrics(categoryData.category, found.title);
+            return;
+        }
+    }
+
+    document.querySelector('.lyrics-content.hindi').innerHTML = '<p>Bhajan not found</p>';
 }
 
 // Display the bhajan lyrics
@@ -40,6 +57,8 @@ function displayBhajanLyrics(categoryName, bhajanTitle) {
         document.querySelector('.lyrics-content.hindi').innerHTML = '<p>Bhajan not found in this category</p>';
         return;
     }
+
+    updateCanonicalContentUrl(currentBhajan.title);
     
     // Update page title
     const titleElement = document.querySelector('.bhajan-main-title');
@@ -113,9 +132,7 @@ function updateSuggestedBhajans(bhajansList) {
         
         suggestedItem.addEventListener('click', () => {
             // Navigate to another bhajan
-            const params = new URLSearchParams(window.location.search);
-            const category = params.get('category');
-            window.location.href = `jain-bhajan-lyrics.html?category=${encodeURIComponent(category)}&bhajan=${encodeURIComponent(item.title)}`;
+            window.location.href = `bhajan/${encodeURIComponent(item.title)}`;
         });
         
         suggestedList.appendChild(suggestedItem);
@@ -131,6 +148,19 @@ function updateSuggestedBhajans(bhajansList) {
         } else {
             audioPlayerSection.style.display = 'none';
         }
+    }
+}
+
+function updateCanonicalContentUrl(bhajanId) {
+    const canonicalPath = `bhajan/${encodeURIComponent(bhajanId)}`;
+    const params = new URLSearchParams(window.location.search);
+    const currentId = params.get('id');
+    const hasLegacyParams = params.has('category') || params.has('bhajan');
+    const onPrettyPath = /^\/bhajan\/[^/]+\/?$/i.test(window.location.pathname);
+    const onLegacyPath = window.location.pathname.endsWith('/bhajan-lyrics.html') || window.location.pathname.endsWith('/bhajan-lyrics') || window.location.pathname.endsWith('/jain-bhajan-lyrics.html') || window.location.pathname.endsWith('/jain-bhajan-lyrics');
+
+    if (!onPrettyPath || currentId !== null || hasLegacyParams || onLegacyPath) {
+        window.history.replaceState({}, '', canonicalPath);
     }
 }
 

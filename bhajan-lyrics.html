@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, follow">
+    <title>Redirecting...</title>
+    <script>
+        (function () {
+            var params = new URLSearchParams(window.location.search || '');
+            var id = params.get('id');
+            var bhajan = params.get('bhajan');
+            var target = 'jain-bhajan-lyrics';
+
+            if (id) {
+                target = 'bhajan/' + encodeURIComponent(id);
+            } else if (bhajan) {
+                target = 'bhajan/' + encodeURIComponent(bhajan);
+            }
+
+            window.location.replace(target);
+        })();
+    </script>
+</head>
+<body>
+    <p>Redirecting to the updated lyrics page...</p>
+    <p><a href="jain-bhajan-lyrics">Continue</a></p>
+</body>
+</html>

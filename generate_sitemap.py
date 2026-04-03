@@ -5,7 +5,7 @@ from datetime import UTC, datetime
 from pathlib import Path
 from urllib.parse import quote
 
-DOMAIN = "https://www.saachodharm.com"
+DOMAIN = "https://saachodharm.com"
 ROOT = Path(__file__).resolve().parent
 OUTPUT_PATH = ROOT / "sitemap.xml"
 DATA_PATH = ROOT / "data" / "jainsaar_full_data.json"
@@ -14,14 +14,12 @@ TIRTH_DATA_PATH = ROOT / "data" / "tirth_sthal_data.json"
 TODAY = datetime.now(UTC).strftime("%Y-%m-%d")
 
 STATIC_PAGES = [
-    {"url": "/index.html", "priority": 1.0, "changefreq": "weekly", "lastmod": TODAY},
-    {"url": "/bhajans.html", "priority": 0.9, "changefreq": "weekly", "lastmod": TODAY},
-    {"url": "/about.html", "priority": 0.8, "changefreq": "monthly", "lastmod": TODAY},
-    {"url": "/calendar.html", "priority": 0.8, "changefreq": "monthly", "lastmod": TODAY},
-    {"url": "/contact.html", "priority": 0.5, "changefreq": "yearly", "lastmod": TODAY},
-    {"url": "/jain-bhajan-lyrics.html", "priority": 0.7, "changefreq": "weekly", "lastmod": TODAY},
-    {"url": "/tirth-sthal.html", "priority": 0.9, "changefreq": "weekly", "lastmod": TODAY},
-    {"url": "/tirth-sthal-detail.html", "priority": 0.8, "changefreq": "weekly", "lastmod": TODAY},
+    {"url": "/", "priority": 1.0, "changefreq": "weekly", "lastmod": TODAY},
+    {"url": "/bhajans", "priority": 0.9, "changefreq": "weekly", "lastmod": TODAY},
+    {"url": "/about", "priority": 0.8, "changefreq": "monthly", "lastmod": TODAY},
+    {"url": "/calendar", "priority": 0.8, "changefreq": "monthly", "lastmod": TODAY},
+    {"url": "/contact", "priority": 0.5, "changefreq": "yearly", "lastmod": TODAY},
+    {"url": "/tirth-sthal", "priority": 0.9, "changefreq": "weekly", "lastmod": TODAY},
 ]
 
 
@@ -55,7 +53,7 @@ def generate_urls() -> list[dict]:
                 encoded_slug = quote(slug, safe="")
                 urls.append(
                     {
-                        "url": f"/jain-bhajan-lyrics.html?id={encoded_slug}",
+                        "url": f"/bhajan/{encoded_slug}",
                         "priority": 0.6,
                         "changefreq": "monthly",
                         "lastmod": TODAY,
@@ -74,7 +72,7 @@ def generate_urls() -> list[dict]:
             encoded_id = quote(tirth_id, safe="")
             urls.append(
                 {
-                    "url": f"/tirth-sthal-detail.html?id={encoded_id}",
+                    "url": f"/tirth/{encoded_id}",
                     "priority": 0.8,
                     "changefreq": "weekly",
                     "lastmod": TODAY,

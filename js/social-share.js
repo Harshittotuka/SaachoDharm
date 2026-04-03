@@ -5,7 +5,7 @@
 
 class SocialShareManager {
   constructor() {
-    this.baseUrl = 'https://www.saachodharm.com';
+    this.baseUrl = 'https://saachodharm.com';
     this.initShareButtons();
   }
 

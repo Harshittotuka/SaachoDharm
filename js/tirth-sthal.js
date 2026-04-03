@@ -112,7 +112,7 @@
         const total = allTirths.length;
         const stateCount = new Set(allTirths.map(t => t.state)).size;
         const localTempleCount = allTirths.filter(t => t.type === 'Local Temple').length;
-        const pageUrl = 'https://www.saachodharm.com/tirth-sthal.html';
+        const pageUrl = 'https://saachodharm.com/tirth-sthal';
         const pageTitle = `Jain Tirth Sthals & Local Temples (${total}) in India | SaachoDharm`;
         const pageDescription = `Explore ${total} Jain sacred places across ${stateCount} states, including ${localTempleCount} local temples. Discover Jain pilgrimage sites, timings, significance, and travel details.`;
 
@@ -140,7 +140,7 @@
             '@type': 'ListItem',
             position: index + 1,
             name: t.name,
-            url: `https://www.saachodharm.com/tirth-sthal-detail.html?id=${encodeURIComponent(t.id)}`
+            url: `https://saachodharm.com/tirth/${encodeURIComponent(t.id)}`
         }));
 
         const schema = {
@@ -348,7 +348,7 @@
 
         filteredTirths.forEach((t, idx) => {
             const card = document.createElement('a');
-            card.href = `tirth-sthal-detail.html?id=${encodeURIComponent(t.id)}`;
+            card.href = `tirth/${encodeURIComponent(t.id)}`;
             card.className = 'ts-card fade-in';
             card.style.animationDelay = `${idx * 0.06}s`;
 

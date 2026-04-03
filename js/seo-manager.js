@@ -5,7 +5,7 @@
 
 class SEOManager {
   constructor() {
-    this.domain = 'https://www.saachodharm.com'; // Domain configured
+    this.domain = 'https://saachodharm.com';
     this.bhajansPerPage = 12;
     this.initSEO();
   }
@@ -16,19 +16,19 @@ class SEOManager {
   initSEO() {
     const pathname = window.location.pathname;
     
-    if (pathname.includes('bhajans.html') || pathname.includes('/bhajan/')) {
+    if (pathname.includes('/bhajans')) {
       this.handleBhajanPageSEO();
-    } else if (pathname.includes('tirth-sthal-detail.html')) {
+    } else if (pathname.includes('/tirth/')) {
       this.handleTirthDetailSEO();
-    } else if (pathname.includes('tirth-sthal.html')) {
+    } else if (pathname.includes('/tirth-sthal')) {
       this.handleTirthListingSEO();
-    } else if (pathname.includes('jain-bhajan-lyrics.html')) {
+    } else if (pathname.includes('/jain-bhajan-lyrics') || pathname.includes('/bhajan/')) {
       this.handleBhajanLyricsSEO();
-    } else if (pathname.includes('calendar.html')) {
+    } else if (pathname.includes('/calendar')) {
       this.handleCalendarPageSEO();
-    } else if (pathname.includes('about.html')) {
+    } else if (pathname.includes('/about')) {
       this.handleAboutPageSEO();
-    } else if (pathname.includes('contact.html')) {
+    } else if (pathname.includes('/contact')) {
       this.handleContactPageSEO();
     } else {
       this.handleHomePageSEO();
@@ -41,6 +41,7 @@ class SEOManager {
   handleBhajanPageSEO() {
     const params = new URLSearchParams(window.location.search);
     const category = params.get('category');
+    const cat = params.get('cat');
     const page = params.get('page') || 1;
 
     if (category) {
@@ -49,20 +50,20 @@ class SEOManager {
         title: `${decodedCategory} - Sacred Jain Bhajans | SaachoDharm`,
         description: `Explore our collection of ${decodedCategory} bhajans. Sacred devotional songs for spiritual growth and meditation.`,
         keywords: `${decodedCategory}, bhajans, Jain devotional songs, spiritual music`,
-        url: `${this.domain}/bhajans.html?category=${category}&page=${page}`
+        url: `${this.domain}/bhajans?category=${category}&page=${page}`
       });
 
       this.addSchemaMarkup('CollectionPage', {
         name: `${decodedCategory} Bhajans`,
         description: `Collection of ${decodedCategory} devotional bhajans`,
-        url: `${this.domain}/bhajans.html?category=${category}`
+        url: `${this.domain}/bhajans?category=${category}`
       });
     } else {
       this.updateMetaTags({
         title: 'Sacred Bhajans - Devotional Songs for Spiritual Growth | SaachoDharm',
         description: 'Discover a comprehensive collection of Jain bhajans and sacred devotional songs for meditation, prayer, and spiritual development.',
         keywords: 'bhajans, Jain bhajans, devotional songs, sacred music, spiritual songs, devotion',
-        url: `${this.domain}/bhajans.html?page=${page}`
+        url: cat ? `${this.domain}/bhajans?cat=${encodeURIComponent(cat)}&page=${page}` : `${this.domain}/bhajans?page=${page}`
       });
 
       this.addSchemaMarkup('CollectionPage', {
@@ -116,7 +117,7 @@ class SEOManager {
       title: 'Jain Panchang \u2014 Sacred Calendar & Festival Dates | SaachoDharm',
       description: 'Interactive Jain calendar with Tithis, Parvs, festivals, Chaumasa dates, Paryushana and Dashlakshan. Navigate months and discover sacred days.',
       keywords: 'Jain calendar, Jain Panchang, Tithi, Parv, Paryushana, Dashlakshan, Chaumasa, Jain festivals',
-      url: `${this.domain}/calendar.html`
+      url: `${this.domain}/calendar`
     });
 
     this.addSchemaMarkup('WebPage', {
@@ -131,15 +132,24 @@ class SEOManager {
   handleBhajanLyricsSEO() {
     const params = new URLSearchParams(window.location.search);
     const bhajanId = params.get('id');
-    if (bhajanId) {
-      const readableTitle = bhajanId.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
-      this.updateMetaTags({
-        title: `${readableTitle} - Bhajan Lyrics | SaachoDharm`,
-        description: `Read the lyrics of ${readableTitle}. Sacred Jain devotional bhajan for spiritual meditation and inner peace.`,
-        keywords: `${readableTitle}, bhajan lyrics, Jain devotional, spiritual music`,
-        url: `${this.domain}/jain-bhajan-lyrics.html?id=${bhajanId}`
-      });
+    const bhajanSlug = params.get('bhajan');
+    const pathMatch = window.location.pathname.match(/^\/bhajan\/([^/]+)\/?$/i);
+    const pathId = pathMatch ? decodeURIComponent(pathMatch[1]) : '';
+    const canonicalId = (pathId || bhajanId || bhajanSlug || '').trim();
+
+    if (!canonicalId) {
+      this.setRobots('noindex, follow');
+      this.addCanonicalTag(`${this.domain}/bhajans`);
+      return;
     }
+
+    const readableTitle = canonicalId.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+    this.updateMetaTags({
+      title: `${readableTitle} - Bhajan Lyrics | SaachoDharm`,
+      description: `Read the lyrics of ${readableTitle}. Sacred Jain devotional bhajan for spiritual meditation and inner peace.`,
+      keywords: `${readableTitle}, bhajan lyrics, Jain devotional, spiritual music`,
+      url: `${this.domain}/bhajan/${encodeURIComponent(canonicalId)}`
+    });
   }
 
   /**
@@ -150,18 +160,18 @@ class SEOManager {
       title: 'Jain Tirth Sthals & Local Temples in India | SaachoDharm',
       description: 'Explore Jain Tirth Sthals and local Jain temples across India with state-wise discovery, temple details, significance, timings, and how to reach.',
       keywords: 'Jain Tirth Sthal, Jain temples in India, Jain local temples, Jain pilgrimage, Digambar temple, Shwetambar temple',
-      url: `${this.domain}/tirth-sthal.html`
+      url: `${this.domain}/tirth-sthal`
     });
 
     this.addSchemaMarkup('CollectionPage', {
       name: 'Jain Tirth Sthals & Local Temples',
       description: 'State-wise collection of major Jain pilgrimage sites and local temples in India',
-      url: `${this.domain}/tirth-sthal.html`
+      url: `${this.domain}/tirth-sthal`
     });
 
     this.addBreadcrumbSchema([
       { name: 'Home', url: `${this.domain}/` },
-      { name: 'Tirth Sthal', url: `${this.domain}/tirth-sthal.html` }
+      { name: 'Tirth Sthal', url: `${this.domain}/tirth-sthal` }
     ]);
   }
 
@@ -170,7 +180,16 @@ class SEOManager {
    */
   handleTirthDetailSEO() {
     const params = new URLSearchParams(window.location.search);
-    const id = params.get('id');
+    const pathMatch = window.location.pathname.match(/^\/tirth\/([^/]+)\/?$/i);
+    const pathId = pathMatch ? decodeURIComponent(pathMatch[1]) : '';
+    const id = pathId || params.get('id');
+
+    if (!id) {
+      this.setRobots('noindex, follow');
+      this.addCanonicalTag(`${this.domain}/tirth-sthal`);
+      return;
+    }
+
     const readableTitle = id
       ? id.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase())
       : 'Tirth Sthal Details';
@@ -179,14 +198,18 @@ class SEOManager {
       title: `${readableTitle} | Jain Temple Details | SaachoDharm`,
       description: `Read detailed information for ${readableTitle} including history, significance, location, timings, and how to reach.`,
       keywords: `${readableTitle}, Jain temple, Jain tirth, pilgrimage details, Jain history`,
-      url: `${this.domain}/tirth-sthal-detail.html${id ? `?id=${encodeURIComponent(id)}` : ''}`
+      url: `${this.domain}/tirth/${encodeURIComponent(id)}`
     });
 
     this.addBreadcrumbSchema([
       { name: 'Home', url: `${this.domain}/` },
-      { name: 'Tirth Sthal', url: `${this.domain}/tirth-sthal.html` },
-      { name: readableTitle, url: `${this.domain}/tirth-sthal-detail.html${id ? `?id=${encodeURIComponent(id)}` : ''}` }
+      { name: 'Tirth Sthal', url: `${this.domain}/tirth-sthal` },
+      { name: readableTitle, url: `${this.domain}/tirth/${encodeURIComponent(id)}` }
     ]);
+  }
+
+  setRobots(content) {
+    this.updateOrCreateMetaTag('name', 'robots', content);
   }
 
   /**
@@ -197,7 +220,7 @@ class SEOManager {
       title: 'About SaachoDharm - Journey in Jain Spirituality | SaachoDharm',
       description: 'Learn about SaachoDharm - our mission to preserve and share Jain spiritual wisdom, sacred bhajans, and teachings of non-violence (Ahimsa).',
       keywords: 'about SaachoDharm, Jain spirituality, Ahimsa, non-violence, spiritual mission',
-      url: `${this.domain}/about.html`
+      url: `${this.domain}/about`
     });
 
     this.addSchemaMarkup('AboutPage', {
@@ -214,7 +237,7 @@ class SEOManager {
       title: 'Contact Us - SaachoDharm | Get in Touch',
       description: 'Contact SaachoDharm for inquiries about Jain bhajans, spiritual guidance, or to share feedback about our platform.',
       keywords: 'contact, feedback, inquiry, SaachoDharm, support',
-      url: `${this.domain}/contact.html`
+      url: `${this.domain}/contact`
     });
 
     this.addSchemaMarkup('ContactPage', {
@@ -364,13 +387,13 @@ class SEOManager {
 
     if (prevPage > 0) {
       paginationObj.previousPage = category 
-        ? `${this.domain}/bhajans.html?category=${category}&page=${prevPage}`
-        : `${this.domain}/bhajans.html?page=${prevPage}`;
+        ? `${this.domain}/bhajans?category=${category}&page=${prevPage}`
+        : `${this.domain}/bhajans?page=${prevPage}`;
     }
 
     paginationObj.nextPage = category
-      ? `${this.domain}/bhajans.html?category=${category}&page=${nextPage}`
-      : `${this.domain}/bhajans.html?page=${nextPage}`;
+      ? `${this.domain}/bhajans?category=${category}&page=${nextPage}`
+      : `${this.domain}/bhajans?page=${nextPage}`;
 
     const script = document.createElement('script');
     script.type = 'application/ld+json';

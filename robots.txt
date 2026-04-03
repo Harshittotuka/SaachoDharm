@@ -8,6 +8,10 @@ Disallow: /admin/
 Disallow: /admin.html
 Disallow: /private/
 Disallow: /temp/
+Disallow: /*?category=
+Disallow: /*&category=
+Disallow: /*?bhajan=
+Disallow: /*&bhajan=
 
 # Specific rules for Googlebot
 User-agent: Googlebot
@@ -36,4 +40,4 @@ User-agent: AhrefsBot
 Disallow: /
 
 # Sitemap location
-Sitemap: https://www.saachodharm.com/sitemap.xml
+Sitemap: https://saachodharm.com/sitemap.xml

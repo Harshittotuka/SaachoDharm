@@ -50,9 +50,11 @@
     // ---- Init ----
     async function init() {
         const params = new URLSearchParams(window.location.search);
-        const id = params.get('id');
+        const pathMatch = window.location.pathname.match(/^\/tirth\/([^/]+)\/?$/i);
+        const pathId = pathMatch ? decodeURIComponent(pathMatch[1]) : null;
+        const id = pathId || params.get('id');
         if (!id) {
-            window.location.href = 'tirth-sthal.html';
+            window.location.href = 'tirth-sthal';
             return;
         }
 
@@ -63,7 +65,7 @@
             currentTirth = allTirths.find(t => t.id === id);
 
             if (!currentTirth) {
-                window.location.href = 'tirth-sthal.html';
+                window.location.href = 'tirth-sthal';
                 return;
             }
 
@@ -418,12 +420,12 @@
     function updatePageMeta() {
         if (!currentTirth) return;
         const t = currentTirth;
-        const canonicalUrl = `https://www.saachodharm.com/tirth-sthal-detail.html?id=${encodeURIComponent(t.id)}`;
+        const canonicalUrl = `https://saachodharm.com/tirth/${encodeURIComponent(t.id)}`;
         const title = `${t.name} | Jain ${t.type || 'Temple'} in ${t.state || 'India'} | SaachoDharm`;
         const descriptionText = t.shortDescription || `${t.name} — Jain temple details including location, significance, timings, and travel information.`;
         const imageUrl = (t.images && t.images.length > 0)
             ? t.images[0]
-            : 'https://www.saachodharm.com/img/temple_alt.png';
+            : 'https://saachodharm.com/img/temple_alt.png';
 
         document.title = title;
 
@@ -491,13 +493,13 @@
                     '@type': 'ListItem',
                     position: 1,
                     name: 'Home',
-                    item: 'https://www.saachodharm.com/'
+                    item: 'https://saachodharm.com/'
                 },
                 {
                     '@type': 'ListItem',
                     position: 2,
                     name: 'Tirth Sthal',
-                    item: 'https://www.saachodharm.com/tirth-sthal.html'
+                    item: 'https://saachodharm.com/tirth-sthal'
                 },
                 {
                     '@type': 'ListItem',
