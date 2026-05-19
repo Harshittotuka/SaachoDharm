@@ -3410,11 +3410,37 @@ h1, .about-hero h1 { font-family: 'Merriweather', serif; letter-spacing: -0.5px;
 }
 
 @media (max-width: 720px) {
-    .hero3__collage { display: none; }
     .hero3 { padding: 100px 0 70px; }
     .hero3__title { font-size: clamp(2rem, 9vw, 3rem); }
     .hero3__btn { padding: 13px 22px; font-size: .72rem; }
-    .hero3__inner { margin-left: 0; }
+    .hero3__inner { margin-left: 0; position: relative; z-index: 2; }
+
+    /* Compact floating collage — sits behind text as decorative backdrop */
+    .hero3__collage {
+        display: grid;
+        width: 130%;
+        height: 130%;
+        top: -10%;
+        right: -25%;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        opacity: 0.32;
+        transform: rotate(-14deg);
+        -webkit-mask-image: radial-gradient(ellipse 90% 75% at 80% 50%, #000 0%, #000 35%, transparent 85%);
+                mask-image: radial-gradient(ellipse 90% 75% at 80% 50%, #000 0%, #000 35%, transparent 85%);
+    }
+    .hero3__col { gap: 10px; }
+    .hero3__card {
+        border-radius: 8px;
+        box-shadow: 0 4px 14px -4px rgba(44, 62, 80, .18);
+    }
+}
+
+@media (max-width: 480px) {
+    .hero3__collage {
+        grid-template-columns: repeat(3, 1fr);
+        opacity: 0.26;
+    }
 }
 
 /* =========================================
@@ -3480,10 +3506,23 @@ h1, .about-hero h1 { font-family: 'Merriweather', serif; letter-spacing: -0.5px;
     position: relative;
     padding: 110px 0 120px;
     background:
-        radial-gradient(ellipse 80% 60% at 50% 0%, #fff1d0 0%, #f8dfa0 45%, #ecc878 100%);
+        linear-gradient(180deg, var(--bg-light-beige) 0%, rgba(255, 241, 208, 0) 14%),
+        linear-gradient(0deg, #f5efe0 0%, rgba(245, 239, 224, 0) 18%),
+        radial-gradient(ellipse 110% 75% at 50% 0%, #faf0d4 0%, #f8dfa0 50%, #ecc878 100%);
     overflow: hidden;
-    border-top: 1px solid rgba(201, 133, 43, 0.2);
-    border-bottom: 1px solid rgba(201, 133, 43, 0.2);
+    border-top: 0;
+    border-bottom: 0;
+}
+.h2-scroll::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 90px;
+    background: linear-gradient(180deg, var(--bg-light-beige) 0%, rgba(250, 240, 212, 0) 100%);
+    pointer-events: none;
+    z-index: 1;
 }
 .h2-scroll__watermark {
     position: absolute;
@@ -4447,10 +4486,26 @@ h1, .about-hero h1 { font-family: 'Merriweather', serif; letter-spacing: -0.5px;
    ========================================= */
 .h2-triratna {
     position: relative;
-    padding: 110px 0 130px;
+    padding: 110px 0 210px;
     background:
-        radial-gradient(ellipse 90% 70% at 50% 0%, #fff5d6 0%, #faddae 45%, #ecc878 100%);
+        linear-gradient(180deg, #ddc287 0%, rgba(221, 194, 135, 0) 14%),
+        radial-gradient(ellipse 90% 70% at 50% 0%, #f5e1a8 0%, #faddae 45%, #ecc878 100%);
     overflow: hidden;
+}
+.h2-triratna::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 110px;
+    background: linear-gradient(180deg,
+        rgba(44, 62, 80, 0) 0%,
+        rgba(74, 58, 53, 0.35) 30%,
+        rgba(58, 69, 84, 0.75) 65%,
+        #2c3e50 100%);
+    pointer-events: none;
+    z-index: 1;
 }
 .h2-triratna::before {
     content: '';
@@ -5063,4 +5118,192 @@ h1, .about-hero h1 { font-family: 'Merriweather', serif; letter-spacing: -0.5px;
     .h2-scroll__lead { font-size: 1.02rem !important; margin-bottom: 14px !important; }
     .h2-scroll__note { font-size: 0.92rem !important; margin-bottom: 14px !important; }
 }
+
+/* =========================================
+   SAACHO DHARM — CUSTOM CURSOR (Mandala)
+   Minimal saffron core + slowly rotating gold ring with
+   four cardinal markers. Sacred-geometry feel, low noise.
+   ========================================= */
+@media (hover: hover) and (pointer: fine) {
+    .sd-has-custom-cursor,
+    .sd-has-custom-cursor body,
+    .sd-has-custom-cursor *,
+    .sd-has-custom-cursor *::before,
+    .sd-has-custom-cursor *::after {
+        cursor: none !important;
+    }
+
+    .sd-cursor {
+        position: fixed;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        z-index: 99999;
+        opacity: 0;
+        transform: translate3d(-100px, -100px, 0);
+        will-change: transform, opacity;
+    }
+    .sd-cursor.is-visible { opacity: 1; }
+
+    /* ===== Inner core — solid saffron point with crisp dual outline ===== */
+    .sd-cursor--dot {
+        width: 8px;
+        height: 8px;
+        margin: -4px 0 0 -4px;
+        border-radius: 50%;
+        background: var(--accent-saffron);
+        box-shadow:
+            0 0 0 1px rgba(20, 12, 4, 0.85),
+            0 0 0 2.5px rgba(255, 255, 255, 0.75),
+            0 0 10px rgba(255, 107, 53, 0.55);
+        transition:
+            width .3s cubic-bezier(.16, 1, .3, 1),
+            height .3s cubic-bezier(.16, 1, .3, 1),
+            margin .3s cubic-bezier(.16, 1, .3, 1),
+            border-radius .3s cubic-bezier(.16, 1, .3, 1),
+            background .25s,
+            box-shadow .25s,
+            opacity .25s;
+    }
+    .sd-cursor--dot.is-hover {
+        width: 7px;
+        height: 7px;
+        margin: -3.5px 0 0 -3.5px;
+        background: #0d0703;
+        box-shadow:
+            0 0 0 1px var(--accent-golden),
+            0 0 0 2.5px rgba(255, 255, 255, 0.85),
+            0 0 14px rgba(255, 215, 0, 0.75);
+    }
+    .sd-cursor--dot.is-text {
+        width: 2px;
+        height: 22px;
+        margin: -11px 0 0 -1px;
+        border-radius: 1px;
+        background: var(--accent-saffron);
+        box-shadow:
+            0 0 0 0.5px rgba(20, 12, 4, 0.85),
+            0 0 0 1.5px rgba(255, 255, 255, 0.55),
+            0 0 8px rgba(255, 107, 53, 0.5);
+    }
+    .sd-cursor--dot.is-click {
+        transition: width .12s, height .12s, margin .12s, box-shadow .12s, background .12s;
+        width: 4px;
+        height: 4px;
+        margin: -2px 0 0 -2px;
+        background: var(--accent-golden);
+        box-shadow:
+            0 0 0 1px rgba(20, 12, 4, 1),
+            0 0 0 2.5px rgba(255, 255, 255, 0.9),
+            0 0 18px rgba(255, 215, 0, 0.95);
+    }
+    .sd-cursor--dot.is-disabled {
+        background: #8a7440;
+        box-shadow:
+            0 0 0 1px rgba(20, 12, 4, 0.5),
+            0 0 0 2px rgba(255, 255, 255, 0.3);
+        opacity: 0.5;
+    }
+
+    /* ===== Outer ring — thin gold circle, rotates with mandala markers ===== */
+    .sd-cursor--ring {
+        width: 34px;
+        height: 34px;
+        margin: -17px 0 0 -17px;
+        border-radius: 50%;
+        border: 1px solid var(--accent-saffron);
+        box-shadow:
+            0 0 0 0.5px rgba(20, 12, 4, 0.45),
+            inset 0 0 0 0.5px rgba(255, 255, 255, 0.4),
+            0 0 14px rgba(255, 107, 53, 0.18);
+        transition:
+            width .42s cubic-bezier(.16, 1, .3, 1),
+            height .42s cubic-bezier(.16, 1, .3, 1),
+            margin .42s cubic-bezier(.16, 1, .3, 1),
+            border-color .35s,
+            border-width .35s,
+            box-shadow .35s,
+            opacity .3s;
+    }
+    /* Four cardinal mandala markers (N/E/S/W ticks), rotating slowly */
+    .sd-cursor--ring::before {
+        content: '';
+        position: absolute;
+        inset: -4px;
+        border-radius: 50%;
+        background:
+            /* top */    linear-gradient(var(--accent-golden), var(--accent-golden)) top center / 1.5px 5px no-repeat,
+            /* right */  linear-gradient(var(--accent-golden), var(--accent-golden)) right center / 5px 1.5px no-repeat,
+            /* bottom */ linear-gradient(var(--accent-golden), var(--accent-golden)) bottom center / 1.5px 5px no-repeat,
+            /* left */   linear-gradient(var(--accent-golden), var(--accent-golden)) left center / 5px 1.5px no-repeat;
+        opacity: 0.85;
+        animation: sd-cursor-spin 14s linear infinite;
+        transition: opacity .35s, inset .35s;
+    }
+    /* Inner faint halo */
+    .sd-cursor--ring::after {
+        content: '';
+        position: absolute;
+        inset: 4px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(255, 215, 0, 0.10) 0%, rgba(255, 215, 0, 0) 70%);
+        transition: background .35s, inset .35s, opacity .35s;
+        opacity: 0;
+    }
+    .sd-cursor--ring.is-hover {
+        width: 56px;
+        height: 56px;
+        margin: -28px 0 0 -28px;
+        border-color: var(--accent-golden);
+        border-width: 1.5px;
+        box-shadow:
+            0 0 0 0.5px rgba(20, 12, 4, 0.5),
+            inset 0 0 0 0.5px rgba(255, 255, 255, 0.55),
+            0 0 28px rgba(255, 215, 0, 0.35);
+    }
+    .sd-cursor--ring.is-hover::before {
+        inset: -6px;
+        opacity: 1;
+    }
+    .sd-cursor--ring.is-hover::after {
+        opacity: 1;
+    }
+    .sd-cursor--ring.is-text {
+        opacity: 0;
+    }
+    .sd-cursor--ring.is-click {
+        transition: width .14s, height .14s, margin .14s, border-color .14s, box-shadow .14s;
+        width: 22px;
+        height: 22px;
+        margin: -11px 0 0 -11px;
+        border-color: var(--accent-golden);
+        border-width: 1.5px;
+        box-shadow:
+            0 0 0 1px rgba(20, 12, 4, 0.75),
+            inset 0 0 0 0.5px rgba(255, 255, 255, 0.6),
+            0 0 26px rgba(255, 215, 0, 0.7);
+    }
+    .sd-cursor--ring.is-click::before { opacity: 0.4; }
+    .sd-cursor--ring.is-disabled {
+        opacity: 0.45;
+        border-color: #8a7440;
+        box-shadow:
+            0 0 0 0.5px rgba(20, 12, 4, 0.35),
+            inset 0 0 0 0.5px rgba(255, 255, 255, 0.2);
+    }
+    .sd-cursor--ring.is-disabled::before { opacity: 0; }
+    .sd-cursor--ring.is-disabled::after { opacity: 0; }
+
+    @keyframes sd-cursor-spin {
+        from { transform: rotate(0deg); }
+        to   { transform: rotate(360deg); }
+    }
+}
+
+/* Respect users who request reduced motion / are on touch — never show */
+@media (prefers-reduced-motion: reduce), (hover: none), (pointer: coarse) {
+    .sd-cursor { display: none !important; }
+}
+
+
 
