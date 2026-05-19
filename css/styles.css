@@ -3106,3 +3106,1961 @@ h1, .about-hero h1 { font-family: 'Merriweather', serif; letter-spacing: -0.5px;
         padding: 12px 24px;
     }
 }
+
+/* =========================================
+   HERO 3 — Sparrow-style minimal collage hero
+   (Adapted to SaachoDharm saffron/beige theme)
+   ========================================= */
+.hero3 {
+    position: relative;
+    background: var(--bg-light-beige);
+    padding: 130px 0 90px;
+    min-height: 94vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.hero3 .hero3-container {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0 20px 0 clamp(24px, 5vw, 90px);
+}
+
+.hero3__inner {
+    max-width: 580px;
+    margin-left: 0;
+}
+
+.hero3__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent-saffron);
+    background: rgba(255, 107, 53, 0.08);
+    padding: 8px 16px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 107, 53, 0.18);
+    margin-bottom: 22px;
+}
+
+.hero3__title {
+    font-family: 'Merriweather', serif;
+    font-weight: 700;
+    font-size: clamp(2.4rem, 5.4vw, 4.6rem);
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    color: var(--text-dark);
+    margin: 0 0 22px;
+}
+
+.hero3__title em {
+    font-family: 'Merriweather', serif;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent-saffron);
+    background: linear-gradient(135deg, var(--accent-saffron) 0%, var(--accent-golden) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero3__sub {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.08rem;
+    line-height: 1.65;
+    color: var(--text-light);
+    margin: 0 0 24px;
+    max-width: 46ch;
+}
+
+/* ---- Navkar Mantra display (cycling) ---- */
+.hero3__mantra {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Merriweather', serif;
+    font-size: clamp(1.15rem, 1.8vw, 1.5rem);
+    font-weight: 700;
+    line-height: 1.3;
+    margin: 0 0 32px;
+    padding: 14px 22px 14px 18px;
+    background: linear-gradient(135deg, rgba(255, 107, 53, 0.07), rgba(255, 215, 0, 0.05));
+    border-left: 3px solid var(--accent-saffron);
+    border-radius: 0 12px 12px 0;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    box-shadow: 0 6px 20px rgba(255, 107, 53, 0.08);
+    max-width: max-content;
+    position: relative;
+    overflow: hidden;
+}
+.hero3__mantra::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -3px;
+    width: 3px;
+    background: linear-gradient(180deg, var(--accent-saffron) 0%, var(--accent-golden) 100%);
+    box-shadow: 0 0 12px rgba(255, 107, 53, 0.45);
+}
+.hero3__mantra-prefix {
+    color: var(--accent-saffron);
+    font-weight: 700;
+    flex-shrink: 0;
+    text-shadow: 0 0 18px rgba(255, 107, 53, 0.25);
+}
+.hero3__mantra-slot {
+    position: relative;
+    display: inline-block;
+    min-width: clamp(180px, 22vw, 280px);
+    height: 1.35em;
+    overflow: hidden;
+    vertical-align: middle;
+}
+.hero3__mantra-word {
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--text-dark);
+    background: linear-gradient(135deg, #c9852b 0%, var(--accent-saffron) 60%, #e85d26 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+    transition:
+        opacity .55s cubic-bezier(.16, 1, .3, 1),
+        transform .55s cubic-bezier(.16, 1, .3, 1);
+    white-space: nowrap;
+    will-change: transform, opacity;
+}
+.hero3__mantra-word.is-active {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+}
+.hero3__mantra-word.is-leaving {
+    opacity: 0;
+    transform: translate3d(0, -100%, 0);
+}
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+@media (max-width: 720px) {
+    .hero3__mantra {
+        font-size: 1.1rem;
+        padding: 12px 18px 12px 14px;
+        margin-bottom: 26px;
+    }
+    .hero3__mantra-slot {
+        min-width: 170px;
+    }
+}
+
+.hero3__ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.hero3__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px 28px;
+    border-radius: 4px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: transform .3s cubic-bezier(.4,0,.2,1), background .3s, color .3s, border-color .3s, box-shadow .3s;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.hero3__btn span {
+    font-size: 1rem;
+    font-weight: 400;
+    transition: transform .3s cubic-bezier(.4,0,.2,1);
+}
+
+.hero3__btn:hover { transform: translateY(-2px); }
+.hero3__btn:hover span { transform: translateX(4px); }
+
+.hero3__btn--dark {
+    background: var(--accent-saffron);
+    color: var(--text-white);
+    border: 1px solid var(--accent-saffron);
+}
+
+.hero3__btn--dark:hover {
+    background: var(--accent-golden);
+    color: var(--text-dark);
+    border-color: var(--accent-golden);
+    box-shadow: 0 10px 28px rgba(255, 107, 53, 0.28);
+}
+
+.hero3__btn--outline {
+    background: transparent;
+    color: var(--text-dark);
+    border: 1px solid var(--border-light);
+}
+
+.hero3__btn--outline:hover {
+    border-color: var(--text-dark);
+    background: var(--bg-dark-beige);
+}
+
+/* Tilted scrolling collage */
+.hero3__collage {
+    position: absolute;
+    top: -22%;
+    right: -7%;
+    width: 80%;
+    height: 145%;
+    transform: rotate(-12deg);
+    transform-origin: center center;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 18px;
+    z-index: 1;
+    pointer-events: none;
+    -webkit-mask-image: linear-gradient(95deg, transparent 0%, #000 22%, #000 100%);
+            mask-image: linear-gradient(95deg, transparent 0%, #000 22%, #000 100%);
+}
+
+.hero3__col {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    animation: hero3-up 38s linear infinite;
+    will-change: transform;
+}
+
+.hero3__col:nth-child(2),
+.hero3__col:nth-child(4),
+.hero3__col:nth-child(6) {
+    animation-name: hero3-down;
+}
+
+.hero3__col:nth-child(2) { animation-duration: 44s; }
+.hero3__col:nth-child(3) { animation-duration: 41s; }
+.hero3__col:nth-child(4) { animation-duration: 46s; }
+.hero3__col:nth-child(5) { animation-duration: 39s; }
+.hero3__col:nth-child(6) { animation-duration: 43s; }
+
+@keyframes hero3-up {
+    from { transform: translateY(0); }
+    to   { transform: translateY(-50%); }
+}
+
+@keyframes hero3-down {
+    from { transform: translateY(-50%); }
+    to   { transform: translateY(0); }
+}
+
+.hero3__card {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    background-size: cover;
+    background-position: center;
+    border-radius: 12px;
+    box-shadow:
+        0 8px 24px -8px rgba(44, 62, 80, .12),
+        0 24px 60px -28px rgba(44, 62, 80, .28);
+    flex-shrink: 0;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .hero3__collage {
+        width: 64%;
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+
+@media (max-width: 1024px) {
+    .hero3 { padding: 110px 0 80px; min-height: auto; }
+    .hero3__collage {
+        width: 72%;
+        right: -28%;
+        opacity: .5;
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 720px) {
+    .hero3__collage { display: none; }
+    .hero3 { padding: 100px 0 70px; }
+    .hero3__title { font-size: clamp(2rem, 9vw, 3rem); }
+    .hero3__btn { padding: 13px 22px; font-size: .72rem; }
+    .hero3__inner { margin-left: 0; }
+}
+
+/* =========================================
+   HOME 2 — Bold, religious & aesthetic redesign
+   Scope: .h2-* (avoids global collisions)
+   ========================================= */
+
+/* ---- Shared section header ---- */
+.h2-section-head {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto 64px;
+    padding: 0 12px;
+}
+.h2-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--accent-saffron);
+    background: linear-gradient(135deg, rgba(255, 107, 53, 0.08), rgba(255, 215, 0, 0.05));
+    padding: 9px 22px;
+    border: 1px solid rgba(255, 107, 53, 0.22);
+    border-radius: 999px;
+    margin-bottom: 22px;
+    box-shadow: 0 4px 14px rgba(255, 107, 53, 0.08);
+}
+.h2-eyebrow strong { font-weight: 700; }
+.h2-title {
+    font-family: 'Merriweather', serif;
+    font-weight: 700;
+    font-size: clamp(2.1rem, 4vw, 3.1rem);
+    line-height: 1.15;
+    color: var(--text-dark);
+    margin: 0 0 18px;
+    letter-spacing: -0.012em;
+}
+.h2-title em {
+    font-style: italic;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--accent-saffron) 0%, var(--accent-golden) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.h2-sub {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--text-light);
+    margin: 0;
+}
+.h2-sub strong { color: var(--text-dark); font-weight: 700; }
+
+/* =========================================
+   1. MANTRA SCROLL — asymmetric, watermarked
+   ========================================= */
+.h2-scroll {
+    position: relative;
+    padding: 110px 0 120px;
+    background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, #fff1d0 0%, #f8dfa0 45%, #ecc878 100%);
+    overflow: hidden;
+    border-top: 1px solid rgba(201, 133, 43, 0.2);
+    border-bottom: 1px solid rgba(201, 133, 43, 0.2);
+}
+.h2-scroll__watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Merriweather', serif;
+    font-size: clamp(28rem, 60vw, 52rem);
+    font-weight: 700;
+    color: rgba(201, 133, 43, 0.08);
+    line-height: 0.85;
+    pointer-events: none;
+    user-select: none;
+    z-index: 1;
+}
+.h2-scroll .container { position: relative; z-index: 2; }
+.h2-scroll__grid {
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr;
+    gap: 56px;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+.h2-scroll__sanskrit-wrap {
+    text-align: right;
+}
+.h2-scroll__ribbon {
+    display: inline-block;
+    font-family: 'Merriweather', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--accent-saffron);
+    letter-spacing: 0.18em;
+    margin-bottom: 24px;
+    opacity: 0.85;
+}
+.h2-scroll__ribbon strong { font-weight: 700; }
+.h2-scroll__sanskrit {
+    font-family: 'Merriweather', serif;
+    font-weight: 700;
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    line-height: 1.18;
+    color: var(--text-dark);
+    margin: 0 0 18px;
+    letter-spacing: -0.005em;
+}
+.h2-scroll__sanskrit strong {
+    background: linear-gradient(135deg, var(--accent-saffron) 0%, #c9852b 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.h2-scroll__roman {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 700;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--accent-saffron);
+    margin: 0;
+    opacity: 0.92;
+}
+.h2-scroll__rule {
+    width: 1px;
+    height: 100%;
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    position: relative;
+}
+.h2-scroll__rule span {
+    flex: 1;
+    width: 1px;
+    background: linear-gradient(180deg, transparent, rgba(255, 107, 53, 0.5) 50%, transparent);
+}
+.h2-scroll__rule i {
+    font-style: normal;
+    font-size: 1.3rem;
+    color: var(--accent-saffron);
+    line-height: 1;
+    text-shadow: 0 0 18px rgba(255, 107, 53, 0.4);
+}
+.h2-scroll__meaning-wrap {
+    text-align: left;
+}
+.h2-scroll__lead {
+    font-family: 'Merriweather', serif;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--text-dark);
+    font-size: clamp(1.15rem, 1.8vw, 1.4rem);
+    line-height: 1.6;
+    margin: 0 0 22px;
+}
+.h2-scroll__note {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--text-light);
+    margin: 0 0 22px;
+}
+.h2-scroll__note strong { color: var(--text-dark); font-weight: 700; }
+.h2-scroll__source {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent-saffron);
+    margin: 0;
+    font-weight: 700;
+}
+
+/* =========================================
+   2. SACRED CATEGORIES — split header + stats
+   ========================================= */
+.h2-bhajans {
+    position: relative;
+    padding: 110px 0 120px;
+    background:
+        linear-gradient(180deg, #fdfbf5 0%, #f5efe0 100%);
+    overflow: hidden;
+}
+.h2-bhajans::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(201, 133, 43, 0.3) 50%, transparent);
+}
+.h2-bhajans::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 12% 25%, rgba(255, 107, 53, 0.05) 0%, transparent 35%),
+        radial-gradient(circle at 88% 75%, rgba(255, 215, 0, 0.06) 0%, transparent 35%);
+    pointer-events: none;
+    z-index: 0;
+}
+.h2-bhajans .container { position: relative; z-index: 2; }
+.h2-bhajans__head {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 56px;
+    align-items: end;
+    margin-bottom: 50px;
+    padding-bottom: 36px;
+    border-bottom: 1px dashed rgba(255, 107, 53, 0.22);
+}
+.h2-bhajans__intro .h2-eyebrow { margin-bottom: 18px; }
+.h2-bhajans__intro .h2-title {
+    text-align: left;
+    margin-bottom: 14px;
+    font-size: clamp(2rem, 3.6vw, 2.8rem);
+}
+.h2-bhajans__intro .h2-sub { text-align: left; }
+.h2-bhajans__stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+}
+.h2-stat {
+    text-align: center;
+    padding: 24px 12px;
+    background: linear-gradient(180deg, #ffffff 0%, #fdf9f1 100%);
+    border: 1px solid rgba(255, 107, 53, 0.18);
+    border-radius: 14px;
+    transition: transform .35s, border-color .35s, box-shadow .35s;
+}
+.h2-stat:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 107, 53, 0.4);
+    box-shadow: 0 12px 26px rgba(255, 107, 53, 0.12);
+}
+.h2-stat__num {
+    display: block;
+    font-family: 'Merriweather', serif;
+    font-weight: 700;
+    font-size: 2.2rem;
+    line-height: 1;
+    background: linear-gradient(135deg, var(--accent-saffron), var(--accent-golden));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 8px;
+}
+.h2-stat__label {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--text-light);
+}
+.h2-bhajans .search-container { max-width: 560px; margin: 0 auto 44px; }
+
+/* ---- Full-width section + readable card redesign ---- */
+.h2-bhajans > .container {
+    max-width: none;
+    width: 100%;
+    padding: 0 clamp(20px, 4vw, 64px);
+}
+.h2-bhajans__head {
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.h2-bhajans .search-container { max-width: 640px; }
+.h2-bhajans .bhajans-grid {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+.h2-bhajans .bhajan-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 36px 32px 28px;
+    border: 1px solid rgba(255, 107, 53, 0.16);
+    box-shadow: 0 4px 18px rgba(44, 62, 80, 0.06);
+    position: relative;
+    overflow: hidden;
+    transition: transform .35s cubic-bezier(.4,0,.2,1), box-shadow .35s, border-color .35s;
+    display: flex;
+    flex-direction: column;
+    min-height: 200px;
+}
+.h2-bhajans .bhajan-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--accent-saffron), var(--accent-golden));
+    transition: width .35s;
+}
+.h2-bhajans .bhajan-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 107, 53, 0.4);
+    box-shadow: 0 18px 38px rgba(255, 107, 53, 0.14);
+}
+.h2-bhajans .bhajan-card:hover::before { width: 6px; }
+.h2-bhajans .bhajan-card h3 {
+    font-family: 'Merriweather', serif;
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: var(--text-dark);
+    line-height: 1.35;
+    margin: 0 0 24px;
+    letter-spacing: -0.005em;
+}
+.h2-bhajans .bhajan-meta {
+    margin-top: auto;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 107, 53, 0.14);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    font-size: 1rem;
+    color: var(--text-light);
+}
+.h2-bhajans .bhajan-duration {
+    background: rgba(255, 107, 53, 0.08);
+    color: var(--accent-saffron);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    padding: 7px 14px;
+    border-radius: 8px;
+    white-space: nowrap;
+}
+.h2-bhajans .bhajan-meta .btn-primary {
+    background: var(--accent-saffron);
+    color: var(--text-white);
+    border: 0;
+    padding: 10px 20px;
+    font-size: 0.86rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: none;
+    border-radius: 8px;
+    white-space: nowrap;
+    transition: background .3s, box-shadow .3s, transform .3s;
+    box-shadow: 0 4px 14px rgba(255, 107, 53, 0.28);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+}
+.h2-bhajans .bhajan-meta .btn-primary::after {
+    content: '→';
+    font-size: 1rem;
+    transition: transform .3s;
+}
+.h2-bhajans .bhajan-meta .btn-primary:hover {
+    background: #e85d26;
+    box-shadow: 0 8px 20px rgba(255, 107, 53, 0.42);
+}
+.h2-bhajans .bhajan-meta .btn-primary:hover::after { transform: translateX(4px); }
+
+@media (max-width: 1024px) {
+    .h2-bhajans .bhajans-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 18px;
+    }
+    .h2-bhajans .bhajan-card { padding: 30px 26px 24px; }
+    .h2-bhajans .bhajan-card h3 { font-size: 1.25rem; }
+}
+@media (max-width: 640px) {
+    .h2-bhajans > .container { padding: 0 16px; }
+    .h2-bhajans .bhajans-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+    .h2-bhajans .bhajan-card { padding: 26px 22px 22px; min-height: 0; }
+    .h2-bhajans .bhajan-card h3 { font-size: 1.2rem; margin-bottom: 18px; }
+    .h2-bhajans .bhajan-meta { padding-top: 16px; }
+}
+
+/* =========================================
+   3. FIVE VOWS — smooth parallax scroll stage
+   ========================================= */
+.h2-vows {
+    position: relative;
+    overflow: visible;
+}
+.h2-vows__scrollwrap {
+    position: relative;
+    /* 5 slides × 100vh of scroll each + initial sticky frame */
+    height: 600vh;
+    z-index: 2;
+}
+.h2-vows__sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background:
+        linear-gradient(180deg, #1c130f 0%, #2a1d15 45%, #1c130f 100%);
+}
+.h2-vows__pattern {
+    position: absolute;
+    inset: 0;
+    background-image:
+        radial-gradient(ellipse 60% 50% at 12% 22%, rgba(255, 153, 51, 0.18) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 50% at 88% 78%, rgba(255, 215, 0, 0.14) 0%, transparent 60%),
+        radial-gradient(circle at 50% 50%, rgba(255, 107, 53, 0.05) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 1;
+}
+.h2-vows__sticky .container {
+    position: relative;
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px;
+    z-index: 2;
+}
+.h2-vows .h2-section-head {
+    margin: 0 auto 32px;
+    max-width: 800px;
+}
+.h2-vows .h2-section-head .h2-title {
+    font-size: clamp(1.7rem, 3vw, 2.3rem);
+    color: #f5e7c0;
+}
+.h2-vows .h2-section-head .h2-title em {
+    background: linear-gradient(135deg, var(--accent-golden) 0%, #ffb84d 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.h2-vows .h2-section-head .h2-sub { font-size: 0.96rem; color: rgba(245, 231, 192, 0.72); }
+.h2-vows .h2-section-head .h2-sub strong { color: #f5e7c0; }
+.h2-vows .h2-eyebrow {
+    color: var(--accent-golden);
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 107, 53, 0.08));
+    border-color: rgba(255, 215, 0, 0.28);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+}
+
+/* Stage holds all 5 slides absolutely positioned */
+.h2-vows__stage {
+    position: relative;
+    height: 50vh;
+    min-height: 360px;
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+.h2-vow-slide {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    grid-template-columns: minmax(220px, 320px) 1fr;
+    gap: clamp(32px, 5vw, 72px);
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate3d(0, 30px, 0);
+    transition: opacity .55s cubic-bezier(.16, 1, .3, 1), transform .65s cubic-bezier(.16, 1, .3, 1);
+    will-change: opacity, transform;
+    padding: 0 8px;
+}
+.h2-vow-slide.is-active {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    pointer-events: auto;
+    z-index: 2;
+}
+.h2-vow-slide.is-prev {
+    opacity: 0;
+    transform: translate3d(0, -30px, 0);
+}
+
+/* Staggered child reveal — only the active slide animates its bits in */
+.h2-vow-slide__step,
+.h2-vow-slide__numeral,
+.h2-vow-slide__sans,
+.h2-vow-slide__name,
+.h2-vow-slide__tagline,
+.h2-vow-slide__promise,
+.h2-vow-slide__meaning {
+    opacity: 0;
+    transform: translate3d(0, 14px, 0);
+    transition: opacity .5s cubic-bezier(.16, 1, .3, 1), transform .5s cubic-bezier(.16, 1, .3, 1);
+}
+.h2-vow-slide.is-active .h2-vow-slide__step    { transition-delay: .05s; opacity: 1; transform: translate3d(0, 0, 0); }
+.h2-vow-slide.is-active .h2-vow-slide__numeral { transition-delay: .12s; opacity: 1; transform: translate3d(0, 0, 0); }
+.h2-vow-slide.is-active .h2-vow-slide__sans    { transition-delay: .18s; opacity: 0.78; transform: translate3d(0, 0, 0); }
+.h2-vow-slide.is-active .h2-vow-slide__name    { transition-delay: .14s; opacity: 1; transform: translate3d(0, 0, 0); }
+.h2-vow-slide.is-active .h2-vow-slide__tagline { transition-delay: .2s;  opacity: 1; transform: translate3d(0, 0, 0); }
+.h2-vow-slide.is-active .h2-vow-slide__promise { transition-delay: .26s; opacity: 1; transform: translate3d(0, 0, 0); }
+.h2-vow-slide.is-active .h2-vow-slide__meaning { transition-delay: .32s; opacity: 1; transform: translate3d(0, 0, 0); }
+
+/* === Left column: step counter + huge numeral + devanagari === */
+.h2-vow-slide__left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    position: relative;
+}
+.h2-vow-slide__left::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 36px;
+    bottom: 8px;
+    width: 3px;
+    background: linear-gradient(180deg, var(--accent-golden), rgba(255, 153, 51, 0.15));
+    border-radius: 999px;
+    box-shadow: 0 0 12px rgba(255, 215, 0, 0.3);
+}
+.h2-vow-slide__step {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--accent-golden);
+    margin: 0 0 6px 18px;
+    display: inline-flex;
+    align-items: baseline;
+    gap: 6px;
+}
+.h2-vow-slide__step i {
+    font-style: normal;
+    color: rgba(245, 231, 192, 0.55);
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    opacity: 0.85;
+}
+.h2-vow-slide__numeral {
+    font-family: 'Merriweather', serif;
+    font-weight: 700;
+    font-size: clamp(7rem, 12vw, 12rem);
+    line-height: 0.88;
+    background: linear-gradient(135deg, var(--accent-golden) 0%, #ffb84d 50%, var(--accent-saffron) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.03em;
+    padding-left: 18px;
+    position: relative;
+    filter: drop-shadow(0 4px 24px rgba(255, 153, 51, 0.35));
+}
+.h2-vow-slide__numeral::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 60%;
+    width: 90%;
+    height: 110%;
+    transform: translateY(-50%);
+    background: radial-gradient(circle, rgba(255, 215, 0, 0.28) 0%, transparent 60%);
+    border-radius: 50%;
+    z-index: -1;
+    pointer-events: none;
+}
+.h2-vow-slide__sans {
+    font-family: 'Merriweather', serif;
+    font-weight: 700;
+    font-size: clamp(1.6rem, 2.4vw, 2.2rem);
+    color: #f5e7c0;
+    line-height: 1.2;
+    margin: 4px 0 0 18px;
+    letter-spacing: -0.005em;
+    opacity: 0.88;
+}
+
+/* === Right column: content === */
+.h2-vow-slide__content { max-width: 580px; }
+.h2-vow-slide__name {
+    font-family: 'Merriweather', serif;
+    font-weight: 700;
+    font-size: clamp(2.4rem, 4vw, 3.4rem);
+    color: #faedca;
+    margin: 0 0 6px;
+    letter-spacing: -0.018em;
+    line-height: 1.05;
+    text-shadow: 0 2px 16px rgba(0, 0, 0, 0.3);
+}
+.h2-vow-slide__tagline {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.86rem;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent-golden);
+    margin: 0 0 22px;
+    text-shadow: 0 0 14px rgba(255, 215, 0, 0.35);
+}
+.h2-vow-slide__promise {
+    font-family: 'Merriweather', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(1.1rem, 1.5vw, 1.32rem);
+    color: #fdf3df;
+    line-height: 1.55;
+    margin: 0 0 20px;
+    padding: 18px 24px;
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 153, 51, 0.06));
+    border-left: 3px solid var(--accent-golden);
+    border-radius: 0 10px 10px 0;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+.h2-vow-slide__meaning {
+    font-family: 'Open Sans', sans-serif;
+    color: rgba(245, 231, 192, 0.7);
+    font-size: 1.02rem;
+    line-height: 1.75;
+    margin: 0;
+}
+.h2-vow-slide__meaning strong { color: #faedca; font-weight: 700; }
+
+/* === Progress dots (right edge of viewport) === */
+.h2-vows__progress {
+    position: absolute;
+    right: clamp(16px, 3vw, 44px);
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    z-index: 6;
+}
+.h2-vows__progress-label {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.4em;
+    color: var(--accent-golden);
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    opacity: 0.75;
+    margin-bottom: 6px;
+    padding: 4px 0;
+}
+.h2-vows__dot {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255, 215, 0, 0.35);
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--accent-golden);
+    padding: 0;
+    transition: transform .35s cubic-bezier(.22, .61, .36, 1),
+                background .35s cubic-bezier(.22, .61, .36, 1),
+                border-color .35s, color .35s, box-shadow .35s;
+    line-height: 1;
+    letter-spacing: 0.02em;
+    position: relative;
+}
+.h2-vows__dot:hover {
+    transform: scale(1.1);
+    border-color: var(--accent-golden);
+    background: rgba(255, 215, 0, 0.18);
+}
+.h2-vows__dot.is-active {
+    background: linear-gradient(135deg, var(--accent-golden), var(--accent-saffron));
+    color: #1c130f;
+    border-color: var(--accent-golden);
+    transform: scale(1.2);
+    box-shadow: 0 8px 26px rgba(255, 215, 0, 0.55);
+}
+.h2-vows__dot.is-active::before {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border: 1px dashed rgba(255, 215, 0, 0.55);
+    border-radius: 50%;
+    animation: h2-vow-pulse 3s linear infinite;
+}
+@keyframes h2-vow-pulse {
+    0%   { transform: rotate(0deg);   opacity: 0.7; }
+    50%  { opacity: 0.3; }
+    100% { transform: rotate(360deg); opacity: 0.7; }
+}
+
+/* === Bottom progress rail === */
+.h2-vows__rail {
+    position: absolute;
+    left: 50%;
+    bottom: 36px;
+    transform: translateX(-50%);
+    width: min(440px, 60vw);
+    height: 3px;
+    background: rgba(255, 215, 0, 0.15);
+    border-radius: 999px;
+    overflow: hidden;
+    z-index: 5;
+}
+.h2-vows__rail-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, var(--accent-golden), #ffb84d);
+    border-radius: 999px;
+    box-shadow: 0 0 18px rgba(255, 215, 0, 0.65);
+}
+
+/* === Mobile fallback — no sticky, stacked slides === */
+@media (max-width: 820px) {
+    .h2-vows__scrollwrap { height: auto; }
+    .h2-vows__sticky {
+        position: relative;
+        top: auto;
+        height: auto;
+        padding: 70px 0 80px;
+        display: block;
+        overflow: visible;
+        background: linear-gradient(180deg, #1c130f 0%, #2a1d15 100%);
+    }
+    .h2-vow-slide + .h2-vow-slide {
+        border-color: rgba(255, 215, 0, 0.18) !important;
+    }
+    .h2-vows__stage {
+        height: auto;
+        min-height: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 44px;
+    }
+    .h2-vow-slide {
+        position: relative;
+        inset: auto;
+        opacity: 1 !important;
+        pointer-events: auto;
+        transform: none !important;
+        grid-template-columns: 1fr;
+        gap: 18px;
+        text-align: left;
+    }
+    .h2-vow-slide + .h2-vow-slide {
+        padding-top: 36px;
+        border-top: 1px dashed rgba(255, 107, 53, 0.22);
+    }
+    .h2-vow-slide__left { gap: 6px; }
+    .h2-vow-slide__numeral { font-size: 5.5rem; padding-left: 14px; }
+    .h2-vow-slide__sans { font-size: 1.4rem; margin-left: 14px; }
+    .h2-vow-slide__step { margin-left: 14px; }
+    .h2-vow-slide__left::before { top: 28px; }
+    .h2-vow-slide__name { font-size: 1.8rem; }
+    .h2-vow-slide__promise { font-size: 1.02rem; padding: 14px 18px; }
+    .h2-vow-slide__meaning { font-size: 0.96rem; }
+    .h2-vows__progress,
+    .h2-vows__rail { display: none; }
+}
+
+/* =========================================
+   4. PILGRIMAGE — medallion rows
+   ========================================= */
+.h2-yatra {
+    position: relative;
+    padding: 110px 0 120px;
+    background:
+        linear-gradient(180deg, #f0dfb3 0%, #e8d29f 50%, #ddc287 100%);
+    overflow: hidden;
+}
+.h2-yatra__bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+        radial-gradient(ellipse 70% 50% at 15% 25%, rgba(201, 133, 43, 0.2) 0%, transparent 50%),
+        radial-gradient(ellipse 60% 45% at 85% 75%, rgba(255, 153, 51, 0.18) 0%, transparent 50%),
+        radial-gradient(circle at 50% 0%, rgba(255, 215, 0, 0.14) 0%, transparent 40%);
+    pointer-events: none;
+}
+.h2-yatra .container { position: relative; z-index: 2; }
+.h2-yatra__list {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+.h2-yatra-row {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 56px;
+    align-items: center;
+    padding: 42px 48px;
+    background: linear-gradient(180deg, #ffffff 0%, #fdf9f1 100%);
+    border: 1px solid rgba(255, 107, 53, 0.16);
+    border-radius: 22px;
+    text-decoration: none;
+    color: inherit;
+    transition: transform .45s cubic-bezier(.4,0,.2,1), box-shadow .45s, border-color .45s;
+    box-shadow: 0 8px 26px rgba(44, 62, 80, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+.h2-yatra-row::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 107, 53, 0.05), transparent 40%);
+    opacity: 0;
+    transition: opacity .4s;
+    pointer-events: none;
+}
+.h2-yatra-row:hover {
+    transform: translateY(-6px);
+    border-color: rgba(255, 107, 53, 0.4);
+    box-shadow: 0 24px 50px rgba(255, 107, 53, 0.16);
+}
+.h2-yatra-row:hover::before { opacity: 1; }
+.h2-yatra-row:hover .h2-medallion { transform: rotate(-4deg) scale(1.03); }
+.h2-yatra-row:hover .h2-yatra-row__cta { color: var(--accent-saffron); }
+.h2-yatra-row:hover .h2-yatra-row__cta i { transform: translateX(8px); }
+.h2-yatra-row--reverse { grid-template-columns: 1fr 320px; }
+.h2-yatra-row--reverse .h2-medallion { order: 2; }
+.h2-yatra-row--reverse .h2-yatra-row__body { order: 1; text-align: right; }
+
+/* The Medallion */
+.h2-medallion {
+    position: relative;
+    width: 280px;
+    height: 280px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform .5s cubic-bezier(.4,0,.2,1);
+}
+.h2-medallion__ord {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Merriweather', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--text-white);
+    background: linear-gradient(135deg, var(--accent-saffron), #c9852b);
+    padding: 8px 18px;
+    border-radius: 999px;
+    z-index: 6;
+    letter-spacing: 0.06em;
+    box-shadow: 0 6px 16px rgba(255, 107, 53, 0.3);
+    border: 2px solid #fdf8ee;
+}
+.h2-medallion__ord strong { font-weight: 700; }
+.h2-medallion__ring {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+}
+.h2-medallion__ring--outer {
+    inset: 0;
+    border: 2px solid rgba(255, 107, 53, 0.35);
+    box-shadow:
+        inset 0 0 0 6px #fdf8ee,
+        inset 0 0 0 7px rgba(212, 165, 60, 0.45),
+        0 18px 40px rgba(255, 107, 53, 0.18);
+}
+.h2-medallion__ring--mid {
+    inset: 22px;
+    border: 1px dashed rgba(212, 165, 60, 0.55);
+}
+.h2-medallion__inner {
+    position: relative;
+    width: 70%;
+    height: 70%;
+    border-radius: 50%;
+    background:
+        radial-gradient(circle at 50% 60%, rgba(255, 215, 0, 0.22) 0%, transparent 70%),
+        linear-gradient(180deg, #fdf3df 0%, #f5e5c5 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 4px 12px rgba(255, 107, 53, 0.08);
+    z-index: 2;
+}
+.h2-medallion__inner img {
+    width: 75%;
+    height: auto;
+    max-height: 80%;
+    object-fit: contain;
+    filter: drop-shadow(0 6px 14px rgba(255, 107, 53, 0.25));
+}
+.h2-medallion__fallback {
+    font-size: 5rem;
+    line-height: 1;
+    display: none;
+    filter: drop-shadow(0 6px 14px rgba(255, 107, 53, 0.25));
+}
+
+.h2-yatra-row__body {
+    display: flex;
+    flex-direction: column;
+}
+.h2-yatra-row__loc {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--accent-saffron);
+    margin-bottom: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+.h2-yatra-row__loc strong { font-weight: 700; }
+.h2-yatra-row__body h3 {
+    font-family: 'Merriweather', serif;
+    font-weight: 700;
+    font-size: clamp(2rem, 3vw, 2.6rem);
+    color: var(--text-dark);
+    margin: 0 0 14px;
+    letter-spacing: -0.01em;
+    line-height: 1.05;
+}
+.h2-yatra-row__lead {
+    font-family: 'Merriweather', serif;
+    font-style: italic;
+    font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+    line-height: 1.6;
+    color: var(--text-dark);
+    margin: 0 0 16px;
+    padding: 14px 20px;
+    background: linear-gradient(135deg, rgba(255, 107, 53, 0.06), rgba(255, 215, 0, 0.04));
+    border-left: 3px solid var(--accent-saffron);
+    border-radius: 0 8px 8px 0;
+}
+.h2-yatra-row--reverse .h2-yatra-row__lead {
+    border-left: 0;
+    border-right: 3px solid var(--accent-saffron);
+    border-radius: 8px 0 0 8px;
+}
+.h2-yatra-row__detail {
+    font-family: 'Open Sans', sans-serif;
+    color: var(--text-light);
+    font-size: 0.98rem;
+    line-height: 1.75;
+    margin: 0 0 22px;
+}
+.h2-yatra-row__detail strong { color: var(--text-dark); font-weight: 700; }
+.h2-yatra-row__cta {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--text-dark);
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    transition: color .3s;
+    padding-top: 16px;
+    border-top: 1px dashed rgba(255, 107, 53, 0.28);
+    align-self: flex-start;
+}
+.h2-yatra-row--reverse .h2-yatra-row__cta { align-self: flex-end; }
+.h2-yatra-row__cta strong { font-weight: 700; }
+.h2-yatra-row__cta i { transition: transform .3s; }
+
+.h2-yatra__cta {
+    text-align: center;
+    margin-top: 60px;
+}
+.h2-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 34px;
+    border-radius: 4px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: transform .3s, box-shadow .3s, background .3s;
+    cursor: pointer;
+}
+.h2-btn strong { font-weight: 700; }
+.h2-btn--gold {
+    background: linear-gradient(135deg, var(--accent-saffron), #e85d26);
+    color: var(--text-white);
+    border: 1px solid var(--accent-saffron);
+    box-shadow: 0 10px 26px rgba(255, 107, 53, 0.32);
+}
+.h2-btn--gold:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 38px rgba(255, 107, 53, 0.45);
+    background: linear-gradient(135deg, var(--accent-golden), var(--accent-saffron));
+    color: var(--text-dark);
+}
+.h2-btn--gold:hover i:last-child { transform: translateX(6px); }
+.h2-btn i { transition: transform .3s; }
+
+/* =========================================
+   5. THREE JEWELS — arched temple panels
+   ========================================= */
+.h2-triratna {
+    position: relative;
+    padding: 110px 0 130px;
+    background:
+        radial-gradient(ellipse 90% 70% at 50% 0%, #fff5d6 0%, #faddae 45%, #ecc878 100%);
+    overflow: hidden;
+}
+.h2-triratna::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1200px;
+    height: 1200px;
+    background:
+        conic-gradient(
+            from -90deg at 50% 50%,
+            transparent 0deg,
+            rgba(255, 215, 0, 0.06) 6deg,
+            transparent 12deg,
+            transparent 50deg,
+            rgba(255, 107, 53, 0.05) 56deg,
+            transparent 62deg,
+            transparent 360deg
+        );
+    pointer-events: none;
+    opacity: 0.6;
+    z-index: 1;
+}
+.h2-triratna .container { position: relative; z-index: 2; }
+.h2-triratna__panels {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin-top: 16px;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: end;
+}
+.h2-arch {
+    position: relative;
+    background:
+        linear-gradient(180deg, #ffffff 0%, #fdf9f1 100%);
+    border: 1px solid rgba(255, 107, 53, 0.22);
+    border-top: 0;
+    padding: 88px 30px 44px;
+    text-align: center;
+    border-radius: 200px 200px 14px 14px / 130px 130px 14px 14px;
+    transition: transform .45s cubic-bezier(.4,0,.2,1), box-shadow .45s, border-color .45s;
+    box-shadow:
+        0 12px 32px rgba(44, 62, 80, 0.06),
+        inset 0 2px 0 rgba(255, 255, 255, 0.6);
+    overflow: hidden;
+}
+.h2-arch::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    background: linear-gradient(180deg, rgba(255, 107, 53, 0.18) 0%, transparent 22%);
+    pointer-events: none;
+}
+.h2-arch::after {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    border: 1px solid rgba(212, 165, 60, 0.5);
+    border-radius: 190px 190px 8px 8px / 122px 122px 8px 8px;
+    pointer-events: none;
+}
+.h2-arch:hover {
+    transform: translateY(-8px);
+    border-color: rgba(255, 107, 53, 0.45);
+    box-shadow:
+        0 26px 50px rgba(255, 107, 53, 0.18),
+        inset 0 2px 0 rgba(255, 255, 255, 0.6);
+}
+.h2-arch--lifted {
+    transform: translateY(-22px);
+    padding-top: 100px;
+    padding-bottom: 56px;
+    background: linear-gradient(180deg, #fffdf5 0%, #fdf3df 100%);
+    border-color: rgba(255, 215, 0, 0.5);
+    box-shadow:
+        0 22px 48px rgba(255, 107, 53, 0.16),
+        inset 0 2px 0 rgba(255, 255, 255, 0.7);
+}
+.h2-arch--lifted:hover { transform: translateY(-30px); }
+.h2-arch__crown {
+    position: absolute;
+    top: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--accent-saffron), var(--accent-golden));
+    color: var(--text-white);
+    border-radius: 50%;
+    font-size: 1.3rem;
+    box-shadow: 0 8px 20px rgba(255, 107, 53, 0.35);
+    border: 3px solid #fdf8ee;
+    z-index: 3;
+    font-weight: 700;
+}
+.h2-arch--lifted .h2-arch__crown {
+    width: 58px;
+    height: 58px;
+    font-size: 1.45rem;
+}
+.h2-arch__body { position: relative; z-index: 2; }
+.h2-arch__sans {
+    font-family: 'Merriweather', serif;
+    font-weight: 700;
+    font-size: clamp(1.5rem, 2.2vw, 1.95rem);
+    color: var(--text-dark);
+    margin: 0 0 6px;
+}
+.h2-arch__sans strong { font-weight: 700; }
+.h2-arch__name {
+    font-family: 'Merriweather', serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    margin: 0 0 4px;
+    letter-spacing: 0.02em;
+}
+.h2-arch__en {
+    font-family: 'Merriweather', serif;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent-saffron);
+    font-size: 0.95rem;
+    margin: 0 0 18px;
+}
+.h2-arch__rule {
+    width: 50px;
+    height: 1px;
+    margin: 0 auto 20px;
+    background: linear-gradient(90deg, transparent, rgba(255, 107, 53, 0.6), transparent);
+}
+.h2-arch__meaning {
+    font-family: 'Open Sans', sans-serif;
+    color: var(--text-light);
+    font-size: 0.98rem;
+    line-height: 1.8;
+    margin: 0;
+}
+.h2-arch__meaning strong { color: var(--text-dark); font-weight: 700; }
+.h2-triratna__closing {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 6px;
+    margin: 70px 0 0;
+    font-family: 'Merriweather', serif;
+}
+.h2-triratna__closing strong {
+    font-size: clamp(1.4rem, 2.4vw, 1.8rem);
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--accent-saffron) 0%, #c9852b 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 0.04em;
+}
+.h2-triratna__closing span {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--accent-saffron);
+    opacity: 0.9;
+}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+@media (max-width: 1024px) {
+    .h2-scroll__grid { grid-template-columns: 1fr; gap: 32px; text-align: center; }
+    .h2-scroll__sanskrit-wrap { text-align: center; }
+    .h2-scroll__meaning-wrap { text-align: center; }
+    .h2-scroll__rule { width: 100%; height: 1px; min-height: 0; flex-direction: row; }
+    .h2-scroll__rule span { flex: 1; height: 1px; width: auto; background: linear-gradient(90deg, transparent, rgba(255, 107, 53, 0.5) 50%, transparent); }
+
+    .h2-bhajans__head { grid-template-columns: 1fr; gap: 36px; }
+    .h2-bhajans__intro .h2-title { text-align: center; }
+    .h2-bhajans__intro .h2-sub { text-align: center; }
+    .h2-bhajans__intro .h2-eyebrow { display: inline-flex; }
+    .h2-bhajans__intro { text-align: center; }
+
+    .h2-vows__list::before { display: none; }
+    .h2-vow-row,
+    .h2-vow-row--right { grid-template-columns: 1fr; gap: 18px; padding: 36px 0; }
+    .h2-vow-row__numeral { text-align: center; font-size: 5rem; }
+    .h2-vow-row__content,
+    .h2-vow-row--right .h2-vow-row__content {
+        padding: 0;
+        border: 0;
+        text-align: center;
+    }
+    .h2-vow-row__promise,
+    .h2-vow-row--right .h2-vow-row__promise {
+        border: 0;
+        border-left: 3px solid var(--accent-saffron);
+        border-radius: 0 8px 8px 0;
+        text-align: left;
+    }
+
+    .h2-yatra-row,
+    .h2-yatra-row--reverse {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 32px 28px;
+        text-align: center;
+    }
+    .h2-yatra-row--reverse .h2-medallion { order: 0; }
+    .h2-yatra-row--reverse .h2-yatra-row__body { order: 0; text-align: center; }
+    .h2-yatra-row--reverse .h2-yatra-row__lead {
+        border-right: 0;
+        border-left: 3px solid var(--accent-saffron);
+        border-radius: 0 8px 8px 0;
+        text-align: left;
+    }
+    .h2-yatra-row__cta,
+    .h2-yatra-row--reverse .h2-yatra-row__cta { align-self: center; }
+    .h2-medallion { width: 220px; height: 220px; }
+
+    .h2-triratna__panels { grid-template-columns: 1fr; gap: 36px; }
+    .h2-arch--lifted { transform: none; }
+    .h2-arch--lifted:hover { transform: translateY(-8px); }
+}
+
+@media (max-width: 720px) {
+    .h2-section-head { margin-bottom: 44px; }
+    .h2-eyebrow { font-size: 0.7rem; padding: 7px 16px; letter-spacing: 0.2em; }
+    .h2-scroll { padding: 80px 0 90px; }
+    .h2-scroll__sanskrit { font-size: clamp(2rem, 8vw, 3rem); }
+    .h2-bhajans { padding: 70px 0 80px; }
+    .h2-bhajans__stats { gap: 10px; }
+    .h2-stat { padding: 18px 8px; }
+    .h2-stat__num { font-size: 1.7rem; }
+    .h2-vows { padding: 70px 0 80px; }
+    .h2-vow-row { padding: 28px 0; }
+    .h2-vow-row__numeral { font-size: 4rem; }
+    .h2-vow-row__name { font-size: 0.78rem; letter-spacing: 0.18em; }
+    .h2-vow-row__promise { font-size: 1rem; padding: 14px 18px; }
+    .h2-yatra { padding: 70px 0 80px; }
+    .h2-yatra-row,
+    .h2-yatra-row--reverse { padding: 26px 22px; gap: 20px; }
+    .h2-yatra-row__body h3 { font-size: 1.7rem; }
+    .h2-medallion { width: 180px; height: 180px; }
+    .h2-medallion__ord { font-size: 0.85rem; padding: 6px 14px; }
+    .h2-triratna { padding: 70px 0 90px; }
+    .h2-arch { padding: 76px 24px 36px; }
+    .h2-arch--lifted { padding-top: 88px; padding-bottom: 44px; }
+}
+
+/* =========================================
+   HOME 2 — MOBILE CAROUSELS + COMPACT LAYOUT
+   Cards swipe horizontally on phones to keep
+   the page short and scannable.
+   ========================================= */
+
+@keyframes h2-swipe-pulse {
+    0%, 100% { opacity: 0.45; transform: translateX(0); }
+    50%      { opacity: 0.85; transform: translateX(4px); }
+}
+
+/* === Vows mobile — horizontal swipe carousel (uses 820px breakpoint to match parallax cutoff) === */
+@media (max-width: 820px) {
+    .h2-vows__stage {
+        flex-direction: row !important;
+        overflow-x: auto !important;
+        overflow-y: visible !important;
+        scroll-snap-type: x mandatory;
+        gap: 14px !important;
+        padding: 12px 18px 28px !important;
+        margin: 0 -18px !important;
+        -webkit-overflow-scrolling: touch;
+        scroll-behavior: smooth;
+        scrollbar-width: none;
+        scroll-padding-left: 18px;
+    }
+    .h2-vows__stage::-webkit-scrollbar { display: none; }
+    .h2-vow-slide {
+        flex: 0 0 calc(100% - 70px) !important;
+        max-width: 360px;
+        min-width: 0;
+        scroll-snap-align: center;
+        scroll-snap-stop: always;
+        padding: 22px 22px !important;
+        background: linear-gradient(180deg, rgba(255, 215, 0, 0.06), rgba(255, 153, 51, 0.04));
+        border: 1px solid rgba(255, 215, 0, 0.18);
+        border-radius: 16px;
+        /* Force slide AND children visible on mobile (JS removes .is-active for carousel) */
+        opacity: 1 !important;
+        transform: none !important;
+        pointer-events: auto !important;
+    }
+    .h2-vow-slide + .h2-vow-slide {
+        border-top: 1px solid rgba(255, 215, 0, 0.18) !important;
+        padding-top: 22px !important;
+    }
+    /* === Critical fix: children of slides are opacity:0 by default ===
+       (they only appear via .is-active stagger on desktop).
+       On mobile the carousel needs every slide's content visible. */
+    .h2-vow-slide__left,
+    .h2-vow-slide__content,
+    .h2-vow-slide__step,
+    .h2-vow-slide__numeral,
+    .h2-vow-slide__sans,
+    .h2-vow-slide__name,
+    .h2-vow-slide__tagline,
+    .h2-vow-slide__promise,
+    .h2-vow-slide__meaning {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+    /* Sans (Devanagari word) stays slightly de-emphasised vs name */
+    .h2-vow-slide__sans { opacity: 0.88 !important; }
+    .h2-vow-slide__numeral { font-size: 4.6rem !important; }
+    .h2-vow-slide__sans { font-size: 1.3rem !important; }
+    .h2-vow-slide__name { font-size: 1.7rem !important; }
+    .h2-vow-slide__promise { font-size: 1rem !important; padding: 12px 16px !important; }
+    .h2-vow-slide__meaning { font-size: 0.92rem !important; }
+
+    /* Swipe hint after the vows header */
+    .h2-vows .h2-section-head::after {
+        content: '◂  Swipe to read each vow  ▸';
+        display: block;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.66rem;
+        font-weight: 700;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        color: var(--accent-golden);
+        margin-top: 16px;
+        opacity: 0.7;
+        animation: h2-swipe-pulse 2.2s ease-in-out infinite;
+    }
+}
+
+/* === Main mobile carousel sweep === */
+@media (max-width: 720px) {
+    /* Tighten all section paddings on phone */
+    .h2-scroll       { padding: 56px 0 64px; }
+    .h2-bhajans      { padding: 56px 0 64px; }
+    .h2-vows__sticky { padding: 56px 0 60px !important; }
+    .h2-yatra        { padding: 56px 0 64px; }
+    .h2-triratna     { padding: 56px 0 70px; }
+
+    .h2-section-head { margin: 0 auto 22px; }
+    .h2-section-head .h2-title { font-size: clamp(1.5rem, 6.5vw, 1.95rem); margin-bottom: 12px; }
+    .h2-section-head .h2-sub   { font-size: 0.92rem; line-height: 1.6; }
+    .h2-eyebrow                { font-size: 0.66rem; padding: 6px 14px; letter-spacing: 0.2em; margin-bottom: 14px; }
+
+    /* === Bhajans — compact 2-column grid (3 rows visible at a time) === */
+    .h2-bhajans > .container { padding: 0 16px !important; }
+    .h2-bhajans__head {
+        display: block !important;
+        margin-bottom: 18px !important;
+        padding-bottom: 16px !important;
+    }
+    .h2-bhajans__intro { margin-bottom: 18px; text-align: center; }
+    .h2-bhajans__intro .h2-title,
+    .h2-bhajans__intro .h2-sub { text-align: center !important; }
+    .h2-bhajans__stats { grid-template-columns: repeat(3, 1fr) !important; gap: 8px !important; }
+    .h2-stat { padding: 14px 6px !important; }
+    .h2-stat__num   { font-size: 1.5rem !important; }
+    .h2-stat__label { font-size: 0.6rem !important; letter-spacing: 0.16em !important; }
+
+    /* Search bar — clean full-width pill on mobile */
+    .h2-bhajans .search-container {
+        margin: 0 auto 20px !important;
+        padding: 0 !important;
+        width: 100% !important;
+        max-width: none !important;
+        display: flex !important;
+        justify-content: center !important;
+    }
+    .h2-bhajans .search-box {
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+    .h2-bhajans .search-box input {
+        padding: 13px 14px 13px 42px !important;
+        font-size: 0.95rem !important;
+        border-radius: 12px !important;
+        border-width: 1px !important;
+        height: 46px;
+        box-sizing: border-box;
+    }
+    .h2-bhajans .search-box i {
+        left: 14px !important;
+        font-size: 0.9rem;
+    }
+
+    /* 1-column horizontal carousel — each page shows 3 stacked cards, swipe for next 3 */
+    .h2-bhajans .bhajans-grid {
+        display: grid !important;
+        grid-auto-flow: column !important;
+        grid-template-rows: repeat(3, auto) !important;
+        grid-auto-columns: 88% !important;
+        grid-template-columns: unset !important;
+        gap: 12px !important;
+        padding: 6px 16px 22px !important;
+        margin: 0 -16px !important;
+        overflow-x: auto !important;
+        overflow-y: visible !important;
+        scroll-snap-type: x mandatory !important;
+        -webkit-overflow-scrolling: touch;
+        scroll-behavior: smooth;
+        scrollbar-width: none;
+        scroll-padding-left: 16px;
+        max-width: none !important;
+    }
+    .h2-bhajans .bhajans-grid::-webkit-scrollbar { display: none; }
+    .h2-bhajans .bhajan-card {
+        flex: initial !important;
+        max-width: none !important;
+        min-width: 0 !important;
+        min-height: 0 !important;
+        width: 100% !important;
+        padding: 22px 22px 20px !important;
+        scroll-snap-align: start !important;
+        scroll-snap-stop: always !important;
+    }
+    .h2-bhajans .bhajan-card::before {
+        font-size: 1.4rem !important;
+        margin-bottom: 8px !important;
+    }
+    .h2-bhajans .bhajan-card h3 {
+        font-size: 1.05rem !important;
+        margin-bottom: 12px !important;
+        padding-bottom: 12px !important;
+        min-height: 0 !important;
+        line-height: 1.35 !important;
+    }
+    .h2-bhajans .bhajan-meta {
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        gap: 10px !important;
+    }
+    .h2-bhajans .bhajan-duration {
+        font-size: 0.66rem !important;
+        padding: 5px 10px !important;
+        letter-spacing: 0.14em !important;
+    }
+    .h2-bhajans .bhajan-meta .btn-primary {
+        padding: 8px 14px !important;
+        font-size: 0.7rem !important;
+        letter-spacing: 0.12em !important;
+    }
+
+    /* Swipe hint after the bhajans header */
+    .h2-bhajans__intro::after {
+        content: '◂  Swipe to browse more categories  ▸';
+        display: block;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.66rem;
+        font-weight: 700;
+        letter-spacing: 0.26em;
+        text-transform: uppercase;
+        color: var(--accent-saffron);
+        margin-top: 14px;
+        opacity: 0.65;
+        animation: h2-swipe-pulse 2.2s ease-in-out infinite;
+    }
+
+    /* === Pilgrimage rows → carousel === */
+    .h2-yatra__list {
+        display: flex !important;
+        flex-direction: row !important;
+        overflow-x: auto !important;
+        overflow-y: visible !important;
+        scroll-snap-type: x mandatory;
+        gap: 14px !important;
+        padding: 12px 18px 28px !important;
+        margin: 0 -18px !important;
+        max-width: none !important;
+        -webkit-overflow-scrolling: touch;
+        scroll-behavior: smooth;
+        scrollbar-width: none;
+        scroll-padding-left: 18px;
+    }
+    .h2-yatra__list::-webkit-scrollbar { display: none; }
+    .h2-yatra-row,
+    .h2-yatra-row--reverse {
+        display: flex !important;
+        flex-direction: column !important;
+        flex: 0 0 calc(100% - 70px) !important;
+        max-width: 320px;
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+        padding: 22px 22px !important;
+        text-align: center !important;
+        scroll-snap-align: center;
+        scroll-snap-stop: always;
+    }
+    .h2-yatra-row--reverse .h2-medallion { order: 0 !important; }
+    .h2-yatra-row--reverse .h2-yatra-row__body { order: 0 !important; text-align: center !important; }
+    .h2-yatra-row__cta { align-self: center !important; }
+    .h2-yatra-row__lead {
+        text-align: left !important;
+        font-size: 0.98rem !important;
+        padding: 12px 16px !important;
+    }
+    .h2-yatra-row--reverse .h2-yatra-row__lead {
+        border-right: 0 !important;
+        border-left: 3px solid var(--accent-saffron) !important;
+        border-radius: 0 8px 8px 0 !important;
+    }
+    .h2-yatra-row__body h3 { font-size: 1.55rem !important; }
+    .h2-yatra-row__detail { font-size: 0.9rem !important; }
+    .h2-medallion {
+        width: 160px !important;
+        height: 160px !important;
+        margin: 0 auto !important;
+    }
+    .h2-yatra__cta { margin-top: 18px !important; }
+    .h2-btn { padding: 12px 22px !important; font-size: 0.72rem !important; }
+
+    /* Swipe hint above the pilgrimage list */
+    .h2-yatra .h2-section-head::after {
+        content: '◂  Swipe to journey through each site  ▸';
+        display: block;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.66rem;
+        font-weight: 700;
+        letter-spacing: 0.26em;
+        text-transform: uppercase;
+        color: var(--accent-saffron);
+        margin-top: 14px;
+        opacity: 0.65;
+        animation: h2-swipe-pulse 2.2s ease-in-out infinite;
+    }
+
+    /* === Three Jewels arches → carousel === */
+    .h2-triratna__panels {
+        display: flex !important;
+        flex-direction: row !important;
+        overflow-x: auto !important;
+        overflow-y: visible !important;
+        scroll-snap-type: x mandatory;
+        gap: 12px !important;
+        padding: 16px 18px 24px !important;
+        margin: 0 -18px !important;
+        max-width: none !important;
+        -webkit-overflow-scrolling: touch;
+        scroll-behavior: smooth;
+        scrollbar-width: none;
+        scroll-padding-left: 18px;
+        align-items: stretch !important;
+    }
+    .h2-triratna__panels::-webkit-scrollbar { display: none; }
+    .h2-arch,
+    .h2-arch--lifted {
+        flex: 0 0 calc(100% - 70px) !important;
+        max-width: 300px !important;
+        transform: none !important;
+        padding: 64px 22px 28px !important;
+        scroll-snap-align: center;
+        scroll-snap-stop: always;
+    }
+    .h2-arch--lifted:hover { transform: translateY(-6px) !important; }
+    .h2-arch__sans    { font-size: 1.25rem !important; }
+    .h2-arch__name    { font-size: 1rem !important; }
+    .h2-arch__meaning { font-size: 0.9rem !important; line-height: 1.65 !important; }
+    .h2-triratna__closing { margin-top: 22px !important; }
+    .h2-triratna__closing strong { font-size: 1.25rem !important; }
+
+    /* Swipe hint above the triratna panels */
+    .h2-triratna .h2-section-head::after {
+        content: '◂  Swipe through the three jewels  ▸';
+        display: block;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.66rem;
+        font-weight: 700;
+        letter-spacing: 0.26em;
+        text-transform: uppercase;
+        color: var(--accent-saffron);
+        margin-top: 14px;
+        opacity: 0.65;
+        animation: h2-swipe-pulse 2.2s ease-in-out infinite;
+    }
+
+    /* === Compact hero on mobile === */
+    .hero3 { padding: 96px 0 60px !important; min-height: auto !important; }
+    .hero3__title { font-size: clamp(1.9rem, 9vw, 2.7rem) !important; line-height: 1.08 !important; margin-bottom: 16px !important; }
+    .hero3__sub { font-size: 0.98rem !important; margin-bottom: 18px !important; }
+    .hero3__eyebrow { font-size: 0.66rem !important; padding: 6px 14px !important; margin-bottom: 16px !important; }
+    .hero3__mantra { margin-bottom: 22px !important; }
+    .hero3__ctas { gap: 10px !important; flex-direction: column !important; align-items: stretch !important; }
+    .hero3__btn { width: 100%; justify-content: center; padding: 13px 20px !important; font-size: 0.74rem !important; }
+
+    /* === Compact mantra scroll === */
+    .h2-scroll__grid { gap: 28px !important; }
+    .h2-scroll__watermark { font-size: 24rem !important; }
+    .h2-scroll__sanskrit { font-size: clamp(1.7rem, 8vw, 2.4rem) !important; line-height: 1.18 !important; margin-bottom: 12px !important; }
+    .h2-scroll__roman { font-size: 0.78rem !important; letter-spacing: 0.24em !important; }
+    .h2-scroll__lead { font-size: 1.02rem !important; margin-bottom: 14px !important; }
+    .h2-scroll__note { font-size: 0.92rem !important; margin-bottom: 14px !important; }
+}
+

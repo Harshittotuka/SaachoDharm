@@ -41,7 +41,7 @@
     // ---- Fetch data ----
     async function init() {
         try {
-            const res = await fetch('data/tirth_sthal_data.json');
+            const res = await fetch('/data/tirth_sthal_data.json');
             if (!res.ok) throw new Error('Failed to load data');
             allTirths = await res.json();
             updateCollectionSEO();
